@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script src="scripts/factories/Photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-  </body>
+
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="acceuil"
+    content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux." />
+  <meta name="author" content="Elodie Nebulot" />
+  <meta name="keywords" content="Photographer, Photographies, Freelance, Photos, Photographe" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fisheye</title>
+
+
+</head>
+
+<body>
+  <!--Floating button -->
+  <button class="btn" id="floating-button" type="button">
+    Revenir en haut
+  </button>
+
+  <header>
+    <img src="assets/images/logo.png" class="logo" />
+    <!--Hashtag-->
+    <h1>Nos photographes</h1>
+  </header>
+
+  <main id="main">
+    <div class="photographer_section"></div>
+  </main>
+
+  <!--Modal-->
+
+  <script src="scripts/factories/Photographer.js"></script>
+  <script src="scripts/pages/index.js"></script>
+  <script src="scripts/pages/photographer.js"></script>
+</body>
+
 </html>
