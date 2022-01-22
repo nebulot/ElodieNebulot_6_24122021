@@ -1,9 +1,34 @@
 //fetch FishEyeDataExport
-// Replace ./data.json with your JSON feed
+// Replace js with your JSON feed
+const section = document.getElementById('section')
+let photographers = []; //box
 
 async function getPhotographers() {
-  // Penser à remplacer par les données récupérées dans le json
-  const photographers = [
+  await fetch("data/FishEyeData.json")
+    .then((res) => res.json())
+    .then((data) => (photographers = data.photographers));
+  console.log(photographers);
+}
+
+//after fetch, create a display
+const userDisplay = async () => {
+  await getPhotographers();
+
+  document.body.innerHTML = photographers.map(
+    (user) => `
+    <div class="card">
+    <h2>${user.name}</h2>
+    <h3>${user.city} ${user.country}</h3>
+    <p>${user.tagline}</p>
+    <p>${user.price}</p>
+  `
+  );
+};
+
+userDisplay();
+
+// Penser à remplacer par les données récupérées dans le json
+/*const photographers = [
     {
       name: "Ma data test",
       id: 1,
@@ -28,9 +53,9 @@ async function getPhotographers() {
     photographers: [...photographers, ...photographers, ...photographers],
   };
 }
-
 async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
+  const photographersSection = document.querySelector(".");
+
 
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
@@ -44,5 +69,4 @@ async function init() {
   const { photographers } = await getPhotographers();
   displayData(photographers);
 }
-
-init();
+init();*/
