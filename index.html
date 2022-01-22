@@ -4,7 +4,6 @@
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <!--<link href="data/photographers.json" rel="preload"/>-->
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <meta charset="utf-8">
@@ -17,55 +16,26 @@
 </head>
 
 <body>
-  <!--Floating button  intégrer en javascript-->
+  <!--Floating button  intégrer en javascript wrapper-->
   <button class="btn" id="floating-button" type="button">
     Passez au contenu
   </button>
 
-  <header role="banner">
+  <header class="header" role="banner">
     <img src="assets/images/logo.png" class="logo" alt="logotype Home page FishEye" />
-    <!--Hashtag voir si intégrer en javascript-->
-    <nav class="header-hashtags" aria-label="photography items" role="navigation">
-      <ul id="hashtag">
-        <!--<a href='#'>
-          <li data-filter="portrait">#portrait</li>
-        </a>
-        <a href='#'>
-          <li data-filter="art">#art</li>
-        </a>
-        <a href='#'>
-          <li data-filter="fashion">#fashion</li>
-        </a>
-        <a href='#'>
-          <li data-filter="architecture">#architecture</li>
-        </a>
-        <a href='#'>
-          <li data-filter="travel">#travel</li>
-        </a>
-        <a href='#'>
-          <li data-filter="sport">#sport</li>
-        </a>
-        <a href='#'>
-          <li data-filter="animals">#animals</li>
-        </a>
-        <a href='#'>
-          <li data-filter="events">#events</li>
-        </a>-->
-      </ul>
-    </nav>
-
-    <h1>Nos photographes</h1>
+    <!--<nav class="header_tags" aria-label="photography items" role="navigation">
+      <ul id="hashtag">-->
   </header>
 
-  <!--photocontainer on index.js-->
-  <main id="main">
-    <div class="photographer_section" aria label="photographer_section"></div>
+  <!--photocontainer on main.js-->
+  <main class="section" id="section">
+
+
   </main>
 
   <!--Modal-->
-  
+  <script src="scripts/pages/main.js"></script>
   <script src="scripts/factories/Photographer.js"></script>
-  <script src="scripts/pages/index.js"></script>
   <script src="scripts/pages/photographer.js"></script>
 </body>
 
