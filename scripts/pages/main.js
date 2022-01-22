@@ -1,19 +1,9 @@
-// DOM//
-const photoContainer = document.getElementById("main");
-console.log("photoContainer");
+//fetch FishEyeDataExport
+// Replace ./data.json with your JSON feed
 
-// First replace with the data retrieved in the json (checked data.js)
-
-async function getPhotographers() {
-  await fetch("../data/photographers.json", { mode: "no-cors" })
-    .then(res => res.json())
-    .catch((error) => {
-        console.log('il y a eu un problème avec fetch:' + error.message);
-      });
-
-  console.log("getPhotographers");
-
-    const photographers = [
+async function getPhotographers() { 
+  // Penser à remplacer par les données récupérées dans le json
+  const photographers = [
     {
       name: "Ma data test",
       id: 1,
@@ -32,16 +22,15 @@ async function getPhotographers() {
       price: 500,
       portrait: "account.png",
     },
-  ]
+  ];
   // et bien retourner le tableau photographers seulement une fois
   return {
     photographers: [...photographers, ...photographers, ...photographers],
-  }
+  };
 }
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
-  console.log("click");
 
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
