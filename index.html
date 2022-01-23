@@ -16,26 +16,29 @@
 </head>
 
 <body>
-  <!--Floating button  intégrer en javascript wrapper-->
-  <button class="btn" id="floating-button" type="button">
+  <!--Floating btn  intégrer en javascript wrapper-->
+  <a class="floating-btn" href="#main" titre="Passez au contenu">
     Passez au contenu
-  </button>
+  </a>
 
   <header class="header" role="banner">
-    <h1 class="header__title">Nos photographes</h1>
-    <img src="assets/images/logo.png" class="logo" alt="logotype Home page FishEye" />
+  
+    <img href="index.html" src="assets/images/logo.png" alt="Fisheye Home page"/>
+    <h1 class="header_title">Nos photographes</h1>
     <!--<nav class="header_tags" aria-label="photography items" role="navigation">
       <ul id="hashtag">-->
+    <nav class="header_hashtags" aria-label="photographs items"></nav>
   </header>
 
   <!--photocontainer on main.js-->
-  <main class="photographer__section" id="main"></main>
+  <main class="photographer_section" id="main"></main>
   </main>
 
   <!--Modal-->
   <script src="scripts/pages/main.js"></script>
-  <script src="scripts/constructor/photographer.js"></script>
   <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/constructor/photographer.js"></script>
+  
 </body>
 
 </html>
