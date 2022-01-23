@@ -1,13 +1,13 @@
 // DOM element
 async function displayPhotoModal() {
-  const modal = document.getElementById("contact__modal");
-  const btn = document.querySelector(".photographer-page__contact__button");
-  const btn2 = document.getElementsByClassName("close")[0];
+  const modal = document.getElementById("contact_modal");
+  const btn = document.querySelector(".photographer-page_contact_btn");
+  const btn2 = document.getElementsByClassName("close");
   const firstNameInput = document.getElementById("firstname");
   const lastNameInput = document.getElementById("lastname");
   const emailInput = document.getElementById("email");
   const messageInput = document.getElementById("message");
-  const submitBtn = document.getElementById("form-submit-button");
+  const submitBtn = document.getElementById("form-submit_btn");
 
   /*display on click 
 function displayModal() {
@@ -29,10 +29,17 @@ function closeModal() {
     modal.style.display = "none";
   };
 
+  //window click disapear
+  window.onclick = function(e) {
+    if (e.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
   //submit form
   if (submitBtn) {
-    submitBtn.addEventListener("click", function (event) {
-      event.preventDefault();
+    submitBtn.addEventListener("click", function (e) {
+      e.preventDefault();
       console.log(
         `L'utilisateur ${firstNameInput.value} ${lastNameInput.value} avec l'adresse mail suivante ${emailInput.value} vous adresse le message suivant : ${messageInput.value}`
       );

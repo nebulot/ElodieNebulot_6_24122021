@@ -15,15 +15,15 @@
 
 //factory function create an object 
 class Photographer {
-  constructor(data, likes) {
-    this.id = data.id;
-    this.city = data.city;
-    this.country = data.country;
-    this.name = data.name;
-    this.picture = data.portrait;
-    this.price = data.price;
-    this.tagline = data.tagline;
-    this.tags = data.tags;
+  constructor (photographer, likes) {
+    this.id = photographer.id;
+    this.city = photographer.city;
+    this.country = photographer.country;
+    this.name = photographer.name;
+    this.picture = photographer.portrait;
+    this.price = photographer.price;
+    this.tagline = photographer.tagline;
+    this.tags = photographer.tags;
     this.totalLikes = likes;
 }
   
@@ -39,20 +39,6 @@ get localisation() {
 //titre du document en get
 get titleCard() {
     return `${this.name}`
-}
-
-//get displayCard on main.js 
-get userCard() {
-    return `<a href="html/photographer.html">
-        <article class="photographer">
-    <img src="${this.picture}" alt=les portraits photo de chaque photographe indépendant"></img>
-    <h1>${this.name}</h1>
-    <h2>${this.city} ${this.country}</h2>
-    <h3>${this.tagline}</h3>
-    <p>${this.price}</p>
-    <ul class="hashtag_list">${this.tags}</ul>
-    </article>
-    </a>`    
 }
 
 get userHeader() {
