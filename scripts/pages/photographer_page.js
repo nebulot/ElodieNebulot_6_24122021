@@ -1,7 +1,7 @@
 // display photographers data, with id
 async function displayPhotoData() {
     const { media, photographers } = await getPhotographers();
-    const params = new URLSearchParams(document.location.search.substring(1));
+    //const params = new URLSearchParams(document.location.search.substring(1));
     const result = params.get("id");
     const selectGetPhotographers = photographers.find(
     (photographer) => photographer.id == result
@@ -20,8 +20,8 @@ async function displayPhotoData() {
     });
 }
 
-const init = async () => {
+/*const init = async () => {
     await displayPhotoData();
 };
 
-init();
+init();*/
