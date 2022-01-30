@@ -1,27 +1,30 @@
-// display photographers data, with id
-async function displayPhotoData() {
-    const { media, photographers } = await getPhotographers();
-    //const params = new URLSearchParams(document.location.search.substring(1));
-    const result = params.get("id");
-    const selectGetPhotographers = photographers.find(
-    (photographer) => photographer.id == result
-    );
-//join to constructor/photographer.js
-    const PhotographerConstructor = new Photographer (selectGetPhotographers);
-    PhotographerConstructor.document.title;
+//fetch FishEyeDataExport
+// Replace js with your JSON feed
+const getPhotographersById = async () => {
+  await fetch("../data/FishEyeData.json", { mode: "no-cors" })
+    .then((res) => res.json())
+    .then((data) => (photographersById = data.photographers))
+    .catch((err) => console.log("Invalid Error : Fetch Invalid", err));
+    return ({
+      photographersById: photographersById})
+  };
+  
 
-    const mediaDisplay = media.filter((media) => media.photographerId == result);
-    updateMediaDisplay(mediaDisplay);
+async function displayDataDetail(photographersById) {
+  const photographSectionHeader = document.querySelector("photograph-section_header");
 
-    document.addEventListener("change", function (e) {
-        $elementGallery.innerHTML="";
-        const choice = filterByChoice(mediaDisplay, e.target.value);
-        updateMediaDisplay(choice);
-    });
-}
-
-/*const init = async () => {
-    await displayPhotoData();
+  photographersById.forEach((photographerById) => {
+    const photographerPicture = photographerPage(photographerById);
+    const userBannerDOM = photographerPicture.getUserBannerDOM();
+    photographSectionHeader.appendChild(userBannerDOM);
+  });
 };
 
-init();*/
+async function init() {
+  // Récupère les datas des photographes
+  const { photographersById } = await getPhotographersById();
+  console.log(photographersById);
+  displayDataDetail(photographersById);
+}
+
+init();

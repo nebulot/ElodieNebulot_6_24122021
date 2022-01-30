@@ -7,21 +7,44 @@ body {
 
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+gap: 1rem 0rem;
+grid-template-rows: repeat(2, 1fr);
 }
 
-h1 {
+header h1 {
     color: #901C1C;
-    margin-right: 100px;
+    font-size: 22px;
+    font-weight: 500;
+    grid-column: 2;
+    margin: auto;
 }
 
-.logo {
-    height: 50px;
-    margin-left: 100px;
+header img {
+    grid-column: 1;
+    grid-row: 1;
+    margin: auto;
+    width: 180px;
+}
+
+.header_hashtags {
+    grid-column: span 2;
+    grid-row: 2;
+    margin: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header_hashtags_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.3rem;
+    justify-content: center;
 }
 
 .photographer_section {
@@ -44,9 +67,19 @@ h1 {
     font-size: 36px;
 }
 
+.photographer_section article localisation tag {
+    color: black;
+    font-size: 12px;
+}
+
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    text-decoration: none;
+    
+  }
 }
 
 <!--modal--> 
