@@ -6,7 +6,7 @@ photographers.forEach((photographer) => {
 });*/
 
 function photographerFactory(photographer) {
-  const { name, portrait } = photographer;
+  const { name, portrait, city, country, tagline, price } = photographer;
 
   const picture = `assets/photographers/${portrait}`;
 
@@ -16,17 +16,14 @@ function photographerFactory(photographer) {
     img.setAttribute("src", picture);
     const h2 = document.createElement("h2");
     h2.textContent = name;
+    const localisation = document.createElement("p");
+    localisation.textContent = city + " " + country + tagline + price;
+    localisation.className = "localisation";
     article.appendChild(img);
     article.appendChild(h2);
+    article.appendChild(localisation)
     return article;
   }
-  return { name, picture, getUserCardDOM };
-};
-
-function photographerPage(photographerById) {
-  const { name, portrait } = photographerById;
-  const picture = `assets/photographers/${portrait}`;
-
   function getUserBannerDOM() {
     const article = document.createElement("article");
     const h1 = document.createElement("h1");
@@ -35,9 +32,10 @@ function photographerPage(photographerById) {
     article.appendChild(h1);
     article.appendChild(img);
     return article;
-  }
-  return { name, picture, getUserBannerDOM };
+}
+  return { name, picture, getUserCardDOM, getUserBannerDOM };
 };
+ 
 
 /*const PhotographerList = ({ photographer}) => {
       return (

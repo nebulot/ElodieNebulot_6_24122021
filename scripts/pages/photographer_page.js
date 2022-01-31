@@ -1,6 +1,6 @@
 //fetch FishEyeDataExport
 // Replace js with your JSON feed
-const getPhotographersById = async () => {
+const getPhotographersById = async (id) => {
   await fetch("../data/FishEyeData.json", { mode: "no-cors" })
     .then((res) => res.json())
     .then((data) => (photographersById = data.photographers))
@@ -20,9 +20,11 @@ async function displayDataDetail(photographersById) {
   });
 };
 
+
+
 async function init() {
   // Récupère les datas des photographes
-  const { photographersById } = await getPhotographersById();
+  const { photographersById } = await getPhotographersById(id);
   console.log(photographersById);
   displayDataDetail(photographersById);
 }
