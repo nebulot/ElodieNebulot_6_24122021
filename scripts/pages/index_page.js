@@ -5,6 +5,10 @@ const getPhotographers = async () => {
     .then((res) => res.json())
     .then((data) => (photographers = data.photographers))
     .catch((err) => console.log("Invalid Error : Fetch Invalid", err));
+    setTimeout(function floatingAnim() {
+      floatingAnim.className += "hidden";
+    }, 2000);
+  
   return ({
     photographers: photographers})
 };
@@ -20,23 +24,39 @@ photographers.forEach((photographer) => {
 });
 };
 
-//taglist photographer fetch
-const getPhotographersTags = async () => {
-  const response = await fetch(`../pages/tags_nav.js`);
-  const data = await response.json();
- photographersTags(data);
+function displayHashtags() {
+  const hashtagsItems = document.querySelector(".hashtags");
+  Photographers.getAllHastags().forEach((hashtag) => {
+    const a = document.createElement("a");
+    a.innerHTML = `#<span id="portrait href="#" aria-labelledby="${hashtag}">${hashtag}</span>`;
+    a.classList.add("hashtags");
+    a.href = "#";
+    a.setAttribute("aria-labelledby",`${hashtag}`);
+    hashtagsItems.append(a);
+
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      a.classList.toggle("hashtag--choice");
+      userCardDOM();
+    });
+  });
 }
 
-//Filter photographer by selectedTag
-const filterByTag = (e) => {
-  e.preventDefault();
-  const choiceTag = e.target.textContent.slice(1).toLowerCase();
-  const searchPhotographers = photographers.filter(photographer => { 
-      return photographer.tags.indexOf(choiceTag) > -1; 
+function userCardDOM() {
+  const main = document.querySelector("#main");
+  const filters = [];
+
+  main.innerHTML = "";
+  document.querySelectorAll(".hashtag--choice").forEach((hashtagChoice) => {
+    filters.push(hashtagChoice.textContent.replace("#", ""));
   });
-  setSearchPhotographers(searchPhotographers);
-  let tagEvent = e ? parseInt(e.target.parentElement.id, 10) : null;
 }
+      
+      
+      
+      
+
+
 
 
 async function init() {

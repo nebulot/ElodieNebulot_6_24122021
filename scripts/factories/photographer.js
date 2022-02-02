@@ -8,22 +8,35 @@ photographers.forEach((photographer) => {
 function photographerFactory(photographer) {
   const { name, portrait, city, country, tagline, price } = photographer;
 
-  const picture = `assets/photographers/${portrait}`;
+  const linkPage = "photographer.html?id=" + photographer.id;
+  const linkPicture = "./assets/photographers/" + portrait;
 
   function getUserCardDOM() {
-    const article = document.createElement("article");
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
+    const linkCard = document.createElement("a"); 
+    const pictureCard = document.createElement("img");
+    linkCard.setAttribute("role", "link");
+    linkCard.href = linkPage;
+    pictureCard.src = linkPicture;
+    pictureCard.alt = "";
     const h2 = document.createElement("h2");
     h2.textContent = name;
-    const localisation = document.createElement("p");
-    localisation.textContent = city + " " + country + tagline + price;
+    linkCard.appendChild(pictureCard);
+    linkCard.appendChild(h2);
+    const article = document.createElement("article");
+    const localisation = document.createElement("h3");
+    localisation.textContent = city + " " + country; 
     localisation.className = "localisation";
-    article.appendChild(img);
-    article.appendChild(h2);
-    article.appendChild(localisation)
-    return article;
-  }
+    const taglinePrice = document.createElement("p");
+    taglinePrice.textContent = tagline + price +"€/jour";
+    article.appendChild(localisation);
+    article.appendChild(taglinePrice);
+    article.innerHtml = linkCard;
+    linkCard.appendChild(article);
+    
+    return article, linkCard;
+    
+  };
+
   function getUserBannerDOM() {
     const article = document.createElement("article");
     const h1 = document.createElement("h1");
@@ -33,7 +46,7 @@ function photographerFactory(photographer) {
     article.appendChild(img);
     return article;
 }
-  return { name, picture, getUserCardDOM, getUserBannerDOM };
+  return { name, linkPicture, getUserCardDOM, getUserBannerDOM };
 };
  
 

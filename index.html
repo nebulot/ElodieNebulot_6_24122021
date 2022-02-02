@@ -17,37 +17,58 @@
 
 <body>
   <!--Floating btn  intégrer en javascript wrapper-->
-  <a class="floating-btn" href="#main" titre="Passez au contenu">
+  <a id="floating-btn" href="#photographers" titre="Passez au contenu">
     Passez au contenu
   </a>
 
   <header class="header" role="banner">
-
-    <img href="index.html" src="assets/images/logo.png" alt="Fisheye Home page" />
+    <!--link img return home page, click on img-->
+    <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" /></a>
     <h1 class="header_title">Nos photographes</h1>
-    <!--<nav class="header_tags" aria-label="photography items" role="navigation">
-      <ul id="hashtag">-->
-    <nav class="header_hashtags" aria-label="photographs items">
-      <ul class="header_hashtags_choice">
-        <li class="header_hashtags_list"></li>
-        <li class="header_hashtags_list"></li>
-        <li class="header_hashtags_list"></li>
-        <li class="header_hashtags_list"></li>
-        <li class="header_hashtags_list"></li>
-        <li class="header_hashtags_list"></li>
-      </ul>
+
+    <!--navigation with hashtags-list-->
+
+    <nav class="hashtags" aria-label="photographs items" role="navigation">
+      <!--<ul>
+        <a href='#'>
+          <li data-hashtag="portrait">#portrait</li>
+        </a>
+        <a href='#'>
+          <li data-hashtag="art">#art</li>
+        </a>
+        <a href='#'>
+          <li data-hashtag="fashion">#fashion</li>
+        </a>
+        <a href='#'>
+          <li data-hashtag="architecture">#architecture</li>
+        </a>
+        <a href='#'>
+          <li data-hashtag="travel">#travel</li>
+        </a>
+        <a href='#'>
+          <li data-hashtag="sport">#sport</li>
+        </a>
+        <a href='#'>
+          <li data-hashtag="animals">#animals</li>
+        </a>
+        <a href='#'>
+          <li data-hashtag="events">#events</li>
+        </a>
+      </ul>-->
     </nav>
   </header>
 
   <!--photocontainer on index_page.js-->
-  <main class="photographer_section" id="main"></main>
+  <main id="main">
+    <section class="photographer_section" id="photographers" aria-label="photographers"></section>
+
   </main>
 
   <!--Modal-->
   <script src="scripts/factories/photographer.js"></script>
   <script src="scripts/pages/index_page.js"></script>
-  
-  
+
+
 
 
 
