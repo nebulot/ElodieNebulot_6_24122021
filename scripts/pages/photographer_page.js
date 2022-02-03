@@ -9,24 +9,17 @@ const getPhotographersById = async (id) => {
       photographersById: photographersById})
   };
   
-  /*async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section");
-    
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
-    });
-    };*/
-
-
+  
 async function displayDataDetail(photographersById) {
   const photographSectionHeader = document.querySelector(".photograph-section_header");
+  const photographSectionPhoto = document.querySelector(".photograph-section_picture")
 
   photographersById.forEach((photographerById) => {
-    const photographerPortrait = photographerFactory(photographerById);
-    const userBannerDOM = photographerPortrait.getUserBannerDOM();
+    const photographerDetail = photographerFactory(photographerById);
+    const userBannerDOM = photographerDetail.getUserBannerDOM();
+    photographSectionPhoto.appendChild(userBannerDOM);
     photographSectionHeader.appendChild(userBannerDOM);
+    
   });
 };
 

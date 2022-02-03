@@ -8,23 +8,23 @@ body {
 
 header {
     display: grid;
-    grid-template-columns: 50% 50%;
-gap: 1rem 0rem;
-grid-template-rows: repeat(2, 1fr);
+    grid-template-columns:30% 42% 30%;
+    gap: 1rem 0rem;
+    grid-template-rows: repeat(2, 1fr);
 }
 
 header h1 {
     color: #901C1C;
     font-size: 22px;
-    font-weight: 500;
-    grid-column: 2;
-    margin: auto;
+    font-weight: 700;
+    grid-column: 3;
+    margin-left: 47px;
 }
 
 header img {
     grid-column: 1;
     grid-row: 1;
-    margin: auto;
+    margin-left: 50px;
     width: 180px;
 }
 
@@ -64,7 +64,9 @@ ul {
 
 .photographer_section a h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 0px;
 }
 
 a:link 
@@ -72,13 +74,24 @@ a:link
  text-decoration:none; 
 } 
 
-
 article {
     color: black;
     font-size: 12px;
     flex-direction: column;
     display : flex;
-   
+    align-items: center;
+}
+
+h3 {
+    color: #901C1C;
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight : 600;
+}
+
+p {
+    margin-top: 0px;
 }
 
 .photographer_section a img {
@@ -89,6 +102,6 @@ article {
     text-decoration: none;
     
   }
-}
+
 
 <!--modal--> 

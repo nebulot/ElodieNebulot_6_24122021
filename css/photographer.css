@@ -2,6 +2,13 @@
     display: none;
 }
 
+header img {
+        grid-column: 1;
+        grid-row: 1;
+        margin-left: 50px;
+        width: 180px;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;

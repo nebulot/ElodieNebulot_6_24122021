@@ -24,10 +24,10 @@ function photographerFactory(photographer) {
     linkCard.appendChild(h2);
     const article = document.createElement("article");
     const localisation = document.createElement("h3");
-    localisation.textContent = city + " " + country; 
+    localisation.textContent = city + "," +" " + country; 
     localisation.className = "localisation";
     const taglinePrice = document.createElement("p");
-    taglinePrice.textContent = tagline + price +"€/jour";
+    taglinePrice.innerHTML = tagline + "<br>" + price +"€/jour";
     article.appendChild(localisation);
     article.appendChild(taglinePrice);
     article.innerHtml = linkCard;
@@ -40,42 +40,24 @@ function photographerFactory(photographer) {
   function getUserBannerDOM() {
     const article = document.createElement("article");
     const h1 = document.createElement("h1");
-    const img = document.createElement("img");
+    const localisation = document.createElement("h3");
+    const tag = document.createElement("p");
+    localisation.textContent = city + "," +" " + country; 
+    localisation.className = "localisation";
     h1.textContent = name;
+    tag.innerHTML = tagline;
     article.appendChild(h1);
-    article.appendChild(img);
-    return article;
+    article.appendChild(localisation);
+    article.appendChild(tag);
+    const img = document.createElement("div");
+    const pictureCard = document.createElement("img");
+    pictureCard.src = linkPicture;
+    pictureCard.alt = "";
+    img.appendChild(pictureCard);
+    
+    return article, img;
 }
   return { name, linkPicture, getUserCardDOM, getUserBannerDOM };
 };
  
 
-/*const PhotographerList = ({ photographer}) => {
-      return (
-          <>
-          <div className="photographer" id={`photographer-${photographer.id}`}>
-                  <div className="photographer__img">
-                      <Link to={`/${photographer.id}`} className="photographer__img__link">
-                          <img src={`${window.location.origin}/img/Photographers_ID_Photos/${photographer.portrait}`} alt={`${photographer.nom} photographer`} />
-                          <h2>{photographer.nom}</h2>
-                      </Link>
-                  </div>
-                  <div className="photographer__text">
-                      <p className="photographer__text__localisation">{photographer.ville}, {photographer.country || photographer.pays}</p>
-                      <p className="photographer__text__desc">{photographer.tagline}</p>
-                      <p className="photographer__text__price">{`${photographer.prix}€ /jour`}</p>
-                  </div>
-                  <ul className="photographer__tag">
-                      {photographer.tags.map((tag,index) => {
-                          return (
-                              <li key={index}>
-                                  <span aria-hidden="false">{`#${tag}`}</span>
-                              </li>
-                          );
-                      })}
-                  </ul>
-          </div>
-          </>
-      )
-  }
-*/
