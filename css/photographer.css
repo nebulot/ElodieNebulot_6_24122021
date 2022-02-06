@@ -18,7 +18,43 @@ header img {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin-top: 60px;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.photograph-section_header {
+     grid-column: 1;
+}
+
+.photograph-section_header h1 {
+    font-size : 40px;
+    font-weight: 500;
+    color: #D3573C;
+    margin-bottom : 0;
+}
+.photograph-section_header h3 {
+    font-size : 20px;
+    font-weight : 600;
+    color: #901C1C;
+    margin-top : 0;
+}
+.photograph-section_header p {
+    color: #525252;
+}
+
+.photograph-section_picture {
+    grid-column : 3;
+    
+}
+
+.photograph-section_picture img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    text-decoration: none;
 }
 
 .contact_button {
@@ -32,7 +68,16 @@ header img {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    grid-column: 2 ; 
 }
+
+.contact_button:hover {
+    background-color: #D3573C;
+    color: black;
+    font-weight : bold;
+    transform: scale(1.05);
+}
+
 
 
     
