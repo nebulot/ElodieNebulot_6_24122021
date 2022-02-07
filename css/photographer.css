@@ -78,10 +78,6 @@ header img {
     transform: scale(1.05);
 }
 
-
-
-    
-
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -94,9 +90,14 @@ header img {
     margin: auto;
 }
 
-.modal header {
+.modal_container {
     justify-content: space-between;
     width: 100%;
+}
+
+.modal_container-header {
+    display: flex;
+    justify-content: space-between;
 }
 
 .modal header img {
@@ -104,19 +105,18 @@ header img {
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 50px;
     font-weight: normal;
-    text-align: center;
+    margin:0;
 }
 
 .formulaire {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
 }
 
-form label {
+.form-label {
     color: #312E2E;
     font-size: 36px;
 }
@@ -124,12 +124,11 @@ form label {
 .form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 26px;
 }
 
 .form-input {
     width: 100%;
-    height: 68px;
+    height: 48px;
     border: none;
     border-radius: 5px;
 }
@@ -144,6 +143,10 @@ form label {
     border-radius: 5px;
 }
 
+.form-submit {
+    margin-top : 20px;
+}
+
 .form-submit_btn {
     background-color: #911C1C;
     border-radius: 5px;
@@ -151,12 +154,12 @@ form label {
     color: white;
     font-size: 18px;
     font-weight: 700;
-    height: 35px;
+    height: 50px;
     width: 170px;
 }
 
 //btn2 boutton close form
-.close {
+i .fas {
     color: #000;
     font-size: 28px;
     font-weight: bold;

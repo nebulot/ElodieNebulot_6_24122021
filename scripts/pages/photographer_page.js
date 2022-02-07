@@ -41,11 +41,6 @@ async function displayDataDetail(data) {
   });
   };
 
-function displayModal() {
-  document.querySelector("#contact_modal").style.display = "block";
-}
-
-
 async function init() {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();
