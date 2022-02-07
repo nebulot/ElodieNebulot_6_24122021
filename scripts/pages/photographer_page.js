@@ -25,7 +25,6 @@ const id = urlSearchParams.get("id");
 
 //console.log(id);
 async function displayDataDetail(data) {
-  const id = window.location.search.split('id=')[1];
   const photographers = !id ? photographersData : photographersData.filter(photographer => photographer.id == id);
   const photographSectionHeader = document.querySelector(".photograph-section_header");
   const photographSectionPhoto = document.querySelector(".photograph-section_picture");
@@ -42,7 +41,9 @@ async function displayDataDetail(data) {
   });
   };
 
-
+function displayModal() {
+  document.querySelector("#contact_modal").style.display = "block";
+}
 
 
 async function init() {

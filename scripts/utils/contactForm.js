@@ -1,5 +1,5 @@
 // DOM element
-async function displayPhotoModal() {
+function displayModal() {
   const modal = document.getElementById("contact_modal");
   const btn = document.querySelector(".photographer-page_contact_btn");
   const btn2 = document.getElementsByClassName("close");
