@@ -2,26 +2,53 @@
     display: none;
 }
 
-header img {
-        grid-column: 1;
-        grid-row: 1;
-        margin-left: 50px;
-        width: 180px;
+
+
+.photograph-section_picture img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    text-decoration: none;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
 #photograph-section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows : 1fr 1fr 3fr;
+    gap: 40px;
     margin-top: 60px;
     align-content: center;
     align-items: center;
     justify-items: center;
+    background-color: grey; //voir les modification du tableau
+
+}
+
+#photograph-section > section .filter {
+    background-color : white;
+    
+
+}
+
+.filter {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+
+header img {
+    grid-column: 1;
+    margin-left: 50px;
+    width: 180px;
+}
+
+.photograph-header {
+background-color: #FAFAFA;
+height: 300px;
+margin: 0 100px;
 }
 
 .photograph-section_header {
@@ -49,13 +76,7 @@ header img {
     
 }
 
-.photograph-section_picture img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    text-decoration: none;
-}
+
 
 .contact_button {
     font-size: 20px;
@@ -77,6 +98,20 @@ header img {
     font-weight : bold;
     transform: scale(1.05);
 }
+
+//media container CSS
+.photograph-section_media {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    
+    grid-rows-start: 3;
+    grid-rows-end: 5;
+}
+
+
+
+//creation de la modale
+
 
 .modal {
     border-radius: 5px;

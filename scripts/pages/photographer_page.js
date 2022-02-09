@@ -40,7 +40,20 @@ async function displayDataDetail(data) {
     
   });
   };
-
+// container Media with card and photo
+const getMedia = async () => {
+   fetch("../data/FishEyeData.json", { mode: "no-cors" })
+    .then((res) => res.json())
+    .then((data) => (media = data.media))
+    .catch((err) => console.log("Invalid Error : Fetch Invalid", err));
+    console.log(media);
+   return ({
+    media: media})
+};
+  const sectionMediaContainer = document.querySelector(".photograph-section_media");
+  sectionMediaContainer.innerHTML = "";
+  
+  
 async function init() {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();

@@ -68,4 +68,42 @@ function getUserPicDOM()
   return { name, linkPicture, getUserCardDOM, getUserPicDOM, getUserBannerDOM };
 };
  
+//------------------------Photographers' gallery ----------------------//
+/*"media": [
+  {
+    "id": 342550,
+    "photographerId": 82,
+    "title": "Fashion Yellow Beach",
+    "image": "Fashion_Yellow_Beach.jpg",
+    "likes": 62,
+    "date": "2011-12-08",
+    "price": 55
+  },*/
+function MediaFactory (media) {
+  const {title, image, likes} = media;
+  const linkPageGallery = "photographer.html?id=" + photographerId;
+  const linkGalleryPhoto = "./assets/images/" + image ;
 
+  function getUserGalleryDOM () {
+  const mediaElement = media.createImg(onePhotographer.getFolderName());
+  const cardsMedia = document.createElement("section");
+  const cardsMediaImg = document.createElement("a");
+  const mediaLegend = document.createElement("div");
+  const mediaLegendTitle = document.createElement("p");
+  const MediaLegendLike = document.createElement("div");
+  const lightboxLink = document.querySelectorAll(".media-img");
+  mediaLegendTitle.textContent = `${media.title}`;
+  mediaCompteurLike.textContent = `${media.likes}`;
+    
+  
+  mediaLegendTitle.appendChild(cardsMediaImg);
+  mediaLegend.appendChild(cardsMediaImg);
+  cardsMedia.appendChild(cardsMediaImg);
+
+  
+    
+    return cardsMedia, cardsMediaImg; 
+  }
+  return { title, linkGalleryPhoto, getUserGalleryDOM};
+  
+};
