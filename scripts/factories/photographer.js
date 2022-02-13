@@ -79,13 +79,11 @@ function getUserPicDOM()
     "date": "2011-12-08",
     "price": 55
   },*/
-function MediaFactory (media) {
+function mediaFactory(media) {
   const {title, image, likes} = media;
-  const linkPageGallery = "photographer.html?id=" + media.photographerId;
-  const linkGalleryPhoto = "./assets/images/" + image ;
+  const linkGalleryPhoto = "./assets/images/" + media.photographerId + id ;
 
   function getUserGalleryDOM () {
-  const mediaElement = media.createImg(photographer.getFolderName());
   const cardsMedia = document.createElement("section");
   const cardsMediaImg = document.createElement("a");
   const mediaLegend = document.createElement("div");
@@ -104,6 +102,6 @@ function MediaFactory (media) {
     
     return cardsMedia, cardsMediaImg; 
   }
-  return { title, linkGalleryPhoto, getUserGalleryDOM};
+  return { media, linkGalleryPhoto, getUserGalleryDOM};
   
 };

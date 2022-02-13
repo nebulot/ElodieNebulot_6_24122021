@@ -2,40 +2,29 @@
     display: none;
 }
 
-
-
 .photograph-section_picture img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
     text-decoration: none;
+    grid-column : 3;
 }
 
-#photograph-section {
+#photographer_section {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows : 1fr 1fr 3fr;
     gap: 40px;
     margin-top: 60px;
     align-content: center;
     align-items: center;
     justify-items: center;
-    background-color: grey; //voir les modification du tableau
-
 }
 
-#photograph-section > section .filter {
-    background-color : white;
-    
 
-}
-
-.filter {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 4;
+#filter {
+    display : flex;
+    justify-content : center;
 }
 
 
@@ -71,10 +60,22 @@ margin: 0 100px;
     color: #525252;
 }
 
-.photograph-section_picture {
-    grid-column : 3;
-    
-}
+#photograph-section_media {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 70px;
+        margin-top: 100px;
+    }
+
+#photographer-section_media a img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        text-decoration: none;
+    }
+
+
 
 
 

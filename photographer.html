@@ -15,29 +15,24 @@
   <header class="photographer-card_header">
     <img src="../assets/images/logo.png" class="logo" alt="le logotype de la marque" />
   </header>
-  <main id="photograph-section">
-    <div class="photograph-section_header"></div>
-    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-    <div class="photograph-section_picture"></div>
-    <section class="filter">
-      <label class="trierPar">Trier par
-        <button class="dropdownMenu" name="dropdownMenu" role="button" aria-haspopup="listbox" aria-expanded="">Popularité
-          <option value="date">Date</option>
-          <option value="date">Titre</option>
-        </button>
-      </label>
+  <main class="main">
+    <section id="photographer_section">
+      <div class="photograph-section_header"></div>
+      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-section_picture"></div>
     </section>
-    <div class="photograph-section_media"></div>
+      <div id="filter"></div>
+          <section id="photograph-section_media"></section>
   </main>
 
-<!---------------------------------modal------------------------------------------->
+  <!---------------------------------modal------------------------------------------->
   <div id="contact_modal" class="modal" role="dialog" aria-modal="true">
-    
+
     <div class="modal_container">
       <header class="modal_container-header">
         <h2>Contactez-moi</h2>
         <button class="close" alt="ferme le formulaire de contact">x</button>
-        
+
       </header>
       <form class="formulaire">
         <div class="form">
@@ -63,7 +58,7 @@
     </div>
   </div>
 
-  
+
   <script src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/factories/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
