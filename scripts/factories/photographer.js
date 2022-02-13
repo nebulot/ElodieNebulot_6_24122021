@@ -81,11 +81,11 @@ function getUserPicDOM()
   },*/
 function MediaFactory (media) {
   const {title, image, likes} = media;
-  const linkPageGallery = "photographer.html?id=" + photographerId;
+  const linkPageGallery = "photographer.html?id=" + media.photographerId;
   const linkGalleryPhoto = "./assets/images/" + image ;
 
   function getUserGalleryDOM () {
-  const mediaElement = media.createImg(onePhotographer.getFolderName());
+  const mediaElement = media.createImg(photographer.getFolderName());
   const cardsMedia = document.createElement("section");
   const cardsMediaImg = document.createElement("a");
   const mediaLegend = document.createElement("div");

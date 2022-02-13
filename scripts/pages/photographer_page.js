@@ -4,10 +4,13 @@ const getPhotographersById = async () => {
   await fetch("../data/FishEyeData.json", { mode: "no-cors" })
     .then((res) => res.json())
     .then((data) => (photographersData = data.photographers))
+    .then((data) => (mediasData = data.media))
     .catch((err) => console.log("Invalid Error : Fetch Invalid", err));
     console.log(photographersData);
-    return ({
-      photographersData : photographersData})
+    
+    return (
+      {photographersData : mediaData})
+      
   };
   
 // recupération de la chaine de requete "queryString" dans l'url (!id)
@@ -24,7 +27,7 @@ console.log(urlSearchParams);
 const id = urlSearchParams.get("id");
 
 //console.log(id);
-async function displayDataDetail(data) {
+function displayDataDetail(data) {
   const photographers = !id ? photographersData : photographersData.filter(photographer => photographer.id == id);
   const photographSectionHeader = document.querySelector(".photograph-section_header");
   const photographSectionPhoto = document.querySelector(".photograph-section_picture");
@@ -39,25 +42,40 @@ async function displayDataDetail(data) {
     photographSectionPhoto.appendChild(userPicDOM);
     
   });
-  };
+  }
+//gallery photographers
 // container Media with card and photo
-const getMedia = async () => {
-   fetch("../data/FishEyeData.json", { mode: "no-cors" })
-    .then((res) => res.json())
-    .then((data) => (media = data.media))
-    .catch((err) => console.log("Invalid Error : Fetch Invalid", err));
-    console.log(media);
-   return ({
-    media: media})
-};
-  const sectionMediaContainer = document.querySelector(".photograph-section_media");
-  sectionMediaContainer.innerHTML = "";
-  
-  
+  function displayMediaData (data) {
+    const media = !id ? media : media.filter(media => photographerId == id);
+    const displayMediaContainer = document.querySelector(".photograph-section_media");
+    
+        
+    medias.forEach((media) => {
+      const mediaGallery = mediaFactory(media);
+      const userGalleryDOM = mediaGallery.getUserGalleryDOM();
+      displayMediaContainer.appendChild(userGalleryDOM);
+      
+    });
+  };
+    
+
+   
+
 async function init() {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();
   displayDataDetail(data);
+  displayMediaData(data);
 }
 
 init();
+
+
+
+
+  
+       
+     
+  
+ 
+  

@@ -24,41 +24,6 @@ photographers.forEach((photographer) => {
 });
 };
 
-function displayHashtags() {
-  const hashtagsItems = document.querySelector(".hashtags");
-  Photographers.getAllHastags().forEach((hashtag) => {
-    const a = document.createElement("a");
-    a.innerHTML = `#<span id="portrait href="#" aria-labelledby="${hashtag}">${hashtag}</span>`;
-    a.classList.add("hashtags");
-    a.href = "#";
-    a.setAttribute("aria-labelledby",`${hashtag}`);
-    hashtagsItems.append(a);
-
-    a.addEventListener("click", (e) => {
-      e.preventDefault();
-      a.classList.toggle("hashtag--choice");
-      userCardDOM();
-    });
-  });
-}
-
-function userCardDOM() {
-  const main = document.querySelector("#main");
-  const filters = [];
-
-  main.innerHTML = "";
-  document.querySelectorAll(".hashtag--choice").forEach((hashtagChoice) => {
-    filters.push(hashtagChoice.textContent.replace("#", ""));
-  });
-}
-      
-      
-      
-      
-
-
-
-
 async function init() {
 // Récupère les datas des photographes
 const { photographers } = await getPhotographers();
