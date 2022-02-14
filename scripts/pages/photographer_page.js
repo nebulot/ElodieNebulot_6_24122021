@@ -60,6 +60,7 @@ function displayMediaData(data) {
     "photograph-section_media"
   );
 
+
   media.forEach((media) => {
     const mediaGallery = mediaFactory(media);
     const userGalleryDOM = mediaGallery.getUserGalleryDOM();
