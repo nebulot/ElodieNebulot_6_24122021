@@ -1,4 +1,5 @@
-@import url("photographer.css");
+/**@import url("photographer.css");
+Pas besoin pour le moment*/
 
 body {
     font-family: "DM Sans", sans-serif;
@@ -21,11 +22,12 @@ header h1 {
     margin-left: 47px;
 }
 
-header img {
+.icone {
     grid-column: 1;
     grid-row: 1;
     margin-left: 50px;
     width: 180px;
+    
 }
 
 .header_hashtags {

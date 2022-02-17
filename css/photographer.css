@@ -70,22 +70,32 @@ margin: 0 100px;
 }
 
 #photograph-section_media {
+        
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 70px;
-        margin-top: 100px;
+        margin-top: 100px
+        
     }
+#photographer-section_media a {
+        justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+a {
+    display:flex;
+    width:100%;
+}
 
-#photographer-section_media a img {
-        height: 200px;
-        width: 200px;
-        border-radius: 50%;
+img, video {
+        
+        width: 100%;
         object-fit: cover;
         text-decoration: none;
+        border-radius : 30px;
     }
-
-
-
 
 
 .contact_button {
