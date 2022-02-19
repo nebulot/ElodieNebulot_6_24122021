@@ -44,13 +44,16 @@ function mediaFactory(media) {
     cardsTitle.className = "cards-media_title";
     const cardsLikes = document.createElement("div");
     cardsLikes.className = "cards-media_likes";
-    cardsFooter.appendChild(cardsTitle, cardsLikes);
+    const likes = document.createElement("p");
+    likes.textContent = likes;
     const heart = document.createElement("i");
     heart.classList.add(`fas`);
     heart.classList.add(`fa-heart`);
     heart.classList.add(`heart`);
     heart.classList.add(`heart-global`);
-    cardsLikes.innerHTML = likes + "" + "i";
+
+    cardsLikes = likes + heart;
+    cardsLikes.appendChild(likes);
     cardsLikes.appendChild(heart);
     cardGalleryMedia.appendChild(cardsFooter);
 

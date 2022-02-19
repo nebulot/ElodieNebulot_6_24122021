@@ -12,14 +12,15 @@ header {
     grid-template-columns:30% 42% 30%;
     gap: 1rem 0rem;
     grid-template-rows: repeat(2, 1fr);
+    margin-top : 20px;
 }
 
 header h1 {
     color: #901C1C;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;    
     grid-column: 3;
-    margin-left: 47px;
+    margin-left: 30px;
 }
 
 .icone {
@@ -64,11 +65,16 @@ ul {
     flex-direction: column;
 }
 
+ a.photographer-section_link:hover {
+    transform: scale(1.1);
+}
+
 .photographer_section a h2 {
     color: #D3573C;
     font-size: 30px;
     font-weight: 500;
-    margin-bottom: 0px;
+    margin-bottom: 1px;
+    margin-top : 5px;
 }
 
 a:link 
@@ -77,15 +83,33 @@ a:link
 } 
 
 #floating-btn {
-    display: flex;
-    z-index: 2;
-    justify-content: center;
+display: flex;
+z-index: 2;
+justify-content: center;
+position: fixed;
+top: 0;
+text-align: center;
+left: 50%;
+background-color: #db8876;
+border-radius: 0 0 0.6rem 0.6rem;
+padding: 0.8rem 0.8rem;
+transition: all 0.5s ease-in-out;
+color: black;
+font-weight:bolder;
+}
+
+
+
+#floating-btn:hover, #floating-btn:hover {
+    background-color : #901C1C;
+    color: white;    
+    //transform: translate(0, 50%);
 }
 
 .hashtags {
     grid-columns-start: 1;
     grid-columns-end: 4;
-margin: 0 auto
+    margin: auto;
 }
 
 article {
@@ -94,18 +118,31 @@ article {
     flex-direction: column;
     display : flex;
     align-items: center;
+    margin-top: 10px;
 }
 
 h3 {
     color: #901C1C;
-    font-size: 15px;
+    font-size: 11px;
     margin-top: 0;
     margin-bottom: 0;
-    font-weight : 600;
+    font-weight : 400;
+    font-weight : bolder;
 }
 
-p {
-    margin-top: 0px;
+p.photographer-section_tagline {
+    font-weight : bolder;
+    margin-bottom : 4px;
+    font-size : 10px;
+    margin-top: 2px;
+}
+
+p.photographer-section_price {
+    font-size : 8px;
+    color : #525252;
+    margin-top: 2px;
+
+    
 }
 
 .photographer_section a img {
@@ -114,7 +151,8 @@ p {
     border-radius: 50%;
     object-fit: cover;
     text-decoration: none;
-    
+    box-shadow: 6px 5px 12px rgba(82, 82, 82, 0.2);
+        
   }
 
 
