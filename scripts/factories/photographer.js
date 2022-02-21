@@ -36,11 +36,14 @@ function photographerFactory(photographer) {
     const cardPrice = document.createElement("p");
     cardPrice.innerHTML = price + "€/jour";
     cardPrice.className = "photographer-section_price";
+   
+
     article.appendChild(localisation);
     article.appendChild(cardTagline);
     article.appendChild(cardPrice);
     article.innerHtml = linkCard;
     sectionCard.appendChild(article);
+    
     return article, sectionCard;
   }
 

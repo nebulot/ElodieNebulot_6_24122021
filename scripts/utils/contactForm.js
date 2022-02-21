@@ -2,12 +2,20 @@
 function displayModal() {
   const modal = document.querySelector("#contact_modal").style.display = "block";
   const close = document.getElementsByClassName(".close");
+  close.setAttribut
+
+
+
   const firstNameInput = document.getElementById("firstname");
   const lastNameInput = document.getElementById("lastname");
   const emailInput = document.getElementById("email");
   const messageInput = document.getElementById("message");
   const submitBtn = document.getElementById("form-submit_btn");
 
+  
+  
+  
+  
   close.onclick = function () {
     modal.style.display = "none";
   };

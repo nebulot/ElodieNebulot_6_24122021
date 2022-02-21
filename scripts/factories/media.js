@@ -44,18 +44,20 @@ function mediaFactory(media) {
     cardsTitle.className = "cards-media_title";
     const cardsLikes = document.createElement("div");
     cardsLikes.className = "cards-media_likes";
-    const likes = document.createElement("p");
-    likes.textContent = likes;
+    const htmlLikes = document.createElement("span");
+    htmlLikes.textContent = likes;
     const heart = document.createElement("i");
     heart.classList.add(`fas`);
     heart.classList.add(`fa-heart`);
     heart.classList.add(`heart`);
     heart.classList.add(`heart-global`);
 
-    cardsLikes = likes + heart;
-    cardsLikes.appendChild(likes);
+    cardsLikes.appendChild(htmlLikes);
     cardsLikes.appendChild(heart);
+    cardsFooter.appendChild(cardsTitle);
+    cardsFooter.appendChild(cardsLikes);
     cardGalleryMedia.appendChild(cardsFooter);
+    
 
     /*lightboxlink.forEach((link) => {
         link.addEventListerner("click", openLightbox);

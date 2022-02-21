@@ -13,6 +13,25 @@ const getPhotographers = async () => {
     photographers: photographers})
 };
 
+function displayHashtags() {
+  const hashtagsBanner = document.querySelector(".hashtags_list");
+
+  photographers.getAllHashtags.forEach((hashtag) => {
+    const a = document.createElement("a");
+    a.innerHTML = `#<p id="portrait" href="#" aria-labelledby="${hashtag}">${hashtag}</p>`;
+    a.className = "hashtags_link";
+    a.href = "#";
+    a.setAttribute("aria-labelledby", `${hashtag}`);
+    hashtagsBanner.append(a);
+
+    //ajoute la classe tag--selected si le tag est selectionner par l'uttilisateur
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      a.classList.toggle("hashtag--selected");
+      displayData();
+    });
+  });
+}
 
 async function displayData(photographers) {
 const photographersSection = document.querySelector(".photographer_section");
@@ -29,6 +48,7 @@ async function init() {
 const { photographers } = await getPhotographers();
 console.log(photographers);
 displayData(photographers);
+//displayHashtags();
 };
 
 init();
