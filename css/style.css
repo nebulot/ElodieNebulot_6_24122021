@@ -11,7 +11,6 @@ header {
     display: grid;
     grid-template-columns:30% 42% 30%;
     gap: 1rem 0rem;
-    grid-template-rows: repeat(2, 1fr);
     margin-top : 20px;
 }
 
@@ -20,7 +19,6 @@ header h1 {
     font-size: 30px;
     font-weight: 600;    
     grid-column: 3;
-    margin-left: 30px;
 }
 
 .icone {
@@ -29,25 +27,6 @@ header h1 {
     margin-left: 50px;
     width: 180px;
     
-}
-
-.header_hashtags {
-    grid-column: span 2;
-    grid-row: 2;
-    margin: auto;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.header_hashtags_list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 0.3rem;
-    justify-content: center;
 }
 
 .photographer_section {
@@ -89,7 +68,7 @@ justify-content: center;
 position: fixed;
 top: 0;
 text-align: center;
-left: 50%;
+left: 41%;
 background-color: #db8876;
 border-radius: 0 0 0.6rem 0.6rem;
 padding: 0.8rem 0.8rem;

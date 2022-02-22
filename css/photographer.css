@@ -22,12 +22,15 @@
 
 #photographer_section {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 60px;
     align-content: center;
     align-items: center;
     justify-items: center;
+    background-color : #FAFAFA;
+    border-radius : 10px;
+    padding : 30px 50px;
 }
 
 
@@ -48,6 +51,16 @@ background-color: #FAFAFA;
 height: 300px;
 margin: 0 100px;
 }
+
+header .logo {
+        grid-column: 1;
+        grid-row: 1;
+        margin-left: 50px;
+        width: 180px;
+        border-radius: 0px;
+        height : auto;
+}
+
 
 .photograph-section_header {
      grid-column: 1;
@@ -73,8 +86,8 @@ margin: 0 100px;
         
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 70px;
-        margin-top: 100px
+        margin-top: 100px;
+        gap : 40px;
         
     }
 #photographer-section_media a {
@@ -83,33 +96,53 @@ margin: 0 100px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+    
     }
 a {
     display:flex;
     width:100%;
 }
 
+figure {
+    margin : 2px;
+}
+
+
 img, video {
         
         width: 100%;
         object-fit: cover;
         text-decoration: none;
-        border-radius : 30px;
+        border-radius : 10px;
+        height: 289px;
     }
+
+.cards-media-footer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+p.cards-media_title {
+    font-size : 23px ; 
+    color : #901C1C;
+    font-weight : 500 ; 
+}
 
 
 .contact_button {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     color: white;
     padding: 11px;
-    width: 170px;
-    height: 70px;
+    width: 157px;
+    height: 59px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    grid-column: 2 ; 
+    grid-column: 2;
 }
 
 .contact_button:hover {
