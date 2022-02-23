@@ -68,6 +68,8 @@ function displayMediaData(data) {
   });
 }
 
+
+
 async function init() {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();

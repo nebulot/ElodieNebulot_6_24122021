@@ -16,14 +16,24 @@
     <img src="../assets/images/logo.png" class="logo" alt="le logotype de la marque" />
   </header>
   <main class="main">
-    <div class = "compteur_like"></div>
-    <section id="photographer_section">
+      <section id="photographer_section">
       <div class="photograph-section_header"></div>
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       <div class="photograph-section_picture"></div>
     </section>
-      <div id="filter"></div>
-          <section id="photograph-section_media"></section>
+    <div class="photograph-section_dropdown">
+      <label for="dropdownPhotograph">Trier par</label>
+      <select id="dropdownScroll" class="photograph-section__dropdown-scroll focus__element-secondary"
+        aria-label="Order by">
+
+        <option value="popularity" class="photograph-section__dropdown-item">Popularité</option>
+        <option value="date" class="photograph-section__dropdown-item">Date</option>
+        <option value="title" class="photograph-section__dropdown-item">Titre</option>
+      </select>
+    </div>
+    </div>
+    <section id="photograph-section_media"></section>
+    <div class="compteur_like"></div>
   </main>
 
   <!---------------------------------modal------------------------------------------->
@@ -59,12 +69,12 @@
     </div>
   </div>
 
-  <script src="https://use.fontawesome.com/74d9029269.js"></script>
+  <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
   <script src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/factories/photographer.js"></script>
   <script src="/scripts/factories/media.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
-  
+
 </body>
 
 </html>
