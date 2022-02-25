@@ -16,22 +16,26 @@
     <img src="../assets/images/logo.png" class="logo" alt="le logotype de la marque" />
   </header>
   <main class="main">
-      <section id="photographer_section">
+    <section id="photographer_section">
       <div class="photograph-section_header"></div>
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       <div class="photograph-section_picture"></div>
     </section>
-    <div class="photograph-section_dropdown">
-      <label for="dropdownPhotograph">Trier par</label>
-      <select id="dropdownScroll" class="photograph-section__dropdown-scroll focus__element-secondary"
-        aria-label="Order by">
-
-        <option value="popularity" class="photograph-section__dropdown-item">Popularité</option>
-        <option value="date" class="photograph-section__dropdown-item">Date</option>
-        <option value="title" class="photograph-section__dropdown-item">Titre</option>
-      </select>
-    </div>
-    </div>
+    <section id="photograph-section_dropdown">
+      <label for="dropdown-listbox">Trier par</label>
+      <div class="section-dropdown">
+        <button id="dropdown-toggle" class="btn btn-listbox" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" aria-labelledby="button-label">Popularité
+          <ul id="select-list" class="select-list" role="listbox" aria-activedescendant="popularity"
+            aria-labelledby="menu">
+            <li id="popularité" class="select-list_item" data-value="popularity" tabindex="0" role="button">Popularité
+            </li>
+            <li id="date" class="select-list_item" data-value="date" tabindex="0" role="button">Date</li>
+            <li id="titre" class="select-list_item" data-value="title" tabindex="0" role="button">Titre</li>
+          </ul>
+        </button>
+      </div>
+    </section>
     <section id="photograph-section_media"></section>
     <div class="compteur_like"></div>
   </main>
@@ -42,7 +46,7 @@
     <div class="modal_container">
       <header class="modal_container-header">
         <h2>Contactez-moi</h2>
-        <button class="close" alt="ferme le formulaire de contact">x</button>
+        <button aria-label="Fermer" onclick="myDialog.close()">X</button>
 
       </header>
       <form class="formulaire">

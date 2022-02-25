@@ -68,6 +68,48 @@ function displayMediaData(data) {
   });
 }
 
+// section likes 
+function getClickLikes() {
+	const likesContainer = document.querySelectorAll(".cards-media_likes");
+
+  function compteurLikes() {
+		let likesCounter = document.querySelector(".cards-media-footer_likes_total");
+		let totalLikesElements = document.querySelectorAll(".cards-media_total_likes");
+
+		let ajoutLike = 0
+		totalLikesElements.forEach(function (like) {
+			let oneLike = Number(like.textContent)
+			ajoutLike += oneLike
+		});
+		likesCounter.innerHTML = ajoutLike
+		return ajoutLike
+	}
+  likesContainer.forEach(function (i) {
+		i.addEventListener("click", function () {
+			let elementCounter = i.querySelector(
+				".cards-media_total_likes");
+
+			let button = i.querySelector('.cards-media_likes_button');
+			let iconButton = i.querySelector(".fa-heart");
+			let ajoutLike = Number(elementCounter.textContent);
+			const liked = i.dataset.liked === "true";
+			i.dataset.liked = !liked;
+			elementCounter.innerHTML = ajoutLike + (!liked ? 1 : -1);
+			if (liked) {
+				compteurLikes();
+				iconButton.classList.add("far");
+				iconButton.classList.remove("fas");
+				button.ariaLabel = "J'aime pas"
+			} else if (!liked) {
+				compteurLikes();
+				iconButton.classList.add("fas");
+				iconButton.classList.remove("far");
+				button.ariaLabel = "J'aime"
+			}
+		});
+	});
+}
+
 
 
 async function init() {
@@ -75,6 +117,6 @@ async function init() {
   const { data } = await getPhotographersById();
   displayDataDetail(data);
   displayMediaData(data);
-}
-
+  getClickLikes()
+}  
 init();
