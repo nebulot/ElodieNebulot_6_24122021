@@ -108,15 +108,25 @@ function getClickLikes() {
 			}
 		});
 	});
-}
 
+ // all likes for the photographer page
+ function userCompteurLikes(){
+  let totalLikesElements = document.querySelectorAll(".cards-media_total_likes");
+  let ajoutLike = 0;
+  totalLikesElements.forEach(function (like) 
+  {
+    let oneLike = Number(like.textContent)
+    ajoutLike += oneLike 
+  });
+  return ajoutLike
+}};
 
-
+ 
 async function init() {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();
   displayDataDetail(data);
   displayMediaData(data);
-  getClickLikes()
-}  
+  getClickLikes();
+ }  
 init();

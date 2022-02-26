@@ -73,6 +73,33 @@ function photographerFactory(photographer) {
 
     return article;
   }
-  return { name, linkPicture, getUserCardDOM, getUserPicDOM, getUserBannerDOM };
+
+  function getUserFooter() {
+    const compteurLike = document.createElement("div");
+    compteurLike.className = ".compteur_like";
+    compteurLike.textContent = price + "€/jour" 
+    const compteurLikeAside = document.createElement("aside");
+    compteurLikeAside.className = ".compteur-like_aside";
+    const compteurTotalLike = document.createElement("p");
+    compteurTotalLike.textContent = userCompteurLikes;
+    compteurTotalLike.className = ".compteur-like_total_number";
+    compteurTotalLike.ariaLabel = "Nombre total de j'aime";
+    const totalLikeHeart = document.createElement("i");
+    totalLikeHeart.className = ".compteur-like_total_heart";
+    totalLikeHeart.ariaHidden = "true";
+    compteurLikeAside.appendChild(compteurTotalLike);
+    compteurLikeAside.appendChild(totalLikeHeart);
+
+    const compteurTotalPrice = document.createElement("p");
+    compteurTotalPrice.className = ".compteur_price";
+    compteurTotalPrice.ariaLabel = "Tarif du photographe par jour";
+    compteurTotalPrice.textContent = price + "€/jour";
+    compteurLikeAside.appendChild(compteurTotalPrice);
+        
+    return compteurTotalPrice 
+  }
+  return { name, linkPicture, getUserCardDOM, getUserPicDOM, getUserBannerDOM, getUserFooter};
 }
+
+
 
