@@ -9,7 +9,9 @@
     "date": "2011-12-08",
     "price": 55
   },*/
-function mediaFactory(media) {
+  
+
+  function mediaFactory(media) {
   const { id, photographerId, title, video, image, likes, date, price } = media;
 
   const linkGalleryPage = "photographer.html?id=" + id;
@@ -19,6 +21,8 @@ function mediaFactory(media) {
   } else {
     linkGalleryPicture = linkGalleryPicture + image;
   }
+
+  
 
   function getUserGalleryDOM() {
     const cardGalleryMedia = document.createElement("figure");
@@ -63,32 +67,12 @@ function mediaFactory(media) {
     cardsFooter.appendChild(cardsLikes);
     cardGalleryMedia.appendChild(cardsFooter);
     
-
-    /*lightboxlink.forEach((link) => {
-        link.addEventListerner("click", openLightbox);
-      });
-    
-    */
-
     return cardsFooter, cardGalleryMedia;
   }
+  
 
-  return { title, linkGalleryPicture, getUserGalleryDOM };
+  return { title, linkGalleryPicture, getUserGalleryDOM};
 }
 
-/*function compteurFactory {
-  const cardsCompteurLike = document.createElement("p");
-  
-  cardsCompteurLike.setAttribute("aria-label", `likes`);
-  heartLink.setAttribute("aria-label", "Likez cette photo");
-  heartLink.setAttribute("role", "button");
-  heartLink.setAttribute("tabindex", "0");
-  cardsCompteurLike.setAttribute("tabindex", "0");
-  cardsCompteurLike.setAttribute("aria_label", "Nombre de likes" + likes);
-  const heartLink = document.createElement("button");
-  heartLink.className = "heart-link";
 
-  cardsLikes.appendChild(cardsCompteurLike, heartLink);
-  heartLink.appendChild(heart);
-  compteurLikes(totalLikes);
-}*/
+

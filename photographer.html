@@ -18,9 +18,10 @@
   <main class="main">
     <section id="photographer_section">
       <div class="photograph-section_header"></div>
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-section_button"></div>
       <div class="photograph-section_picture"></div>
     </section>
+
     <section id="photograph-section_dropdown">
       <label for="dropdown-listbox">Trier par</label>
       <div class="section-dropdown">
@@ -37,6 +38,7 @@
       </div>
     </section>
     <section id="photograph-section_media"></section>
+    <div class = "compteur_like"></div>
   </main>
 
   <!---------------------------------modal------------------------------------------->
@@ -45,9 +47,9 @@
     <div class="modal_container">
       <header class="modal_container-header">
         <h2>Contactez-moi</h2>
-        <button aria-label="Fermer" onclick="myDialog.close()">X</button>
-
+        <button class="close" aria-label="Fermer" alt="la fenêtre du formulaire">X</button>
       </header>
+
       <form class="formulaire">
         <div class="form">
           <label for="firstname" class="form-label">Prénom</label>
@@ -67,15 +69,15 @@
         </div>
       </form>
       <div class="form-submit">
-        <button type="submit" id="form-submit_btn" class="form-submit_btn" alt="envoyer">Envoyer</button>
+        <button type="submit" id="form-submit_btn" class="form-submit_btn" alt="envoyer le formulaire">Envoyer</button>
       </div>
     </div>
   </div>
 
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
-  <script src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/factories/photographer.js"></script>
   <script src="/scripts/factories/media.js"></script>
+  <script src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 
 </body>

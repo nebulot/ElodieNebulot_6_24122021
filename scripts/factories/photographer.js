@@ -70,35 +70,63 @@ function photographerFactory(photographer) {
     article.appendChild(h1);
     article.appendChild(localisation);
     article.appendChild(tag);
-
+    
     return article;
   }
 
+  function getUserContactDOM() {
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "container-contact_button"
+    const btn = document.createElement("button");
+    btn.textContent = "Contactez-moi";
+    btn.className = "contact_button";
+    btn.onclick = "displayModal()";
+    btn.ariaLabel = "Veuillez contacter le photographe";
+    btnContainer.appendChild(btn);
+    
+    return btnContainer;
+  }
+
   function getUserFooter() {
-    const compteurLike = document.createElement("div");
-    compteurLike.className = ".compteur_like";
-    compteurLike.textContent = price + "€/jour" 
+    const compteurLike = document.createElement("section");
+    compteurLike.className = "compteur-section_like";
     const compteurLikeAside = document.createElement("aside");
-    compteurLikeAside.className = ".compteur-like_aside";
+    compteurLikeAside.className = "compteur-section_like_aside";
+    compteurLike.appendChild(compteurLikeAside);
     const compteurTotalLike = document.createElement("p");
     compteurTotalLike.textContent = userCompteurLikes;
-    compteurTotalLike.className = ".compteur-like_total_number";
+    compteurTotalLike.className = "compteur-section_like_total";
     compteurTotalLike.ariaLabel = "Nombre total de j'aime";
     const totalLikeHeart = document.createElement("i");
-    totalLikeHeart.className = ".compteur-like_total_heart";
+    totalLikeHeart.className = "compteur-section_like_total_heart";
     totalLikeHeart.ariaHidden = "true";
+    totalLikeHeart.classList.add(`fas`);
+    totalLikeHeart.classList.add(`fa-heart`);
+    totalLikeHeart.classList.add(`heart`);
+    totalLikeHeart.classList.add(`heart-global`);
     compteurLikeAside.appendChild(compteurTotalLike);
     compteurLikeAside.appendChild(totalLikeHeart);
-
+    
     const compteurTotalPrice = document.createElement("p");
-    compteurTotalPrice.className = ".compteur_price";
+    compteurTotalPrice.className = "compteur-section_price";
     compteurTotalPrice.ariaLabel = "Tarif du photographe par jour";
     compteurTotalPrice.textContent = price + "€/jour";
-    compteurLikeAside.appendChild(compteurTotalPrice);
+    compteurLike.appendChild(compteurTotalPrice);
         
-    return compteurTotalPrice 
+    return compteurLike;
   }
-  return { name, linkPicture, getUserCardDOM, getUserPicDOM, getUserBannerDOM, getUserFooter};
+
+  function userCompteurLikes(){
+    let totalLikesElements = document.querySelectorAll(".cards-media_total_likes");
+    let ajoutLike = 0;
+    totalLikesElements.forEach(function (like) 
+    {
+      let oneLike = Number(like.textContent)
+      ajoutLike += oneLike 
+    });
+      return ajoutLike;
+  }
+  return { name, linkPicture, getUserCardDOM, getUserPicDOM, getUserBannerDOM, getUserContactDOM, getUserFooter, userCompteurLikes};
 }
 
 

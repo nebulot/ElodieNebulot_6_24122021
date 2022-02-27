@@ -102,6 +102,8 @@ header .logo {
   color: #525252;
 }
 
+button
+
 /* Create dropdown-toggle choice to choice Item */
 
 label {
@@ -109,7 +111,7 @@ label {
   margin-right: 20px;
 }
 
-.btn {
+.btn, .contact_button {
   cursor: pointer;
   background-color: #911c1c;
   border-radius: 5px;
@@ -122,6 +124,13 @@ label {
   min-width: 170px;
   min-height: 35px;
   font-weight: 500;
+}
+
+.contact_button:hover {
+  background-color: #d3573c;
+  color: black;
+  font-weight: bold;
+  transform: scale(1.05);
 }
 
 .section-dropdown {
@@ -230,26 +239,8 @@ span {
   margin-right: 5px;
 }
 
-.contact_button {
-  font-size: 17px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 157px;
-  height: 59px;
-  border: none;
-  background-color: #901c1c;
-  border-radius: 5px;
-  cursor: pointer;
-  grid-column: 2;
-}
 
-.contact_button:hover {
-  background-color: #d3573c;
-  color: black;
-  font-weight: bold;
-  transform: scale(1.05);
-}
+
 
 /*create contact modal*/
 
