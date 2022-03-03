@@ -1,42 +1,35 @@
 // DOM element
-async function displayModal() {
-  const modal = document.getElementById("contact_modal");
-  const btn = document.querySelector(".contact_button");
-  const closeBtn = document.getElementsByClassName(".close");
+function displayModal() {
+  const modal = document.getElementById("background_modal");
+  const closeIcon = document.getElementById("close");
+  const submitForm = document.getElementById("form-submit_btn");
   const firstNameInput = document.getElementById("firstname");
   const lastNameInput = document.getElementById("lastname");
   const emailInput = document.getElementById("email");
   const messageInput = document.getElementById("message");
-  const submitBtn = document.getElementById("form-submit_btn");
+  const btn = document.getElementById("contact_button");
 
-  //open the form when the user click on the button "contact me"
+  //open the form when click on the button "contact me"
   btn.onclick = function () {
     modal.style.display = "block";
   };
 
-  //close the form when the user click on the button "X"
-  closeBtn.onclick = function () {
+  //close the form when click on the icon X
+  closeIcon.onclick = function () {
     modal.style.display = "none";
   };
 
-  //close the form if the user click on an other part of the window
-
-  window.onclick = function (e) {
-    if (e.target == modal) {
+  //close the form when click anywhere outside
+  window.onclick = function (event) {
+    if (event.target == modal) {
       modal.style.display = "none";
     }
   };
 
-  document.addEventListener("keydown", function (e) {
-    let keyCode = e.key;
-    if (keyCode === "Escape") {
-      modal.style.display = "none";
-    }
-  });
+  //submit form when click on the button "send"
 
-  //submit form with insputs values
-  if (submitBtn) {
-    submitBtn.addEventListener("click", function (e) {
+  if (submitForm) {
+    submitForm.addEventListener("click", function (e) {
       e.preventDefault();
       console.log(
         `L'utilisateur ${firstNameInput.value} ${lastNameInput.value} avec l'adresse mail suivante ${emailInput.value} vous adresse le message suivant : ${messageInput.value}`

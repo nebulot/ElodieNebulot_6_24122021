@@ -45,11 +45,13 @@ function displayDataDetail(data) {
     const userPicDOM = photographerDetail.getUserPicDOM();
     const userContactDOM = photographerDetail.getUserContactDOM();
     const userBannerDOM = photographerDetail.getUserBannerDOM();
-    
+    photographerDetail.getDisplayDropdown();
 
     photographSectionHeader.appendChild(userBannerDOM);
     photographSectionPhoto.appendChild(userPicDOM);
     photographSectionBtn.appendChild(userContactDOM)
+
+
   });
 }
 

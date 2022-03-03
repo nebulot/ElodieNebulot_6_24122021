@@ -31,30 +31,25 @@ function photographerFactory(photographer) {
     localisation.textContent = city + "," + " " + country;
     localisation.className = "photographer-section_localisation";
     const cardTagline = document.createElement("p");
-    cardTagline.textContent = tagline ;
+    cardTagline.textContent = tagline;
     cardTagline.className = "photographer-section_tagline";
     const cardPrice = document.createElement("p");
     cardPrice.innerHTML = price + "€/jour";
     cardPrice.className = "photographer-section_price";
-   
 
     article.appendChild(localisation);
     article.appendChild(cardTagline);
     article.appendChild(cardPrice);
     article.innerHtml = linkCard;
     sectionCard.appendChild(article);
-    
+
     return article, sectionCard;
   }
 
   function getUserPicDOM() {
-    const linkCard = document.createElement("a");
     const pictureCard = document.createElement("img");
-    linkCard.setAttribute("role", "link");
-    linkCard.href = linkPage;
     pictureCard.src = linkPicture;
     pictureCard.alt = "";
-    pictureCard.appendChild(linkCard);
     return pictureCard;
   }
 
@@ -70,21 +65,32 @@ function photographerFactory(photographer) {
     article.appendChild(h1);
     article.appendChild(localisation);
     article.appendChild(tag);
-    
+
     return article;
   }
 
   function getUserContactDOM() {
     const btnContainer = document.createElement("div");
-    btnContainer.className = "container-contact_button"
+    btnContainer.className = "container-contact_button";
     const btn = document.createElement("button");
-    btn.textContent = "Contactez-moi";
-    btn.className = "contact_button";
-    btn.onclick = "displayModal()";
+    btn.id = "contact_button";
+    btn.onclick = displayModal;
     btn.ariaLabel = "Veuillez contacter le photographe";
+    btn.textContent = "Contactez-moi";
+    btn.className = "form-submit_btn ";
     btnContainer.appendChild(btn);
-    
+
     return btnContainer;
+  }
+
+  function getDisplayDropdown() {
+    const btnDropdown = document.querySelector("#dropdown-toggle");
+    console.log("toggle");
+    btnDropdown.onclick = () => {
+      const ul = document.querySelector("#select-list");
+      console.log("toggle");
+      ul.classList.toggle("display");
+    };
   }
 
   function getUserFooter() {
@@ -106,28 +112,36 @@ function photographerFactory(photographer) {
     totalLikeHeart.classList.add(`heart-global`);
     compteurLikeAside.appendChild(compteurTotalLike);
     compteurLikeAside.appendChild(totalLikeHeart);
-    
+
     const compteurTotalPrice = document.createElement("p");
     compteurTotalPrice.className = "compteur-section_price";
     compteurTotalPrice.ariaLabel = "Tarif du photographe par jour";
     compteurTotalPrice.textContent = price + "€/jour";
     compteurLike.appendChild(compteurTotalPrice);
-        
+
     return compteurLike;
   }
 
-  function userCompteurLikes(){
-    let totalLikesElements = document.querySelectorAll(".cards-media_total_likes");
+  function userCompteurLikes() {
+    let totalLikesElements = document.querySelectorAll(
+      ".cards-media_total_likes"
+    );
     let ajoutLike = 0;
-    totalLikesElements.forEach(function (like) 
-    {
-      let oneLike = Number(like.textContent)
-      ajoutLike += oneLike 
+    totalLikesElements.forEach(function (like) {
+      let oneLike = Number(like.textContent);
+      ajoutLike += oneLike;
     });
-      return ajoutLike;
+    return ajoutLike;
   }
-  return { name, linkPicture, getUserCardDOM, getUserPicDOM, getUserBannerDOM, getUserContactDOM, getUserFooter, userCompteurLikes};
+  return {
+    name,
+    linkPicture,
+    getUserCardDOM,
+    getUserPicDOM,
+    getUserBannerDOM,
+    getUserContactDOM,
+    getDisplayDropdown,
+    getUserFooter,
+    userCompteurLikes,
+  };
 }
-
-
-
