@@ -24,20 +24,21 @@
 
     <section id="photograph-section_dropdown">
       <label for="dropdown-listbox">Trier par</label>
-      <div class="section-dropdown">
-        <button id="dropdown-toggle" class="btn btn-listbox" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" aria-labelledby="button-label">Popularité</button>
-        <ul id="select-list" class="select-list" role="listbox" aria-activedescendant="popularity"
-          aria-labelledby="menu">
-          <li id="popularite" class="select-list_item" data-value="popularity" tabindex="0" role="button">Popularité
-          </li>
-          <li id="date" class="select-list_item" data-value="date" tabindex="0" role="button">Date</li>
-          <li id="titre" class="select-list_item" data-value="title" tabindex="0" role="button">Titre</li>
-        </ul>
-      </div>
+      <button id="select-list" class="select-list" role="button" aria-labelledby="menu">Popularité
+        <i class="fas fa-solid fa-chevron-down"></i>
+      </button>
+
+      <ul id="select-list_hidden" class="select-list_box">
+        <li id="popularite" class="select-list_item" data-toggle="tab">Popularité
+        </li>
+        <li id="date" class="select-list_item" data-toggle="tab">Date</li>
+        <li id="titre" class="select-list_item" data-toggle="tab">Titre</li>
+      </ul>
+
+
     </section>
     <section id="photograph-section_media"></section>
-    <div class="compteur_like"></div>
+    <div id="compteur_like" class="compteur_like"></div>
   </main>
 
   <!---------------------------------modal------------------------------------------->
@@ -45,8 +46,12 @@
     <aside class="modal">
       <section class="modal_container">
         <header class="modal_container-header">
-          <h2>Contactez-moi</h2>
+          <h2 id="modal-container_title">
+            <span class="title_contact">Contactez-moi</span>
+            <span id="modal_name"></span>
+          </h2>
           <i id="close" class="fas fa-times" aria-label="Fermer" alt="la fenêtre du formulaire"></i>
+          </button>
         </header>
 
         <form class="formulaire">
@@ -76,9 +81,9 @@
   </div>
 
   <script src="/scripts/factories/photographer.js"></script>
+  <script src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/factories/media.js"></script>
   <script src="/scripts/utils/lightbox.js"></script>
-  <script src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
 

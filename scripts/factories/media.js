@@ -9,9 +9,8 @@
     "date": "2011-12-08",
     "price": 55
   },*/
-  
 
-  function mediaFactory(media) {
+function mediaFactory(media) {
   const { id, photographerId, title, video, image, likes, date, price } = media;
 
   const linkGalleryPage = "photographer.html?id=" + id;
@@ -21,8 +20,6 @@
   } else {
     linkGalleryPicture = linkGalleryPicture + image;
   }
-
-  
 
   function getUserGalleryDOM() {
     const cardGalleryMedia = document.createElement("figure");
@@ -49,30 +46,31 @@
     const cardsLikes = document.createElement("div");
     cardsLikes.className = "cards-media_likes";
     const htmlLikes = document.createElement("span");
-    htmlLikes.textContent = likes;
+    htmlLikes.innerHTML = likes;
     htmlLikes.className = "cards-media_total_likes";
-    const heartBtn = document.createElement("button");
-    heartBtn.className = "cards-media_likes_button";
-    const heart = document.createElement("i");
-    heart.classList.add(`fas`);
-    heart.classList.add(`fa-heart`);
-    heart.classList.add(`heart`);
-    heart.classList.add(`heart-global`);
-
-    
     cardsLikes.appendChild(htmlLikes);
-    cardsLikes.appendChild(heartBtn);
-    heartBtn.appendChild(heart);
+    cardsLikes.appendChild(getHeartBtn());
     cardsFooter.appendChild(cardsTitle);
     cardsFooter.appendChild(cardsLikes);
     cardGalleryMedia.appendChild(cardsFooter);
-    
+
     return cardsFooter, cardGalleryMedia;
   }
-  
 
-  return { title, linkGalleryPicture, getUserGalleryDOM};
+  function getHeartBtn() {
+    const heartBtn = document.createElement('button');
+    heartBtn.setAttribute("role", "button");
+    heartBtn.ariaLabel = "ajouter un j'aime";
+    heartBtn.className = "cards-media_total_likes_btn"
+    const heart = document.createElement("i");
+    heart.className = "fa-heart fas";
+    heart.classList.add(`fas`);
+    heart.classList.add(`fa-heart`);
+    heart.ariaLabel = "likes";
+    heartBtn.appendChild(heart);
+
+    return heartBtn;
+  }
+
+  return { title, linkGalleryPicture, getUserGalleryDOM, getHeartBtn };
 }
-
-
-

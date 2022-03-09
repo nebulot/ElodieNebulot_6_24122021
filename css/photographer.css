@@ -1,5 +1,5 @@
 body {
-  margin: 12px;
+  margin: 50px;
 }
 
 .back_modal {
@@ -17,32 +17,16 @@ body {
   left: 247px;
   overflow: auto;
   position: fixed;
-  top: 126px;
-  bottom: 114px;
+  top: 115px;
+  bottom: 115px;
   border-radius: 5px;
   background-color: #db8876;
   width: 45%;
   z-index: 1;
-  padding: 0 25px 25px 25px;
+  padding: 0 25px 10px 25px;
   margin: auto;
-  height: 83%;
+  height: 94%;
   box-shadow: 10px 6px 12px rgb(82 82 82);
-}
-
-.compteur_like {
-  background-color: #d3573c;
-  display: flex;
-  z-index: 2;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  text-align: center;
-  right: 20%;
-  border-radius: 0.6rem 0.6rem 0 0;
-  padding: 0.8rem 0.8rem;
-  transition: all 0.5s ease-in-out;
-  color: black;
-  font-weight: bolder;
 }
 
 /*create section picture by photograph*/
@@ -116,8 +100,6 @@ header .logo {
   color: #525252;
 }
 
-button
-
 /* Create dropdown-toggle choice to choice Item */
 
 label {
@@ -148,36 +130,7 @@ label {
   transform: scale(1.05);
 }
 
-.section-dropdown {
-  display: inline-block;
-  position: relative;
-}
-
-.section-dropdown .btn-listbox {
-  display: inline-flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.section-dropdown .btn-listbox::after {
-  content: "";
-  border: solid #fff;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 4px;
-  transform: rotate(45deg) translate3d(-25%, -25%, 0);
-}
-
-.display {
-  display: block;
-}
-
-ul {
-  list-style: none;
-}
-
 .section-dropdown .select-list {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -191,11 +144,37 @@ ul {
   z-index: 100;
 }
 
-.section-dropdown .select-list_item {
+.select-list {
+  text-align : left ;
+   
+}
+
+#select-list_hidden {
+  display: none;
+}
+
+.select-list_box {
+  list-style: none;
+  background-color: #901c1c;
+  font-weight: 700;
+  width: 130px;
+  border-radius: 5px;
+  color: white;
+  margin-left: 60px;
+}
+
+.select-list_item {
   line-height: 49px;
-  padding: 10px;
-  cursor: pointer;
+  padding: 6px;
   border-bottom: 2px solid #fff;
+  font-size: 18px;
+}
+
+.fa-solid {
+  cursor: pointer;
+  color: #fff;
+  margin-left:30px;
+  padding: 4px;
 }
 
 /* create photograph's mediaGallery by id */
@@ -220,6 +199,8 @@ a {
 
 figure {
   margin: 2px;
+  width: 100%;
+  height: 350px;
 }
 
 img,
@@ -228,7 +209,9 @@ video {
   object-fit: cover;
   text-decoration: none;
   border-radius: 10px;
-  height: 289px;
+  cursor: pointer;
+  height: 300px;
+  
 }
 
 .cards-media-footer {
@@ -242,7 +225,7 @@ p.cards-media_title,
 span {
   font-size: 23px;
   color: #901c1c;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 div.cards-media_likes {
@@ -252,10 +235,18 @@ div.cards-media_likes {
 }
 
 span {
-  font-size: 17px;
+  font-size: 20px;
   color: #901c1c;
   font-weight: bolder;
   margin-right: 5px;
+}
+
+.cards-media_total_likes_btn {
+  background: none;
+  border: none;
+  color: #911c1c;
+  font-size: 1.6rem;
+  cursor: pointer;
 }
 
 /*--------------------create contact modal-------------------------------------*/
@@ -274,10 +265,18 @@ span {
   cursor: pointer;
 }
 
-.modal header h2 {
-  font-size: 50px;
-  font-weight: normal;
+#modal-container_title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.title_contact,
+#modal_name {
+  font-size: 37px;
+  font-weight: 600;
   margin: 0;
+  color: black;
 }
 
 .formulaire {
@@ -288,8 +287,8 @@ span {
 
 .form-label {
   color: #312e2e;
-  font-size: 22px;
-  margin-top: 5px;
+  font-size: 20px;
+  margin-top: 4px;
   margin-bottom: 2px;
 }
 
@@ -319,7 +318,8 @@ span {
   margin-top: 20px;
 }
 
-.form-submit_btn {
+.form-submit_btn,
+.select-list {
   background-color: #911c1c;
   border-radius: 5px;
   border: none;
@@ -337,8 +337,8 @@ span {
 /*btn2 boutton close form*/
 i#close {
   color: white;
-  font-size: 28px;
-  margin-top: 20px;
+  font-size: 35px;
+  margin-top: 30px;
 }
 
 #close:hover,
@@ -346,4 +346,32 @@ i#close {
   cursor: pointer;
   color: #000;
   text-decoration: none;
+}
+
+/*display compteur like */
+#compteur_like {
+  background-color: #d3573c;
+  display: flex;
+  z-index: 2;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  right: 3%;
+  border-radius: 5px 5px 0 0;
+  padding: 0 10px 0 10px;
+  transition: all 0.5s ease-in-out;
+  color: black;
+  font-weight: bolder;
+  width: 22%;
+}
+
+.compteur-section_like_aside {
+  display: flex;
+  align-items: center;
+}
+
+.compteur-section_price {
+  margin-left: 40px;
+  font-size: 20px;
 }

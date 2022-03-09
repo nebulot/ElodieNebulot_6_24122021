@@ -27,7 +27,7 @@ const urlSearchParams = new URLSearchParams(queryString_url_id);
 console.log(urlSearchParams);
 const id = urlSearchParams.get("id");
 
-//console.log(id);
+//console.log(id)//
 function displayDataDetail(data) {
   const photographers = !id
     ? photographersData
@@ -35,23 +35,31 @@ function displayDataDetail(data) {
   const photographSectionHeader = document.querySelector(
     ".photograph-section_header"
   );
-  const photographSectionBtn = document.querySelector(".photograph-section_button");
+  const photographSectionBtn = document.querySelector(
+    ".photograph-section_button"
+  );
   const photographSectionPhoto = document.querySelector(
     ".photograph-section_picture"
   );
+  const displayLikeContainer = document.getElementById("compteur_like");
+
+  const phName = document.getElementById("modal_name");
+  let phNameTemplate = `${photographers[0].name}`;
+  phName.innerHTML = phNameTemplate;
 
   photographers.forEach((photographer) => {
     const photographerDetail = photographerFactory(photographer);
+    
     const userPicDOM = photographerDetail.getUserPicDOM();
     const userContactDOM = photographerDetail.getUserContactDOM();
     const userBannerDOM = photographerDetail.getUserBannerDOM();
-    photographerDetail.getDisplayDropdown();
+    const userFooterDOM = photographerDetail.getUserFooter();
+     
 
     photographSectionHeader.appendChild(userBannerDOM);
     photographSectionPhoto.appendChild(userPicDOM);
-    photographSectionBtn.appendChild(userContactDOM)
-
-
+    photographSectionBtn.appendChild(userContactDOM);
+    displayLikeContainer.appendChild(userFooterDOM);
   });
 }
 
@@ -64,73 +72,66 @@ function displayMediaData(data) {
   const displayMediaContainer = document.getElementById(
     "photograph-section_media"
   );
-
+ 
+  
   media.forEach((media) => {
     const mediaGallery = mediaFactory(media);
     const userGalleryDOM = mediaGallery.getUserGalleryDOM();
     displayMediaContainer.appendChild(userGalleryDOM);
+    
   });
 }
 
-/*function displayLikeContainer() {
-  const likeContainer = document.getElementsByClassName(".compteur_like");
-
-likeContainer.forEach(() => {
-  const likesDetail = photographerFactory(photographer);
-  const UserFooter = likesDetail.getUserFooter();
-  likeContainer.appendChild(UserFooter);
-});
-}*/
-
-/* section likes 
-function getClickLikes() {
-	const likesContaine = document.querySelectorAll(".cards-media_likes");
-
-  function compteurLikes() {
-		let likesCounter = document.querySelector(".cards-media-footer_likes_total");
-		let totalLikesElements = document.querySelectorAll(".cards-media_total_likes");
-
-		let ajoutLike = 0
-
-		totalLikesElements.forEach(function (like) {
-			let oneLike = Number(like.textContent);
-			ajoutLike += oneLike;
-		});
-		likesCounter.innerHTML = ajoutLike;
-		return ajoutLike
+function getUpdateLikes() {
+  const sectionLikes = document.querySelectorAll(
+		".cards-media_likes");
+    function reloadLikes() {
+      let compteurTotalLike = document.querySelector('.like_total')
+      let htmlLikes = document.querySelectorAll(
+        ".cards-media_total_likes");
+      let totalSom = 0
+      htmlLikes.forEach(function (like) {
+        let ajoutLike = Number(like.innerHTML)
+        totalSom += ajoutLike
+      });
+      compteurTotalLike.innerHTML = totalSom
+      return totalSom
+    }
+    sectionLikes.forEach(function (i) {
+      i.addEventListener("click", function () {
+        let elementCounter = i.querySelector(
+          ".cards-media_total_likes"
+        );
+        let heartBtn = i.querySelector("cards-media_total_likes_btn");
+        let heart = i.querySelector(".fa-heart");
+        let totalSom = Number(elementCounter.textContent);
+        const liked = i.dataset.liked === "true";
+        i.dataset.liked = !liked;
+        elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
+        if (liked) {
+          reloadLikes();
+          heart.classList.add("far");
+          heartBtn.ariaLabel = "J'aime pas"
+        } else if (!liked) {
+          reloadLikes();
+          heart.classList.add("fas");
+          heartBtn.ariaLabel = "J'aime"
+        }
+      });
+    });
   }
 
-  likesContaine.forEach((function (i) {
-		i.addEventListener("click", function () {
-			let elementCounter = i.querySelector(".cards-media_total_likes");
 
-			let button = i.querySelector('.cards-media_likes_button');
-			let iconButton = i.querySelector(".fa-heart");
-			let ajoutLike = Number(elementCounter.textContent);
-			const liked = i.dataset.liked === "true";
-			i.dataset.liked = !liked;
-			elementCounter.innerHTML = ajoutLike + (!liked ? 1 : -1);
-			if (liked) {
-				compteurLikes();
-				iconButton.classList.add("far");
-				iconButton.classList.remove("fas");
-				button.ariaLabel = "J'aime pas"
-			} else if (!liked) {
-				compteurLikes();
-				iconButton.classList.add("fas");
-				iconButton.classList.remove("far");
-				button.ariaLabel = "J'aime"
-      }
-    });
-  });
-}*/
+
+
+
+
 
 const init = async () => {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();
   displayDataDetail(data);
   displayMediaData(data);
-  //compteurLikes();
+  getUpdateLikes();
 };
-
 init();

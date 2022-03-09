@@ -11,6 +11,7 @@ function photographerFactory(photographer) {
   const linkPage = "photographer.html?id=" + photographer.id;
   const linkPicture = "./assets/photographers/" + portrait;
 
+// display index page //
   function getUserCardDOM() {
     const sectionCard = document.createElement("div");
     const linkCard = document.createElement("a");
@@ -46,12 +47,16 @@ function photographerFactory(photographer) {
     return article, sectionCard;
   }
 
+  // link between index page and photograph page
+
   function getUserPicDOM() {
     const pictureCard = document.createElement("img");
     pictureCard.src = linkPicture;
     pictureCard.alt = "";
     return pictureCard;
   }
+
+//Photograph's banner "contact me" name and photo//
 
   function getUserBannerDOM() {
     const article = document.createElement("article");
@@ -69,6 +74,8 @@ function photographerFactory(photographer) {
     return article;
   }
 
+  //button photograph "contact me" open modal "contact form"//
+
   function getUserContactDOM() {
     const btnContainer = document.createElement("div");
     btnContainer.className = "container-contact_button";
@@ -83,56 +90,51 @@ function photographerFactory(photographer) {
     return btnContainer;
   }
 
+  //display dropdown //
   function getDisplayDropdown() {
-    const btnDropdown = document.querySelector("#dropdown-toggle");
-    console.log("toggle");
-    btnDropdown.onclick = () => {
-      const ul = document.querySelector("#select-list");
-      console.log("toggle");
-      ul.classList.toggle("display");
-    };
-  }
+    const dropdownList = document.querySelector(".select-list");
+    dropdownList.classList.toggle("show");
+    }
+
+// section comptor like media //
+
+function userCompteurLikes(){
+  let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
+  let totalSom = 0;
+  htmlLikes.forEach(function (like) {
+    let ajoutLike = Number(like.innerHTML)
+    totalSom += ajoutLike
+  });
+  return totalSom
+}
 
   function getUserFooter() {
-    const compteurLike = document.createElement("section");
-    compteurLike.className = "compteur-section_like";
-    const compteurLikeAside = document.createElement("aside");
-    compteurLikeAside.className = "compteur-section_like_aside";
-    compteurLike.appendChild(compteurLikeAside);
-    const compteurTotalLike = document.createElement("p");
-    compteurTotalLike.textContent = userCompteurLikes;
-    compteurTotalLike.className = "compteur-section_like_total";
-    compteurTotalLike.ariaLabel = "Nombre total de j'aime";
+      
+    const container = document.createElement("div");
+    container.setAttribute("class", "compteur-section_like_aside");
+           
+    const compteurTotalLike = document.createElement("span");
+    compteurTotalLike.textContent = userCompteurLikes();
+    compteurTotalLike.id = "compteur-section_like_total";
+    compteurTotalLike.className = "like_total";
+    compteurTotalLike.ariaLabel = "Nombre total de j'aime" + userCompteurLikes();
     const totalLikeHeart = document.createElement("i");
     totalLikeHeart.className = "compteur-section_like_total_heart";
-    totalLikeHeart.ariaHidden = "true";
     totalLikeHeart.classList.add(`fas`);
     totalLikeHeart.classList.add(`fa-heart`);
-    totalLikeHeart.classList.add(`heart`);
-    totalLikeHeart.classList.add(`heart-global`);
-    compteurLikeAside.appendChild(compteurTotalLike);
-    compteurLikeAside.appendChild(totalLikeHeart);
-
+    totalLikeHeart.ariaLabel = "likes";
     const compteurTotalPrice = document.createElement("p");
     compteurTotalPrice.className = "compteur-section_price";
     compteurTotalPrice.ariaLabel = "Tarif du photographe par jour";
-    compteurTotalPrice.textContent = price + "€/jour";
-    compteurLike.appendChild(compteurTotalPrice);
+    compteurTotalPrice.innerHTML = price + "€/jour";
+    container.appendChild(compteurTotalLike);
+    container.appendChild(totalLikeHeart);
+    container.appendChild(compteurTotalPrice);
+    
 
-    return compteurLike;
-  }
-
-  function userCompteurLikes() {
-    let totalLikesElements = document.querySelectorAll(
-      ".cards-media_total_likes"
-    );
-    let ajoutLike = 0;
-    totalLikesElements.forEach(function (like) {
-      let oneLike = Number(like.textContent);
-      ajoutLike += oneLike;
-    });
-    return ajoutLike;
-  }
+    return container;
+  
+}
   return {
     name,
     linkPicture,
@@ -141,7 +143,7 @@ function photographerFactory(photographer) {
     getUserBannerDOM,
     getUserContactDOM,
     getDisplayDropdown,
-    getUserFooter,
     userCompteurLikes,
+    getUserFooter,
   };
 }

@@ -8,11 +8,14 @@ function displayModal() {
   const emailInput = document.getElementById("email");
   const messageInput = document.getElementById("message");
   const btn = document.getElementById("contact_button");
-
-  //open the form when click on the button "contact me"
+      
+   //open the form when click on the button "contact me"
+     
   btn.onclick = function () {
     modal.style.display = "block";
-  };
+    
+    }
+   
 
   //close the form when click on the icon X
   closeIcon.onclick = function () {
@@ -20,8 +23,8 @@ function displayModal() {
   };
 
   //close the form when click anywhere outside
-  window.onclick = function (event) {
-    if (event.target == modal) {
+  window.onclick = function (e) {
+    if (e.target == modal) {
       modal.style.display = "none";
     }
   };
