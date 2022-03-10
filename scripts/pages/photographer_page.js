@@ -32,20 +32,26 @@ function displayDataDetail(data) {
   const photographers = !id
     ? photographersData
     : photographersData.filter((photographer) => photographer.id == id);
+
   const photographSectionHeader = document.querySelector(
     ".photograph-section_header"
   );
   const photographSectionBtn = document.querySelector(
     ".photograph-section_button"
   );
+
+  //add photographer's name on modal "(contact me")//
+  const phName = document.getElementById("modal_name");
+  console.log(photographers);
+  let phNameBanner = `${photographers[0].name}`;
+  phName.innerHTML = phNameBanner;
+
   const photographSectionPhoto = document.querySelector(
     ".photograph-section_picture"
   );
   const displayLikeContainer = document.getElementById("compteur_like");
 
-  const phName = document.getElementById("modal_name");
-  let phNameTemplate = `${photographers[0].name}`;
-  phName.innerHTML = phNameTemplate;
+  
 
   photographers.forEach((photographer) => {
     const photographerDetail = photographerFactory(photographer);
@@ -63,8 +69,10 @@ function displayDataDetail(data) {
   });
 }
 
-//gallery photographers
-// container Media with card and photo
+// dropdown 
+
+
+//gallery photographers : container Media with card and photos
 function displayMediaData(data) {
   const media = !id
     ? medias
@@ -81,6 +89,8 @@ function displayMediaData(data) {
     
   });
 }
+
+//container likes on footer photographers' page//
 
 function getUpdateLikes() {
   const sectionLikes = document.querySelectorAll(
@@ -110,28 +120,42 @@ function getUpdateLikes() {
         elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
         if (liked) {
           reloadLikes();
-          heart.classList.add("far");
-          heartBtn.ariaLabel = "J'aime pas"
+          heart.classList.add("fas");
+          heartBtn.ariaLabel = "didn't likes";
         } else if (!liked) {
           reloadLikes();
           heart.classList.add("fas");
-          heartBtn.ariaLabel = "J'aime"
+          heartBtn.ariaLabel = "likes";
         }
       });
     });
   }
 
+  //display dropdown //
+  function getDisplayDropdown() {
+    const dropdownList = document.querySelector("#select-list");
+    dropdownList.classList.toggle("show");
+  }
 
-
-
-
-
-
+  function displayLightbox () {
+    console.log(media);
+    const lightboxBg = document.querySelector(".lightbox_background");
+    media.forEach((media) => {
+      const lightboxGallery = lightboxFactory(media);
+      const userLightboxDOM = lightboxGallery.lightboxDOM();
+      displayLightboxContainer.appendChild(userLightboxDOM);
+          });
+          
+  }
+    
+  
 const init = async () => {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();
   displayDataDetail(data);
   displayMediaData(data);
   getUpdateLikes();
+  document.querySelector("#select-list").addEventListener('click',getDisplayDropdown);
+  //displayLightbox();
 };
 init();

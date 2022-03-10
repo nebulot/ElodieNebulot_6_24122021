@@ -31,9 +31,12 @@ function mediaFactory(media) {
       galleryCard = document.createElement("img");
     }
     linkGalleryCard.setAttribute("role", "link");
+    linkGalleryCard.className = "photographer-medium_link";
+    linkGalleryCard.ariaLabel = title + "cliquer ici pour agrandir";
     linkGalleryCard.href = linkGalleryPage;
     galleryCard.src = linkGalleryPicture;
     galleryCard.alt = "";
+    galleryCard.className = "photographer-medium_element";
 
     linkGalleryCard.appendChild(galleryCard);
     cardGalleryMedia.appendChild(linkGalleryCard);

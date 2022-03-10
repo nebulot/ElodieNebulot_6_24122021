@@ -11,7 +11,7 @@ function photographerFactory(photographer) {
   const linkPage = "photographer.html?id=" + photographer.id;
   const linkPicture = "./assets/photographers/" + portrait;
 
-// display index page //
+  // display index page //
   function getUserCardDOM() {
     const sectionCard = document.createElement("div");
     const linkCard = document.createElement("a");
@@ -56,7 +56,7 @@ function photographerFactory(photographer) {
     return pictureCard;
   }
 
-//Photograph's banner "contact me" name and photo//
+  //Photograph's banner "contact me" name and photo//
 
   function getUserBannerDOM() {
     const article = document.createElement("article");
@@ -90,34 +90,28 @@ function photographerFactory(photographer) {
     return btnContainer;
   }
 
-  //display dropdown //
-  function getDisplayDropdown() {
-    const dropdownList = document.querySelector(".select-list");
-    dropdownList.classList.toggle("show");
-    }
+  // section comptor like media //
 
-// section comptor like media //
-
-function userCompteurLikes(){
-  let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
-  let totalSom = 0;
-  htmlLikes.forEach(function (like) {
-    let ajoutLike = Number(like.innerHTML)
-    totalSom += ajoutLike
-  });
-  return totalSom
-}
+  function userCompteurLikes() {
+    let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
+    let totalSom = 0;
+    htmlLikes.forEach(function (like) {
+      let ajoutLike = Number(like.innerHTML);
+      totalSom += ajoutLike;
+    });
+    return totalSom;
+  }
 
   function getUserFooter() {
-      
     const container = document.createElement("div");
     container.setAttribute("class", "compteur-section_like_aside");
-           
+
     const compteurTotalLike = document.createElement("span");
     compteurTotalLike.textContent = userCompteurLikes();
     compteurTotalLike.id = "compteur-section_like_total";
     compteurTotalLike.className = "like_total";
-    compteurTotalLike.ariaLabel = "Nombre total de j'aime" + userCompteurLikes();
+    compteurTotalLike.ariaLabel =
+      "Nombre total de j'aime" + userCompteurLikes();
     const totalLikeHeart = document.createElement("i");
     totalLikeHeart.className = "compteur-section_like_total_heart";
     totalLikeHeart.classList.add(`fas`);
@@ -130,11 +124,9 @@ function userCompteurLikes(){
     container.appendChild(compteurTotalLike);
     container.appendChild(totalLikeHeart);
     container.appendChild(compteurTotalPrice);
-    
 
     return container;
-  
-}
+  }
   return {
     name,
     linkPicture,
