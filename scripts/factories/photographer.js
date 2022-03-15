@@ -134,7 +134,6 @@ function photographerFactory(photographer) {
     getUserPicDOM,
     getUserBannerDOM,
     getUserContactDOM,
-    getDisplayDropdown,
     userCompteurLikes,
     getUserFooter,
   };

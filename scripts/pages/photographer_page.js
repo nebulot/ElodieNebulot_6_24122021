@@ -145,6 +145,7 @@ function getUpdateLikes() {
       const userLightboxDOM = lightboxGallery.lightboxDOM();
       displayLightboxContainer.appendChild(userLightboxDOM);
           });
+          lightboxBg.appendChild(displayLightboxContainer);
           
   }
     
