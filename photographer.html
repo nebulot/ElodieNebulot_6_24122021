@@ -24,20 +24,24 @@
 
     <section id="photograph-section_dropdown">
       <label for="dropdown-listbox">Trier par</label>
-      <button id="select-list" class="select-list" role="button" aria-labelledby="menu">Popularité
-        <i class="fas fa-solid fa-chevron-down"></i>
-      </button>
+      <button id="dropdown-listbox_select" role="button">
+        <div class="first-select_chevron">
+          <p id="first-select_list" class="select-list" aria-label="Filtrer par popularité">Popularité</p>
+          <span id="chevron-container">
+            <i class="fas fa-solid fa-chevron-down" aria-label="ouvrir menu filtrer par" aria-haspopup="true"></i>
+            <i class="fas fa-solid fa-chevron-up" aria-label="fermer menu filtrer par" aria-haspopup="false"></i>
+          </span>
+        </div>
 
-      <ul id="select-list_hidden" class="select-list_box">
-        <li id="popularite" class="select-list_item" data-toggle="tab">Popularité
-        </li>
-        <li id="date" class="select-list_item" data-toggle="tab">Date</li>
-        <li id="titre" class="select-list_item" data-toggle="tab">Titre</li>
-      </ul>
+          <p id="second-select_list" class="select-list hidden display"  aria-label ="Filtrer par date">Date</p>
+          <p id="third-select_list" class="select-list hidden display" aria-label="Filtrer par titre">Titre</p>
+        
+        </div>
+      </button>
 
 
     </section>
-    <section id="photograph-section_media"></section>
+    <section id="photograph-section_media" class="photographer-gallery"></section>
     <div id="compteur_like" class="compteur_like"></div>
   </main>
 
@@ -51,9 +55,10 @@
         <header class="modal_container-header">
           <h2 id="modal-container_title">
             <span class="title_contact">Contactez-moi</span>
-            <span id="modal_name"></span>
+            <span class="photograph_name"></span>
+
           </h2>
-          <i id="close" class="fas fa-times" aria-label="Fermer" alt="la fenêtre du formulaire"></i>
+          <i id="close" class="fas fa-times" aria-label="close modal" alt="la fenêtre du formulaire"></i>
           </button>
         </header>
 

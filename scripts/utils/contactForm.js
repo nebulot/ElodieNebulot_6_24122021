@@ -1,42 +1,64 @@
 // DOM element
 function displayModal() {
-    const modal = document.getElementById("background_modal");
-    const closeIcon = document.getElementById("close");
-    const submitForm = document.getElementById("form-submit_btn");
-    const firstNameInput = document.getElementById("firstname");
-    const lastNameInput = document.getElementById("lastname");
-    const emailInput = document.getElementById("email");
-    const messageInput = document.getElementById("message");
-    const btn = document.getElementById("contact_button");
-    
+  const modal = document.getElementById("background_modal");
+  const closeIcon = document.getElementById("close");
+  const submitForm = document.getElementById("form-submit_btn");
+  const btn = document.getElementById("contact_button");
+  const namePh = document.getElementsByClassName("contact_name");
 
-    //open the form when click on the button "contact me"
+  namePh.innerHTML = getPhotographersById.name;
 
-    btn.onclick = function () {
-      modal.style.display = "block";
-    };
+  //open the form when click on the button "contact me"
 
-    //close the form when click on the icon X
-    closeIcon.onclick = function () {
-      modal.style.display = "none";
-    };
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
 
-    //close the form when click anywhere outside
-    window.onclick = function (e) {
-      if (e.target == modal) {
-        modal.style.display = "none";
-      }
-    };
-
-    //submit form when click on the button "send"
-
-    if (submitForm) {
-      submitForm.addEventListener("click", function (e) {
-        e.preventDefault();
-        console.log(
-          `L'utilisateur ${firstNameInput.value} ${lastNameInput.value} avec l'adresse mail suivante ${emailInput.value} vous adresse le message suivant : ${messageInput.value}`
-        );
-        modal.style.display = "none";
-      });
+  //close the form when click on the icon X
+  closeIcon.focus();
+  closeIcon.onclick = function () {
+    modal.style.display = "none";
+  };
+  closeIcon.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      closeDisplayModal(e);
     }
+  });
+
+  function closeDisplayModal(e) {
+    let mainContent = document.getElementByClass("main");
+    const modal = document.getElementById("background_modal");
+    mainContent.setAttribute("aria-hidden", "true");
+    modal.classList.remove("back_modal");
+    modal.innerHTML = "";
   }
+
+  //close the form when click anywhere outside
+  window.onclick = function (e) {
+    if (e.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  //submit form when click on the button "send"
+
+  if (submitForm) {
+    submitForm.addEventListener("click", function (e) {
+      e.preventDefault();
+      const modal = document.getElementById("background_modal");
+      const firstNameInput = document.getElementById("firstname").value;
+      const lastNameInput = document.getElementById("lastname").value;
+      const emailInput = document.getElementById("email").value;
+      const messageInput = document.getElementById("message").value;
+      console.log(
+        "Prénom: " + firstNameInput,
+        ", Nom: " + lastNameInput,
+        ", Email: " + emailInput,
+        ", Message: " + messageInput
+      );
+
+      modal.classList.remove("back_modal");
+      modal.innerHTML = "";
+    });
+  }
+}

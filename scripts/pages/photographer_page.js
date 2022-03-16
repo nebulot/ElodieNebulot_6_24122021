@@ -25,6 +25,7 @@ console.log(leId);*/
 //méthode 2 constructor URLSearchParams
 const urlSearchParams = new URLSearchParams(queryString_url_id);
 console.log(urlSearchParams);
+//const parameter = urlSearchParams.get(parameterName);//
 const id = urlSearchParams.get("id");
 
 //console.log(id)//
@@ -41,11 +42,7 @@ function displayDataDetail(data) {
   );
 
   //add photographer's name on modal "(contact me")//
-  const phName = document.getElementById("modal_name");
-  console.log(photographers);
-  let phNameBanner = `${photographers[0].name}`;
-  phName.innerHTML = phNameBanner;
-
+  
   const photographSectionPhoto = document.querySelector(
     ".photograph-section_picture"
   );
@@ -55,7 +52,6 @@ function displayDataDetail(data) {
 
   photographers.forEach((photographer) => {
     const photographerDetail = photographerFactory(photographer);
-    
     const userPicDOM = photographerDetail.getUserPicDOM();
     const userContactDOM = photographerDetail.getUserContactDOM();
     const userBannerDOM = photographerDetail.getUserBannerDOM();
@@ -80,12 +76,12 @@ function displayMediaData(data) {
   const displayMediaContainer = document.getElementById(
     "photograph-section_media"
   );
- 
-  
+
   media.forEach((media) => {
     const mediaGallery = mediaFactory(media);
     const userGalleryDOM = mediaGallery.getUserGalleryDOM();
     displayMediaContainer.appendChild(userGalleryDOM);
+         
     
   });
 }
@@ -133,22 +129,27 @@ function getUpdateLikes() {
 
   //display dropdown //
   function getDisplayDropdown() {
+    let dropdownSelect = document.getElementById("chevron-container");
+      dropdownSelect.addEventListener('click', () => {
+          handleSelect();
+      })
+      dropdownSelect.addEventListener('keypress' , (e) => {
+        if(e.key === 'Enter'){
+          handleSelect();
+        }
+      });
+      const firstSelect = document.getElementById("first-select_list");
+      const secondSelect = document.getElementById("second-select_list");
+      const thirdSelect = document.getElementById("third-select_list");
     const dropdownList = document.querySelector("#select-list");
-    dropdownList.classList.toggle("show");
+    
+    const dropdownItem = document.querySelector(".select-list_hidden");
+    dropdownList.onclick = function () {
+    dropdownItem.style.display = "none";
+    };
   }
 
-  function displayLightbox () {
-    console.log(media);
-    const lightboxBg = document.querySelector(".lightbox_background");
-    media.forEach((media) => {
-      const lightboxGallery = lightboxFactory(media);
-      const userLightboxDOM = lightboxGallery.lightboxDOM();
-      displayLightboxContainer.appendChild(userLightboxDOM);
-          });
-          lightboxBg.appendChild(displayLightboxContainer);
-          
-  }
-    
+   
   
 const init = async () => {
   // Récupère les datas des photographes
@@ -156,7 +157,7 @@ const init = async () => {
   displayDataDetail(data);
   displayMediaData(data);
   getUpdateLikes();
-  document.querySelector("#select-list").addEventListener('click',getDisplayDropdown);
-  //displayLightbox();
+  document.querySelector("#chevron-container").addEventListener('click',getDisplayDropdown);
+  
 };
 init();

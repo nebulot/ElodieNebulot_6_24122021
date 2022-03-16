@@ -1,14 +1,24 @@
-function lightboxFactory(media) {
-  const { id, photographerId, title, video, image } = media;
+function Lightbox() {
+const gallerySection = document.querySelector(".photograph_gallery");
+const linksMedia = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"],video[src$=".mp4"]'));
+const gallery = links.map((link) => link.getAttribute("src"));
+		linksMedia.forEach((link) => {
+			link.addEventListener("click", (e) => {
+				e.preventDefault();
+				new Lightbox(e.currentTarget.getAttribute("src"), gallery);
+			});
+			link.addEventListener("keyup", (e) => {
+				if (e.keyCode === 13) {
+					e.preventDefault();
+					new Lightbox(e.currentTarget.getAttribute("src"), gallery);
+				} else {
+					return;
+				}
+			});
+		});
+	
 
-  const linkGalleryPage = "photographer.html?id=" + id;
-  let linkGalleryPicture = "./assets/images/" + photographerId + "/";
-  if (video) {
-    linkGalleryPicture = linkGalleryPicture + video;
-  } else {
-    linkGalleryPicture = linkGalleryPicture + image;
-  }
-  function lightboxDOM() {
+    function lightboxDOM() {
     const lightboxPh = document.createElement("aside");
     lightboxPh.className = "lightbox";
     lightboxPh.id = "lightbox-window";
@@ -59,11 +69,11 @@ function lightboxFactory(media) {
 
     return lightboxPh;
   }
-
-
-
-
-
-
-return { title, linkGalleryPicture, lightboxDOM };
 }
+
+
+
+
+
+
+
