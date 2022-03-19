@@ -10,13 +10,13 @@ function displayModal() {
 
   //open the form when click on the button "contact me"
 
-  btn.onclick = function () {
+  btn.onclick = () => {
     modal.style.display = "block";
   };
 
   //close the form when click on the icon X
   closeIcon.focus();
-  closeIcon.onclick = function () {
+  closeIcon.onclick = () => {
     modal.style.display = "none";
   };
   closeIcon.addEventListener("keypress", (e) => {
@@ -34,7 +34,7 @@ function displayModal() {
   }
 
   //close the form when click anywhere outside
-  window.onclick = function (e) {
+  window.onclick =  (e) => {
     if (e.target == modal) {
       modal.style.display = "none";
     }
@@ -43,7 +43,7 @@ function displayModal() {
   //submit form when click on the button "send"
 
   if (submitForm) {
-    submitForm.addEventListener("click", function (e) {
+    submitForm.addEventListener("click", (e) => {
       e.preventDefault();
       const modal = document.getElementById("background_modal");
       const firstNameInput = document.getElementById("firstname").value;
