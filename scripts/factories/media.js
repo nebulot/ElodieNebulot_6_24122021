@@ -75,59 +75,7 @@ function mediaFactory(media) {
     return heartBtn;
   }
 
-  function buildDOM() {
-      const lightboxDOM = document.createElement("div");
-      lightboxDOM.classList.add("lightbox");
-      lightboxDOM.innerHTML = `<button class="lightbox__close">Fermer</button>
-        <button class="lightbox__next">Suivant</button>
-        <button class="lightbox__prev">Précédent</button>
-        <div class="lightbox__container"></div>`;
-      lightboxDOM
-        .querySelector(".lightbox__close")
-        .addEventListener("click", close.bind);
-      lightboxDOM
-        .querySelector(".lightbox__next")
-        .addEventListener("click", next.bind);
-      lightboxDOM
-        .querySelector(".lightbox__prev")
-        .addEventListener("click", prev.bind);
-      return lightboxDOM;
-    }
   
-    function loadImage(url) {
-      url = null;
-      const srcMedia = new SrcMedia();
-      const containerMedia = element.querySelector(".lightbox__container");
-      const loader = document.createElement("div");
-      loader.classList.add("lightbox__loader");
-      containerMedia.innerHTML = "";
-      containerMedia.appendChild(loader);
-      srcMedia.onload = () => {
-        containerMedia.removeChild(loader);
-        containerMedia.appendChild(srcMedia);
-        url = url;
-      };
-      srcMedia.src = url;
-    }
-  
-    function next(e) {
-      e.preventDefault();
-      let i = medias.findIndex((media) => media === url);
-      if (i === medias.length - 1) {
-        i = -1;
-      }
-      loadImage(medias[i + 1]);
-    }
-  
-    function prev(e) {
-      e.preventDefault();
-      let i = medias.findIndex((media) => media === url);
-      if (i === 0) {
-        i = medias.length;
-      }
-      loadImage(medias[i - 1]);
-    }
-      
 
-  return { title, linkGalleryPicture, getUserGalleryDOM, getHeartBtn, buildDOM };
+return { title, linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
 }

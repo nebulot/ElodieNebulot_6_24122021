@@ -3,6 +3,7 @@
 
 <head>
   <link href="../css/photographer.css" rel="stylesheet" type="text/css" />
+  <link href="../css/lightbox.css" rel="stylesheet" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -25,8 +26,8 @@
     <section id="photograph-section_dropdown">
       <label for="dropdown-listbox" class="dropdown-listbox">Trier par</label>
       <div id="dropdown-listbox_select">
-          <div class="dropdown" aria-label="Ouvrir menu filtrer par">
-          <p class = "dropdown-name">Popularité</p>
+        <div class="dropdown" aria-label="Ouvrir menu filtrer par">
+          <p class="dropdown-name">Popularité</p>
           <i onclick="displayDropdown()" aria-haspopup="true" role="listbox" type=button
             class="fas fa-solid fa-chevron-down"></i>
         </div>
@@ -43,15 +44,17 @@
     <div id="compteur_like" class="compteur_like"></div>
   </main>
 
-  <!-------modal lightbox-------->
+  <!-------modal lightbox----->
   <div class="lightbox_background" id="lightbox-bg">
-    <button class="lightbox__close">Fermer</button>
-    <button class="lightbox__next">Suivant</button>
-    <button class="lightbox__prev">Précédent</button>
-    <div class="lightbox__container">
-      <img src="./assets/images/" alt="">
+    <button id="lightbox_close" href="" aria-label="fermer la fenêtre"></button>
+    <a class="lightbox_prev" href="" aria-label="image précédente"></a>
+    <a class="lightbox_next" href="" aria-label="image suivante"></a>
+    <div class="lightbox_container">
+      <img src="./assets/images/195/Architecture_On_a_hill.jpg" alt="">
+      <h2 class="lightbox_title">titre</p>
     </div>
   </div>
+
 
   <!---------------------------------Contact - modal------------------------------------------->
   <div id="background_modal" class="back_modal" role="dialog" aria-modal="true">
@@ -63,7 +66,7 @@
             <span class="photograph_name"></span>
 
           </h2>
-          <i id="close" class="fas fa-times" aria-label="close modal" alt="la fenêtre du formulaire"></i>
+          <i id="close" class="fas fa-times" aria-label="fermer la fenêtre"></i>
           </button>
         </header>
 
@@ -97,6 +100,8 @@
   <script src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/factories/media.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
+  <script src="/scripts/utils/lightbox.js"></script>
+
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
 
 

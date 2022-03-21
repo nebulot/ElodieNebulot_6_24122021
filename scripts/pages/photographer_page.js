@@ -33,7 +33,7 @@ function displayDataDetail(data) {
   const photographers = !id
     ? photographersData
     : photographersData.filter((photographer) => photographer.id == id);
-
+  
   const photographSectionHeader = document.querySelector(
     ".photograph-section_header"
   );
@@ -60,6 +60,7 @@ function displayDataDetail(data) {
     photographSectionBtn.appendChild(userContactDOM);
     displayLikeContainer.appendChild(userFooterDOM);
   });
+
 }
 
 // dropdown
@@ -121,23 +122,21 @@ function getUpdateLikes() {
 
 function displayDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
-  }
+}
 
 // Close the dropdown menu if the user clicks outside of it
-window.onclick = function(e) {
-  if (!e.target.matches('.fa-chevron-down')) {
-
+window.onclick = function (e) {
+  if (!e.target.matches(".fa-chevron-down")) {
     const dropdowns = document.getElementsByClassName("dropdown-content");
     let i;
     for (i = 0; i < dropdowns.length; i++) {
       const openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.remove("show");
       }
     }
   }
-}
-
+};
 
 /*
   const displayMediaContainer = document.getElementById(
@@ -151,6 +150,5 @@ const init = async () => {
   displayDataDetail(data);
   displayMediaData(data);
   getUpdateLikes();
- 
 };
 init();

@@ -4,9 +4,8 @@ function displayModal() {
   const closeIcon = document.getElementById("close");
   const submitForm = document.getElementById("form-submit_btn");
   const btn = document.getElementById("contact_button");
-  const namePh = document.getElementsByClassName("contact_name");
-
-  namePh.innerHTML = getPhotographersById.name;
+  
+  
 
   //open the form when click on the button "contact me"
 

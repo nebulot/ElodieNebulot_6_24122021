@@ -1,0 +1,88 @@
+.lightbox_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1250;
+  background-color : white;
+  cursor: default;
+  overflow : auto;
+  animation : lightboxIn .5s;
+}
+
+a.lightbox_next,
+a.lightbox_prev {
+  border: none;
+  background: url(../assets/icons/chevron.svg) center center / 100% 100%;
+  width: 30px;
+  height: 45px;
+  position: fixed;
+  right:87px;
+  top: 50%;
+  z-index: 1310;
+  margin-top: -14px;
+  cursor: pointer;
+  text-indent: -3000px;
+  transition: .3s;
+}
+
+a.lightbox_next:hover
+a.lightbox_prev:hover {
+  opacity: 1;
+}
+
+a.lightbox_prev {
+  right : auto;
+  left:87px;
+  transform: rotate(180deg);
+}
+
+button#lightbox_close {
+  cursor : pointer;
+  border : none;
+  background : url(../assets/icons/close.svg)center center / 100% 100%;
+  width : 30px;
+  height : 30px;
+  position : fixed;
+  z-index : 1320;
+  top : 85px;
+  right :91px;
+  transition : .3s;
+}
+
+#lightbox_close:hover {
+  opacity : .5;
+}
+
+.lightbox_container img {
+  max-width : 80%;
+  height : auto;
+  box-shadow: 6px 5px 12px rgba(82, 82, 82, 0.2);
+  animation : lightboxIn .5s;
+
+}
+
+.lightbox_container h2 {
+  font-weight: 200;
+  z-index: 1240;
+  position: fixed;
+  top: 524px;
+  right: 784px;
+  color : #901C1C;
+}
+
+@keyframes lightboxIn {
+  from {opacity : 0}
+to {opacity : 1}
+}
+
+.lightbox_container {
+  position : fixed;
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  margin-left : 50px;
+  margin-right : 50px;
+  min-height:100vh;
+}
