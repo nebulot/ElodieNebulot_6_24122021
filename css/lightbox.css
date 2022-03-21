@@ -60,7 +60,16 @@ button#lightbox_close {
   height : auto;
   box-shadow: 6px 5px 12px rgba(82, 82, 82, 0.2);
   animation : lightboxIn .5s;
+}
 
+.lightbox_loader {
+  position : relative;
+  z-index : 1400;
+  left : 426px;
+  width : 60px;
+  height: 60px;
+  opacity : .5s;
+  background: url(../assets/icons/loader.svg) center center no-repeat;
 }
 
 .lightbox_container h2 {
