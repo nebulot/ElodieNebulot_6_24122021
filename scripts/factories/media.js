@@ -21,7 +21,10 @@ function mediaFactory(media) {
     linkGalleryPicture = linkGalleryPicture + image;
   }
 
+  //create gallery media by photographers' id 
+
   function getUserGalleryDOM() {
+    
     const cardGalleryMedia = document.createElement("figure");
     const linkGalleryCard = document.createElement("a");
     let galleryCard;
@@ -31,20 +34,23 @@ function mediaFactory(media) {
       galleryCard = document.createElement("img");
     }
     linkGalleryCard.setAttribute("role", "link");
+    linkGalleryCard.setAttribute("href", "#");
+    linkGalleryCard.setAttribute("button", "role");
     linkGalleryCard.className = "photographer-medium_link";
     linkGalleryCard.ariaLabel = title + "cliquer ici pour agrandir";
     linkGalleryCard.href = linkGalleryPage;
     galleryCard.src = linkGalleryPicture;
     galleryCard.alt = "";
     galleryCard.className = "photographer-medium_element";
-
     linkGalleryCard.appendChild(galleryCard);
+    //linkGalleryCard.addEventListener('click', () => new Lightbox(linkGalleryPicture, linkGalleryCard));
     cardGalleryMedia.appendChild(linkGalleryCard);
 
     const cardsFooter = document.createElement("figcaption");
     cardsFooter.className = "cards-media-footer";
     const cardsTitle = document.createElement("p");
-    cardsTitle.textContent = title;
+    const photoName = title;
+    cardsTitle.textContent = photoName;
     cardsTitle.className = "cards-media_title";
     const cardsLikes = document.createElement("div");
     cardsLikes.className = "cards-media_likes";
@@ -56,9 +62,12 @@ function mediaFactory(media) {
     cardsFooter.appendChild(cardsTitle);
     cardsFooter.appendChild(cardsLikes);
     cardGalleryMedia.appendChild(cardsFooter);
-
+    
     return cardsFooter, cardGalleryMedia;
   }
+  
+
+  //create button like for user to choose yours favorite media
 
   function getHeartBtn() {
     const heartBtn = document.createElement('button');

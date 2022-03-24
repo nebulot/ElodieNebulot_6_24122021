@@ -33,7 +33,7 @@ function displayDataDetail(data) {
   const photographers = !id
     ? photographersData
     : photographersData.filter((photographer) => photographer.id == id);
-  
+
   const photographSectionHeader = document.querySelector(
     ".photograph-section_header"
   );
@@ -60,7 +60,6 @@ function displayDataDetail(data) {
     photographSectionBtn.appendChild(userContactDOM);
     displayLikeContainer.appendChild(userFooterDOM);
   });
-
 }
 
 // dropdown
@@ -108,11 +107,9 @@ function getUpdateLikes() {
       if (liked) {
         reloadLikes();
         heart.classList.add("fas");
-        heartBtn.ariaLabel = "didn't likes";
       } else if (!liked) {
         reloadLikes();
         heart.classList.add("fas");
-        heartBtn.ariaLabel = "likes";
       }
     });
   });
@@ -129,7 +126,7 @@ window.onclick = function (e) {
   if (!e.target.matches(".fa-chevron-down")) {
     const dropdowns = document.getElementsByClassName("dropdown-content");
     let i;
-    for (i = 0; i < dropdowns.length; i++) {
+    for (i = 1; i < dropdowns.length; i++) {
       const openDropdown = dropdowns[i];
       if (openDropdown.classList.contains("show")) {
         openDropdown.classList.remove("show");
@@ -138,11 +135,40 @@ window.onclick = function (e) {
   }
 };
 
-/*
-  const displayMediaContainer = document.getElementById(
-    "photograph-section_media"
+function dropdownSort() {
+  let mediaArraySort = [];
+  let btnSort = displayDropdown();
+  let hiddenSort = document.getElementsByClassName("hidden-sort");
+  let sortBtn = Array.from(document.getElementsByClassName("select-list"));
+  sortBtn.forEach((btn, index) =>
+    btn.addEventListener("click", () => {
+      hiddenSort.style.display = "none";
+      if (index == 0) {
+        btnSort.innerHTML = `Popularité`;
+
+        mediaArraySort = media.sort((a, b) => {
+          return b.likes - a.likes;
+        });
+      } else if (index == 1) {
+        btnSort.innerHTML = `Date`;
+
+        mediaArraySort = media.sort((a, b) => {
+          return new Date(a.date).valueOf() - new Date(b.date).valueOf();
+        });
+      } else if (index == 2) {
+        btnSort.innerHTML = `Titre`;
+
+        mediaArraySort = media.sort((a, b) => {
+          if (a.photoName.toLowerCase() < b.photoName.toLowerCase()) {
+            return -1;
+          } else if (a.photoName.toLowerCase() > b.photoName.toLowerCase()) {
+            return 1;
+          }
+        });
+      }
+    })
   );
-  */
+}
 
 const init = async () => {
   // Récupère les datas des photographes
@@ -150,5 +176,7 @@ const init = async () => {
   displayDataDetail(data);
   displayMediaData(data);
   getUpdateLikes();
+  displayDropdown();
+  dropdownSort();
 };
 init();

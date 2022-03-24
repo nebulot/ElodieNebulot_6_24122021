@@ -90,7 +90,7 @@ function photographerFactory(photographer) {
     return btnContainer;
   }
 
-  // section comptor like media //
+  // section compteur like media //
 
   function userCompteurLikes() {
     let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
@@ -98,13 +98,15 @@ function photographerFactory(photographer) {
     htmlLikes.forEach(function (like) {
       let ajoutLike = Number(like.innerHTML);
       totalSom += ajoutLike;
+      
     });
     return totalSom;
+    
   }
 
   function getUserFooter() {
-    const container = document.createElement("div");
-    container.setAttribute("class", "compteur-section_like_aside");
+    const containerLegend = document.createElement("div");
+    containerLegend.setAttribute("class", "compteur-section_like_aside");
 
     const compteurTotalLike = document.createElement("span");
     compteurTotalLike.textContent = userCompteurLikes();
@@ -121,11 +123,11 @@ function photographerFactory(photographer) {
     compteurTotalPrice.className = "compteur-section_price";
     compteurTotalPrice.ariaLabel = "Tarif du photographe par jour";
     compteurTotalPrice.innerHTML = price + "€/jour";
-    container.appendChild(compteurTotalLike);
-    container.appendChild(totalLikeHeart);
-    container.appendChild(compteurTotalPrice);
+    containerLegend.appendChild(compteurTotalLike);
+    containerLegend.appendChild(totalLikeHeart);
+    containerLegend.appendChild(compteurTotalPrice);
 
-    return container;
+    return containerLegend;
   }
   return {
     name,
