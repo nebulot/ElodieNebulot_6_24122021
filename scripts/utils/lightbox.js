@@ -135,8 +135,8 @@ buildDOM() {
       <img src="./assets/images/" alt="">
       <p class="lightbox_title">titre</p>
      </div>`;
-     dom.querySelector(".lightbox_close").addEventListener("click", this.close.bind(this));
-     dom.querySelector(".lightbox_previous").addEventListener("click", this.previous.bind(this));
+     dom.querySelector("#lightbox_close").addEventListener("click", this.close.bind(this));
+     dom.querySelector(".lightbox_prev").addEventListener("click", this.previous.bind(this));
      dom.querySelector(".lightbox_next").addEventListener("click", this.next.bind(this));
     
   return dom;

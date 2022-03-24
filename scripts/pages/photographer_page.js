@@ -29,7 +29,7 @@ console.log(urlSearchParams);
 const id = urlSearchParams.get("id");
 
 //console.log(id)//
-function displayDataDetail(data) {
+function displayDataDetail() {
   const photographers = !id
     ? photographersData
     : photographersData.filter((photographer) => photographer.id == id);
@@ -48,8 +48,8 @@ function displayDataDetail(data) {
   );
   const displayLikeContainer = document.getElementById("compteur_like");
 
-  photographers.forEach((photographer) => {
-    const photographerDetail = photographerFactory(photographer);
+  
+    const photographerDetail = photographerFactory(photographers[0]);
     const userPicDOM = photographerDetail.getUserPicDOM();
     const userContactDOM = photographerDetail.getUserContactDOM();
     const userBannerDOM = photographerDetail.getUserBannerDOM();
@@ -59,13 +59,12 @@ function displayDataDetail(data) {
     photographSectionPhoto.appendChild(userPicDOM);
     photographSectionBtn.appendChild(userContactDOM);
     displayLikeContainer.appendChild(userFooterDOM);
-  });
-}
+  };
 
 // dropdown
 
 //gallery photographers : container Media with card and photos
-function displayMediaData(data) {
+function displayMediaData() {
   const media = !id
     ? medias
     : medias.filter((media) => media.photographerId == id);
@@ -98,7 +97,6 @@ function getUpdateLikes() {
   sectionLikes.forEach(function (i) {
     i.addEventListener("click", function () {
       let elementCounter = i.querySelector(".cards-media_total_likes");
-      let heartBtn = i.querySelector("cards-media_total_likes_btn");
       let heart = i.querySelector(".fa-heart");
       let totalSom = Number(elementCounter.textContent);
       const liked = i.dataset.liked === "true";
@@ -113,6 +111,47 @@ function getUpdateLikes() {
       }
     });
   });
+}
+
+function dropdownSort() {
+  let mediaArraySort = [];
+  displayDropdown();
+  const hiddenDisplay = document.querySelector(".dropdown-name");
+  const sortBtn = Array.from(document.getElementsByClassName("select-list"));
+  console.log(sortBtn);
+
+  sortBtn.forEach((btn, index) =>
+    btn.addEventListener("click", () => {
+      hiddenDisplay.style.display = "none";
+      
+      if (index == 0) {
+        displayDropdown().textContent = "Popularité";
+
+        mediaArraySort = medias.sort((a, b) => {
+          return b.likes - a.likes;
+        });
+      } else if (index == 1) {
+        displayDropdown().innerHTML = "Date";
+
+        mediaArraySort = medias.sort((a, b) => {
+          return new Date(a.date).valueOf() - new Date(b.date).valueOf();
+        });
+      } else if (index == 2) {
+        displayDropdown().innerHTML = "Titre";
+
+        mediaArraySort = medias.sort((a, b) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            return -1;
+          } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1;
+            
+          }
+          console.log(sortBtn);
+        });
+        
+      }
+    })
+  );
 }
 
 //display dropdown //
@@ -135,48 +174,17 @@ window.onclick = function (e) {
   }
 };
 
-function dropdownSort() {
-  let mediaArraySort = [];
-  let btnSort = displayDropdown();
-  let hiddenSort = document.getElementsByClassName("hidden-sort");
-  let sortBtn = Array.from(document.getElementsByClassName("select-list"));
-  sortBtn.forEach((btn, index) =>
-    btn.addEventListener("click", () => {
-      hiddenSort.style.display = "none";
-      if (index == 0) {
-        btnSort.innerHTML = `Popularité`;
 
-        mediaArraySort = media.sort((a, b) => {
-          return b.likes - a.likes;
-        });
-      } else if (index == 1) {
-        btnSort.innerHTML = `Date`;
-
-        mediaArraySort = media.sort((a, b) => {
-          return new Date(a.date).valueOf() - new Date(b.date).valueOf();
-        });
-      } else if (index == 2) {
-        btnSort.innerHTML = `Titre`;
-
-        mediaArraySort = media.sort((a, b) => {
-          if (a.photoName.toLowerCase() < b.photoName.toLowerCase()) {
-            return -1;
-          } else if (a.photoName.toLowerCase() > b.photoName.toLowerCase()) {
-            return 1;
-          }
-        });
-      }
-    })
-  );
-}
 
 const init = async () => {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();
-  displayDataDetail(data);
   displayMediaData(data);
+  displayDataDetail(data);
   getUpdateLikes();
   displayDropdown();
   dropdownSort();
+  let lightbox = new Lightbox.init();
+  lightbox.init();
 };
 init();
