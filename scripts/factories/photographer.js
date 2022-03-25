@@ -80,9 +80,10 @@ function photographerFactory(photographer) {
     const btnContainer = document.createElement("div");
     btnContainer.className = "container-contact_button";
     const btn = document.createElement("button");
+    btn.ariaHaspopup='modalForm' 
     btn.id = "contact_button";
     btn.onclick = displayModal;
-    btn.ariaLabel = "Veuillez contacter le photographe";
+    btn.ariaLabel = "Veuillez contacter" + name;
     btn.textContent = "Contactez-moi";
     btn.className = "form-submit_btn ";
     btnContainer.appendChild(btn);

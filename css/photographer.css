@@ -161,6 +161,7 @@ label {
   cursor: pointer;
   display: flex;
   align-items: center;
+  
 }
 
 #dropdown-listbox_select {
@@ -181,9 +182,9 @@ label {
   cursor: pointer;
   color: #fff;
   z-index: 1100;
-  position: relative;
+  position: absolute;
   left: 126px;
-  top: 35px;
+  top: 16px;
 }
 
 .dropdown-content {
@@ -203,13 +204,24 @@ label {
 }
 
 .dropdown-content li {
-  vertical-align: baseline;
   margin-bottom: 0;
   padding: 0px 16px;
   width: 126px;
   display: flex;
   align-items: center;
 }
+
+.dropdown-content li:hover {
+  background-color : #651414;
+  cursor: pointer;
+}
+
+.dropdown-content li:nth-child(1) {
+  align-items : center;
+  display : flex;
+  justify-content : space-between;
+}
+
 
 #second-link,
 #third-link {

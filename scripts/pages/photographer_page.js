@@ -29,7 +29,7 @@ console.log(urlSearchParams);
 const id = urlSearchParams.get("id");
 
 //console.log(id)//
-function displayDataDetail() {
+function displayPhotographerDetail() {
   const photographers = !id
     ? photographersData
     : photographersData.filter((photographer) => photographer.id == id);
@@ -48,142 +48,149 @@ function displayDataDetail() {
   );
   const displayLikeContainer = document.getElementById("compteur_like");
 
-  
-    const photographerDetail = photographerFactory(photographers[0]);
-    const userPicDOM = photographerDetail.getUserPicDOM();
-    const userContactDOM = photographerDetail.getUserContactDOM();
-    const userBannerDOM = photographerDetail.getUserBannerDOM();
-    const userFooterDOM = photographerDetail.getUserFooter();
+  const photographerDetail = photographerFactory(photographers[0]);
+  const userPicDOM = photographerDetail.getUserPicDOM();
+  const userContactDOM = photographerDetail.getUserContactDOM();
+  const userBannerDOM = photographerDetail.getUserBannerDOM();
+  const userFooterDOM = photographerDetail.getUserFooter();
 
-    photographSectionHeader.appendChild(userBannerDOM);
-    photographSectionPhoto.appendChild(userPicDOM);
-    photographSectionBtn.appendChild(userContactDOM);
-    displayLikeContainer.appendChild(userFooterDOM);
-  };
-
-// dropdown
-
-//gallery photographers : container Media with card and photos
-function displayMediaData() {
-  const media = !id
-    ? medias
-    : medias.filter((media) => media.photographerId == id);
-  const displayMediaContainer = document.getElementById(
-    "photograph-section_media"
-  );
-
-  media.forEach((media) => {
-    const mediaGallery = mediaFactory(media);
-    const userGalleryDOM = mediaGallery.getUserGalleryDOM();
-    displayMediaContainer.appendChild(userGalleryDOM);
-  });
+  photographSectionHeader.appendChild(userBannerDOM);
+  photographSectionPhoto.appendChild(userPicDOM);
+  photographSectionBtn.appendChild(userContactDOM);
+  displayLikeContainer.appendChild(userFooterDOM);
 }
 
-//container likes on footer photographers' page//
+  // dropdown
 
-function getUpdateLikes() {
-  const sectionLikes = document.querySelectorAll(".cards-media_likes");
-  function reloadLikes() {
-    let compteurTotalLike = document.querySelector(".like_total");
-    let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
-    let totalSom = 0;
-    htmlLikes.forEach(function (like) {
-      let ajoutLike = Number(like.innerHTML);
-      totalSom += ajoutLike;
-    });
-    compteurTotalLike.innerHTML = totalSom;
-    return totalSom;
+  //gallery photographers : container Media with card and photos
+  function displayMediaGallery() {
+    const media = !id
+      ? medias
+      : medias.filter((media) => media.photographerId == id);
+      const displayMediaContainer = document.getElementById(
+        "photograph-section_media"
+      );
+      media.forEach((media) => {
+        const mediaGallery = mediaFactory(media);
+        const userGalleryDOM = mediaGallery.getUserGalleryDOM();
+        displayMediaContainer.appendChild(userGalleryDOM);
+      });
   }
-  sectionLikes.forEach(function (i) {
-    i.addEventListener("click", function () {
-      let elementCounter = i.querySelector(".cards-media_total_likes");
-      let heart = i.querySelector(".fa-heart");
-      let totalSom = Number(elementCounter.textContent);
-      const liked = i.dataset.liked === "true";
-      i.dataset.liked = !liked;
-      elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
-      if (liked) {
-        reloadLikes();
-        heart.classList.add("fas");
-      } else if (!liked) {
-        reloadLikes();
-        heart.classList.add("fas");
-      }
+
+
+  //container likes on footer photographers' page//
+
+  function getUpdateLikes() {
+    const sectionLikes = document.querySelectorAll(".cards-media_likes");
+    function reloadLikes() {
+      let compteurTotalLike = document.querySelector(".like_total");
+      let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
+      let totalSom = 0;
+      htmlLikes.forEach(function (like) {
+        let ajoutLike = Number(like.innerHTML);
+        totalSom += ajoutLike;
+      });
+      compteurTotalLike.innerHTML = totalSom;
+      return totalSom;
+    }
+    sectionLikes.forEach(function (i) {
+      i.addEventListener("click", function () {
+        let elementCounter = i.querySelector(".cards-media_total_likes");
+        let heart = i.querySelector(".fa-heart");
+        let totalSom = Number(elementCounter.textContent);
+        const liked = i.dataset.liked === "true";
+        i.dataset.liked = !liked;
+        elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
+        if (liked) {
+          reloadLikes();
+          heart.classList.add("fas");
+        } else if (!liked) {
+          reloadLikes();
+          heart.classList.add("fas");
+        }
+      });
     });
-  });
-}
+  }
 
-function dropdownSort() {
-  let mediaArraySort = [];
-  displayDropdown();
-  const hiddenDisplay = document.querySelector(".dropdown-name");
-  const sortBtn = Array.from(document.getElementsByClassName("select-list"));
-  console.log(sortBtn);
+  // selected by popularity, name and title
 
-  sortBtn.forEach((btn, index) =>
-    btn.addEventListener("click", () => {
-      hiddenDisplay.style.display = "none";
-      
-      if (index == 0) {
-        displayDropdown().textContent = "Popularité";
-
-        mediaArraySort = medias.sort((a, b) => {
-          return b.likes - a.likes;
-        });
-      } else if (index == 1) {
-        displayDropdown().innerHTML = "Date";
-
-        mediaArraySort = medias.sort((a, b) => {
-          return new Date(a.date).valueOf() - new Date(b.date).valueOf();
-        });
-      } else if (index == 2) {
-        displayDropdown().innerHTML = "Titre";
-
-        mediaArraySort = medias.sort((a, b) => {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) {
-            return -1;
-          } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
-            return 1;
-            
-          }
-          console.log(sortBtn);
-        });
+  function dropdownSort() {
+    let mediaArraySort = [];
+    let media = medias;
         
+    displayDropdown();
+    const dropdowns = document.querySelector(".dropdown-content");
+    const dropdownsName = document.querySelector(".dropdown-name");
+    const chevronD = document.querySelector(".fa-chevron-down");
+
+    const sortBtn = Array.from(document.getElementsByClassName("select-list"));
+    console.log(sortBtn);
+
+    sortBtn.forEach((btn, index) => btn.addEventListener('click', () => {
+      dropdowns.innerHTML ="";
+      chevronD.style.display = "none";
+      if (index == 0) {
+          dropdownsName.innerHTML = `Popularité`;
+
+          mediaArraySort = media.sort((a, b) => {  
+              return b.likes - a.likes
+          })
+
+      } else if (index == 1) {
+          dropdownsName.innerHTML = `Date`;
+
+          mediaArraySort = media.sort((a, b) => { 
+              return new Date(a.date).valueOf() - new Date(b.date).valueOf();
+          })
+
+      } else if (index == 2) {
+        dropdownsName.innerHTML = `Titre`;
+
+          mediaArraySort = media.sort((a, b) => { 
+              if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                  return -1;
+              } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                  return 1;
+              }
+          })
       }
-    })
-  );
+      
+  }));
 }
+ 
 
-//display dropdown //
+    
+  //display dropdown //
 
-function displayDropdown() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+  function displayDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function (e) {
-  if (!e.target.matches(".fa-chevron-down")) {
-    const dropdowns = document.getElementsByClassName("dropdown-content");
-    let i;
-    for (i = 1; i < dropdowns.length; i++) {
-      const openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function (e) {
+    if (!e.target.matches(".fa-chevron-down")) {
+      const dropdowns = document.getElementsByClassName("dropdown-content");
+      let i;
+      for (i = 1; i < dropdowns.length; i++) {
+        const openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+        }
       }
     }
-  }
-};
-
+  };
 
 
 const init = async () => {
   // Récupère les datas des photographes
   const { data } = await getPhotographersById();
-  displayMediaData(data);
-  displayDataDetail(data);
-  getUpdateLikes();
   displayDropdown();
   dropdownSort();
+  displayMediaGallery(); 
+  displayPhotographerDetail();
+  
+  getUpdateLikes();  
+  
   let lightbox = new Lightbox.init();
   lightbox.init();
 };
