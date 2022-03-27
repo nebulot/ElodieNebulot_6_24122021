@@ -1,17 +1,21 @@
+
 // DOM element
 function displayModal() {
   const modal = document.getElementById("background_modal");
   const closeIcon = document.getElementById("close");
   const submitForm = document.getElementById("form-submit_btn");
   const btn = document.getElementById("contact_button");
-  
-  
+  const contactName = document.getElementById("modal-container_title");
+  contactName.innerHTML = 'Contactez-moi <br>' + photographersData.name;
+  console.log(photographersData);
+  console.log(contactName);
   
 
   //open the form when click on the button "contact me"
 
   btn.onclick = () => {
     modal.style.display = "block";
+    
   };
 
   //close the form when click on the icon X

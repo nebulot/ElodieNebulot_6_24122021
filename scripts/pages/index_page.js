@@ -1,17 +1,11 @@
-//fetch FishEyeDataExport
-// Replace js with your JSON feed
-const getPhotographers = async () => {
-  await fetch("../data/FishEyeData.json", { mode: "no-cors" })
-    .then((res) => res.json())
-    .then((data) => (photographers = data.photographers))
-    .catch((err) => console.log("Invalid Error : Fetch Invalid", err));
-    setTimeout(function floatingAnim() {
-      floatingAnim.className += "hidden";
-    }, 2000);
-  
-  return ({
-    photographers: photographers})
-};
+//fetch FishEyeDataExport / import getPhotographers Data from json file
+
+import {getPhotographers} from '../data/photographersData.js';
+
+//display photographer card on index.js
+
+import {photographerFactory} from '../factories/photographer.js';
+
 
 async function displayData(photographers) {
 const photographersSection = document.querySelector(".photographer_section");

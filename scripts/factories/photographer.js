@@ -1,15 +1,9 @@
-/*fonction de reference 
-photographers.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
-});*/
-
 function photographerFactory(photographer) {
-  const { name, portrait, city, country, tagline, price } = photographer;
+  const { name, id, portrait, city, country, tagline, price } = photographer;
 
   const linkPage = "photographer.html?id=" + photographer.id;
   const linkPicture = "./assets/photographers/" + portrait;
+  
 
   // display index page //
   function getUserCardDOM() {
@@ -21,11 +15,11 @@ function photographerFactory(photographer) {
     linkCard.href = linkPage;
     pictureCard.src = linkPicture;
     pictureCard.alt = "";
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
+    const photoName = document.createElement("h2");
+    photoName.textContent = name;
     sectionCard.className = "photographer-section_card";
     linkCard.appendChild(pictureCard);
-    linkCard.appendChild(h2);
+    linkCard.appendChild(photoName);
     sectionCard.appendChild(linkCard);
     const article = document.createElement("article");
     const localisation = document.createElement("h3");
@@ -80,10 +74,10 @@ function photographerFactory(photographer) {
     const btnContainer = document.createElement("div");
     btnContainer.className = "container-contact_button";
     const btn = document.createElement("button");
-    btn.ariaHaspopup='modalForm' 
+    btn.ariaHaspopup = "modalForm";
     btn.id = "contact_button";
     btn.onclick = displayModal;
-    btn.ariaLabel = "Veuillez contacter" + name;
+    btn.ariaLabel = "Veuillez contacter"+ "," + name;
     btn.textContent = "Contactez-moi";
     btn.className = "form-submit_btn ";
     btnContainer.appendChild(btn);
@@ -99,10 +93,8 @@ function photographerFactory(photographer) {
     htmlLikes.forEach(function (like) {
       let ajoutLike = Number(like.innerHTML);
       totalSom += ajoutLike;
-      
     });
     return totalSom;
-    
   }
 
   function getUserFooter() {
@@ -132,6 +124,7 @@ function photographerFactory(photographer) {
   }
   return {
     name,
+    id,
     linkPicture,
     getUserCardDOM,
     getUserPicDOM,
@@ -141,3 +134,5 @@ function photographerFactory(photographer) {
     getUserFooter,
   };
 }
+
+export {photographerFactory};

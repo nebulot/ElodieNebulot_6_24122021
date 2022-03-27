@@ -1,18 +1,10 @@
-//------------------------Photographers' gallery ----------------------//
-/*"media": [
-  {
-    "id": 342550,
-    "photographerId": 82,
-    "title": "Fashion Yellow Beach",
-    "image": "Fashion_Yellow_Beach.jpg",
-    "likes": 62,
-    "date": "2011-12-08",
-    "price": 55
-  },*/
+function mediaFactory(media, name) {
+  const { id, photographerId, title, image, video, likes, date, price } = media;
 
-function mediaFactory(media) {
-  const { id, photographerId, title, video, image, likes, date, price } = media;
-
+  const firstname = name.split(' ');
+  const picture = `assets/photographers/${firstname[0]}/${image}`;
+  const film = `assets/photographers/${firstname[0]}/${video}`;
+  
   const linkGalleryPage = "photographer.html?id=" + id;
   let linkGalleryPicture = "./assets/images/" + photographerId + "/";
   if (video) {
@@ -30,8 +22,11 @@ function mediaFactory(media) {
     let galleryCard;
     if (video) {
       galleryCard = document.createElement("video");
+      galleryCard.href =film;
     } else {
       galleryCard = document.createElement("img");
+      galleryCard.href = picture;
+      
     }
     linkGalleryCard.setAttribute("role", "link");
     linkGalleryCard.setAttribute("href", "#");
@@ -41,6 +36,7 @@ function mediaFactory(media) {
     linkGalleryCard.href = linkGalleryPage;
     galleryCard.src = linkGalleryPicture;
     galleryCard.alt = "";
+    galleryCard.ariaLabel = "vue rapprochée"
     galleryCard.className = "photographer-medium_element";
     linkGalleryCard.appendChild(galleryCard);
     //linkGalleryCard.addEventListener('click', () => new Lightbox(linkGalleryPicture, linkGalleryCard));
@@ -83,8 +79,9 @@ function mediaFactory(media) {
 
     return heartBtn;
   }
+return { name, date, price, linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
+};
 
-  
 
-return { title, linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
-}
+
+export {mediaFactory};

@@ -132,15 +132,10 @@ label {
 }
 
 // create dropdown toogle
-
-
-.dropdown-name {
-  position: relative;
-  display: flex;
-  z-index: 1100;
-  font-size: 16px;
-  color: #fff;
-  left: 35px;
+#dropdown-listbox_select {
+  position : absolute; 
+  cursor : pointer;
+  background : #d3573C;
 }
 
 #photograph-section_dropdown .dropdown {

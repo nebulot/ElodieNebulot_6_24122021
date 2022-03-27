@@ -2,17 +2,24 @@
 <html lang="fr">
 
 <head>
-  <link href="../css/photographer.css" rel="stylesheet" type="text/css" />
-  <link href="../css/lightbox.css" rel="stylesheet" />
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FishEye est un site web qui héberge les travaux de photographes indépendants"/>
+  <meta name="author" content="Elodie Nébulot"/>
+  
+ 
+  <title>Fisheye - photographe </title> 
+  
+  <!---Styles--->
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fisheye - photographe </title>
-
+  <link href="../css/photographer.css" rel="stylesheet" type="text/css" />
+  <link href="../css/lightbox.css" rel="stylesheet" />
+  
 </head>
 
 <body class="photographer-card">
+
   <header class="photographer-card_header">
     <img src="../assets/images/logo.png" class="logo" alt="le logotype de la marque" />
   </header>
@@ -21,6 +28,9 @@
       <div class="photograph-section_header"></div>
       <div class="photograph-section_button"></div>
       <div class="photograph-section_picture"></div>
+    
+    
+    
     </section>
 
     <section id="photograph-section_dropdown">
@@ -62,9 +72,7 @@
       <section class="modal_container">
         <header class="modal_container-header">
           <h2 id="modal-container_title">
-            <span class="title_contact">Contactez-moi</span>
-            <span class="photograph_name"></span>
-
+            <span class="title_contact"  >Contactez-moi <br> ${photograph.name} </span>
           </h2>
           <i id="close" class="fas fa-times" aria-label="fermer la fenêtre"></i>
           </button>
@@ -96,15 +104,11 @@
     </aside>
   </div>
 
-  <script src="/scripts/utils/lightbox.js"></script>
-  <script src="/scripts/factories/photographer.js"></script>
-  <script src="/scripts/pages/photographer_page.js"></script>
-  <script src="/scripts/factories/media.js"></script>
+  <!----Pages--------------------------------------->
+  <script type="module" src="/scripts/pages/photographer_page.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
   
-
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
-
 
 </body>
 
