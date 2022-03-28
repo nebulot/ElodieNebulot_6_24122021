@@ -2,19 +2,19 @@
 //Method fetch FishEyeDataExport
 // Replace js with your JSON feed
 
-const getMedias = async () => {
-    let medias;
+async function getMedias() {
+  let medias;
 
-  const res = await fetch("../Data/FishEyeData.json",{ mode: "no-cors" });
-  if (!res.ok) {
-    throw "Invalid Error : Fetch Invalid";
-  }
-  const data = await res.json();
+  await fetch("../Data/FishEyeData.json", { mode: "no-cors" })
+    .then((res) => res.json())
+    .then((res) => {
+      medias = res.medias;
+    })
+    
+    .catch((err) => console.log('an error occurs', err));
 
-  medias = data.medias;
-  console.log(medias);
- 
-  return { medias,
+  return {
+    medias,
   };
 }
 

@@ -1,5 +1,4 @@
-class Lightbox {
-  static init() {
+function lightboxModal {
     const displayMediaContainer = document.getElementById(
       "photograph-section_media");
       const links = Array.from(displayMediaContainer.querySelectorAll('a[href=".jpg"],a[href=".mp4"]'));
@@ -19,9 +18,7 @@ class Lightbox {
         
         });
       });
-    }
-  
-    
+        
  
  loadImage(href) {
      const image = new image();
@@ -52,4 +49,5 @@ buildDOM() {
   }
 }
 
+export {lightboxModal};
  

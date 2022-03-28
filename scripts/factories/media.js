@@ -72,6 +72,6 @@ function mediaFactory(media) {
 
     return heartBtn;
   }
-return { date,price, getUserGalleryDOM, getHeartBtn};
+return { date,price,linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
 };
 export {mediaFactory};
