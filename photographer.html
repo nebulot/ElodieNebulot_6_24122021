@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FishEye est un site web qui héberge les travaux de photographes indépendants"/>
-  <meta name="author" content="Elodie Nébulot"/>
-  
- 
-  <title>Fisheye - photographe </title> 
-  
+  <meta name="description" content="FishEye est un site web qui héberge les travaux de photographes indépendants" />
+  <meta name="author" content="Elodie Nébulot" />
+
+
+  <title>Fisheye - photographe </title>
+
   <!---Styles--->
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <link href="../css/photographer.css" rel="stylesheet" type="text/css" />
   <link href="../css/lightbox.css" rel="stylesheet" />
-  
+
 </head>
 
 <body class="photographer-card">
@@ -24,37 +24,32 @@
     <img src="../assets/images/logo.png" class="logo" alt="le logotype de la marque" />
   </header>
   <main class="main">
+
     <section id="photographer_section">
       <div class="photograph-section_header"></div>
       <div class="photograph-section_button"></div>
       <div class="photograph-section_picture"></div>
-    
-    
-    
     </section>
 
-    <section id="photograph-section_dropdown">
-      <label for="dropdown-listbox" class="dropdown-listbox">Trier par</label>
-      <div id="dropdown-listbox_select">
-        <div class="dropdown" aria-label="Ouvrir menu filtrer par">
-          <p class="dropdown-name">Popularité</p>
-          <i onclick="displayDropdown()" aria-haspopup="true" role="listbox" type=button
-            class="fas fa-solid fa-chevron-down"></i>
-        </div>
+
+    <section id="photographer-gallery">
+      <div class="orderBy">
+        <label for="dropdown-listbox" class="dropdown-listbox">Trier par
+          <select name="dropdown-list" id="dropdown-list" aria-labelledby="triez par dropdown-list">
+            <option value="popuarity" selected>Popularité</option>
+            <option value="date">Date</option>
+            <option value="title"> Titre </option>
+          </select>
+        </label>
       </div>
-      <ul id="myDropdown" class="dropdown-content">
-        <i class="fas fa-solid fa-chevron-up"></i>
-        <li id="first-link" class="select-list display-select" aria-label="Filtrer par popularité">Popularité</li>
-        <li id="second-link" class="select-list display-select" aria-label="Filtrer par date">Date</li>
-        <li id="third-link" class="select-list display-select" aria-label="Filtrer par titre">Titre</li>
-      </ul>
+      <div id="photograph-section_media" class="photographer-gallery"></div>
+      <div id="compteur_like" class="compteur_like"></div>
     </section>
 
-    <section id="photograph-section_media" class="photographer-gallery"></section>
-    <div id="compteur_like" class="compteur_like"></div>
+
   </main>
 
-  <!-------modal lightbox----->
+  <!-------modal lightbox---
   <div class="lightbox_background" id="lightbox-bg">
     <button id="lightbox_close" href="" aria-label="fermer la fenêtre"></button>
     <a class="lightbox_prev" href="" aria-label="image précédente"></a>
@@ -63,7 +58,7 @@
       <img src="./assets/images/" alt="">
       <h2 class="lightbox_title">titre</p>
     </div>
-  </div>
+  </div>-->
 
 
   <!---------------------------------Contact - modal------------------------------------------->
@@ -72,7 +67,7 @@
       <section class="modal_container">
         <header class="modal_container-header">
           <h2 id="modal-container_title">
-            <span class="title_contact"  >Contactez-moi <br> ${photograph.name} </span>
+            <span class="title_contact">Contactez-moi <br> ${photograph.name} </span>
           </h2>
           <i id="close" class="fas fa-times" aria-label="fermer la fenêtre"></i>
           </button>
@@ -105,9 +100,8 @@
   </div>
 
   <!----Pages--------------------------------------->
-  <script type="module" src="/scripts/pages/photographer_page.js"></script>
-  <script src="/scripts/utils/contactForm.js"></script>
-  
+  <script type="module" src="/Scripts/pages/photographer_page.js"></script>
+  <script src="/Scripts/utils/contactForm.js"></script>
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
 
 </body>
