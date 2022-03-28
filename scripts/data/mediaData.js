@@ -5,7 +5,7 @@
 const getMedias = async () => {
     let medias;
 
-  const res = await fetch("../Data/FishEyeData.json");
+  const res = await fetch("../Data/FishEyeData.json",{ mode: "no-cors" });
   if (!res.ok) {
     throw "Invalid Error : Fetch Invalid";
   }

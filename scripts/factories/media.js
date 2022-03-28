@@ -1,12 +1,8 @@
-function mediaFactory(media, name) {
+function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
-  const firstname = name.split(' ');
-  const picture = `assets/photographers/${firstname[0]}/${image}`;
-  const film = `assets/photographers/${firstname[0]}/${video}`;
-  
   const linkGalleryPage = "photographer.html?id=" + id;
-  let linkGalleryPicture = "./assets/images/" + photographerId + "/";
+  let linkGalleryPicture = "" + photographerId + "/";
   if (video) {
     linkGalleryPicture = linkGalleryPicture + video;
   } else {
@@ -16,18 +12,16 @@ function mediaFactory(media, name) {
   //create gallery media by photographers' id 
 
   function getUserGalleryDOM() {
-    
     const cardGalleryMedia = document.createElement("figure");
     const linkGalleryCard = document.createElement("a");
     let galleryCard;
     if (video) {
       galleryCard = document.createElement("video");
-      galleryCard.href =film;
-    } else {
+      } else {
       galleryCard = document.createElement("img");
-      galleryCard.href = picture;
-      
+         
     }
+    
     linkGalleryCard.setAttribute("role", "link");
     linkGalleryCard.setAttribute("href", "#");
     linkGalleryCard.setAttribute("button", "role");
@@ -39,7 +33,6 @@ function mediaFactory(media, name) {
     galleryCard.ariaLabel = "vue rapprochée"
     galleryCard.className = "photographer-medium_element";
     linkGalleryCard.appendChild(galleryCard);
-    //linkGalleryCard.addEventListener('click', () => new Lightbox(linkGalleryPicture, linkGalleryCard));
     cardGalleryMedia.appendChild(linkGalleryCard);
 
     const cardsFooter = document.createElement("figcaption");
@@ -59,7 +52,7 @@ function mediaFactory(media, name) {
     cardsFooter.appendChild(cardsLikes);
     cardGalleryMedia.appendChild(cardsFooter);
     
-    return cardsFooter, cardGalleryMedia;
+    return cardGalleryMedia;
   }
   
 
@@ -79,9 +72,6 @@ function mediaFactory(media, name) {
 
     return heartBtn;
   }
-return { name, date, price, linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
+return { date,price, getUserGalleryDOM, getHeartBtn};
 };
-
-
-
 export {mediaFactory};
