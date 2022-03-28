@@ -2,7 +2,7 @@ function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
   const linkGalleryPage = "photographer.html?id=" + id;
-  let linkGalleryPicture = "" + photographerId + "/";
+  let linkGalleryPicture = "./assets/images/" + photographerId + "/";
   if (video) {
     linkGalleryPicture = linkGalleryPicture + video;
   } else {
@@ -21,13 +21,16 @@ function mediaFactory(media) {
       galleryCard = document.createElement("img");
          
     }
-    
+    galleryCard.id = id;
     linkGalleryCard.setAttribute("role", "link");
-    linkGalleryCard.setAttribute("href", "#");
+    //linkGalleryCard.setAttribute("href", "#");
+    linkGalleryCard.addEventListener("click", (e)=>{
+      console.log(e.target.id);
+    });
     linkGalleryCard.setAttribute("button", "role");
     linkGalleryCard.className = "photographer-medium_link";
     linkGalleryCard.ariaLabel = title + "cliquer ici pour agrandir";
-    linkGalleryCard.href = linkGalleryPage;
+    //linkGalleryCard.href = linkGalleryPage;
     galleryCard.src = linkGalleryPicture;
     galleryCard.alt = "";
     galleryCard.ariaLabel = "vue rapprochée"

@@ -8,7 +8,7 @@ import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
-//import { lightboxModal } from "../utils/lightbox.js";
+
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -51,28 +51,28 @@ async function displayPhotographerDetail(photographers) {
 
 //gallery photographers : container Media with card and photos/videos
 
-async  function displayMediaData(medias) {
+async  function displayMediaData(media) {
   const displayMediaContainer = document.getElementById(
     "photograph-section_media"
   );
 
   const photographerUrlById = urlSearchParams.get('id');
-  //const name = urlSearchParams.get('name');
-  //const mediasArray = [];
+  const name = urlSearchParams.get('name');
   
-      medias.forEach((media) => {
+  
+      media.forEach((media) => {
       if (media.photographerId == photographerUrlById) {
       const mediaGallery = mediaFactory(media);
       const userGalleryDOM = mediaGallery.getUserGalleryDOM();
       displayMediaContainer.appendChild(userGalleryDOM);
     }
   });
-  //   display dropdown
-  const selectList = document.querySelector("dropdown-list");
+  //  display dropdown
+  const selectList = document.querySelector("#dropdown-list");
   selectList.addEventListener("change", dropdownList);
   selectList.addEventListener("change", getUpdateLikes);
 
-  function dropdownList(e) {
+  function dropdownList(e, mediasArray) {
     dropdownSort(e, mediasArray);
     
     displayMediaContainer.innerHTML = "";
@@ -119,23 +119,22 @@ async  function displayMediaData(medias) {
       });
     });
   
-  
   // Launch the lightbox with sorted medias
-  lightboxModal();
-}
+ }
 
 
 // add price by day and total likes.*/
 
 const init = async () => {
   // Récupère les datas des photographes
+  const { media } = await getMedias();
+  console.log(media);
+  displayMediaData(media);
+  
   const { photographers } = await getPhotographers();
   displayPhotographerDetail(photographers);
 
-  const { medias } = await getMedias();
-  displayMediaData(medias);
-
-  getUpdateLikes();
+   getUpdateLikes();
 };
 
 init();

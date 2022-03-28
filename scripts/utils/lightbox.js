@@ -31,7 +31,7 @@ function lightboxModal {
      }};
 
   
-buildDOM() {
+function buildDOM() {
     const dom = document.createElement("div");
     dom.classList.add("lightbox_background");
     dom.innerHTML = `<button id="lightbox_close" href="" aria-label="fermer la fenêtre"></button>
