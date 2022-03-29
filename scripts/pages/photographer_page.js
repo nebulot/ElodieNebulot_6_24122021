@@ -9,7 +9,6 @@ import { mediaFactory } from "../factories/media.js";
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
 
-
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
 const queryString_url = window.location.search;
@@ -51,90 +50,99 @@ async function displayPhotographerDetail(photographers) {
 
 //gallery photographers : container Media with card and photos/videos
 
-async  function displayMediaData(media) {
+async function displayMediaData(media) {
   const displayMediaContainer = document.getElementById(
     "photograph-section_media"
   );
 
-  const photographerUrlById = urlSearchParams.get('id');
-  const name = urlSearchParams.get('name');
-  
-  
-      media.forEach((media) => {
-      if (media.photographerId == photographerUrlById) {
-      const mediaGallery = mediaFactory(media);
+  const photographerUrlById = urlSearchParams.get("id");
+  const name = urlSearchParams.get("name");
+  const mediasArray = [];
+  media.sort((a, b) => a.likes - b.likes);
+  media.reverse();
+
+  media.forEach((media) => {
+    if (media.photographerId == photographerUrlById) {
+      const mediaGallery = mediaFactory(media, name);
       const userGalleryDOM = mediaGallery.getUserGalleryDOM();
       displayMediaContainer.appendChild(userGalleryDOM);
+      mediasArray.push(media);
     }
   });
+
   //  display dropdown
+  
   const selectList = document.querySelector("#dropdown-list");
-  selectList.addEventListener("change", dropdownList);
-  selectList.addEventListener("change", getUpdateLikes);
-
-  function dropdownList(e, mediasArray) {
-    dropdownSort(e, mediasArray);
-    
+  selectList.addEventListener("change", function (e) {
     displayMediaContainer.innerHTML = "";
-
+    const option = dropdownSort(media, e.target.value);
+    updateMedia(option);
+  });
+ 
+}
+const displayMediaContainer = document.getElementById(
+  "photograph-section_media");
+  function updateMedia(mediasArray) {
     mediasArray.forEach((media) => {
       const mediaGallery = mediaFactory(media);
       const userGalleryDOM = mediaGallery.getUserGalleryDOM();
       displayMediaContainer.appendChild(userGalleryDOM);
     });
   }
+    /*lightboxModal();
+	});*/
 
-}
-  //container likes on footer photographers' page//
-  
-  function getUpdateLikes() {
-    const sectionLikes = document.querySelectorAll(".cards-media_likes");
-    function reloadLikes() {
-      let compteurTotalLike = document.querySelector(".like_total");
-      let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
-      let totalSom = 0;
-      htmlLikes.forEach(function (like) {
-        let ajoutLike = Number(like.innerHTML);
-        totalSom += ajoutLike;
-      });
-      compteurTotalLike.innerHTML = totalSom;
-      return totalSom;
-    }
-    sectionLikes.forEach(function (i) {
-      i.addEventListener("click", function () {
-        let elementCounter = i.querySelector(".cards-media_total_likes");
-        let heartBtn = i.querySelector("cards-media_total_likes_btn");
-        let heart = i.querySelector(".fa-heart");
-        let totalSom = Number(elementCounter.textContent);
-        const liked = i.dataset.liked === "true";
-        i.dataset.liked = !liked;
-        elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
-        if (liked) {
-          reloadLikes();
-          heart.classList.add("fas");
-        } else if (!liked) {
-          reloadLikes();
-          heart.classList.add("fas");
-        }
-      });
+
+//container likes on footer photographers' page//
+
+function getUpdateLikes() {
+  const sectionLikes = Array.from(
+    document.querySelectorAll(".cards-media_likes")
+  );
+
+  function reloadLikes() {
+    let compteurTotalLike = document.querySelector(".like_total");
+    let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
+
+    let totalSom = 0;
+    htmlLikes.forEach(function (like) {
+      let ajoutLike = Number(like.innerHTML);
+      totalSom += ajoutLike;
     });
-  
+    compteurTotalLike.innerHTML = totalSom;
+    return totalSom;
+  }
+  sectionLikes.forEach(function (i) {
+    i.addEventListener("click", function () {
+      let elementCounter = i.querySelector(".cards-media_total_likes");
+      let heart = i.querySelector(".fa-heart");
+      let totalSom = Number(elementCounter.textContent);
+      const liked = i.dataset.liked === "true";
+      i.dataset.liked = !liked;
+      elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
+      if (liked) {
+        reloadLikes();
+        heart.classList.add("fas");
+      } else if (!liked) {
+        reloadLikes();
+        heart.classList.add("fas");
+      }
+    });
+  });
+
   // Launch the lightbox with sorted medias
- }
-
-
-// add price by day and total likes.*/
+}
 
 const init = async () => {
   // Récupère les datas des photographes
   const { media } = await getMedias();
   console.log(media);
   displayMediaData(media);
-  
+
   const { photographers } = await getPhotographers();
   displayPhotographerDetail(photographers);
 
-   getUpdateLikes();
+  getUpdateLikes();
 };
 
 init();

@@ -100,14 +100,6 @@ header .logo {
   color: #525252;
 }
 
-label {
-  display : flex;
-  position : absolute;
-  margin-top : 20px;
-  font-weight: bolder;
-  margin-right: 20px;
-}
-
 .btn,
 .contact_button {
   cursor: pointer;
@@ -150,7 +142,6 @@ label {
   height: 50px;
   width: 150px;
   cursor: pointer;
-  display: flex;
 }
 
 #dropdown-listbox_select {
@@ -158,16 +149,10 @@ label {
   display: inline-block;
 }
 
-}
-
 #dropdown-list #dropdown-list_select:hover {
   background-color : #651414;
   cursor: pointer;
-}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {
-  display: block;
+  border : none;
 }
 
 /* create photograph's mediaGallery by id */
@@ -327,7 +312,7 @@ span {
   background-color: #bb2424;
 }
 
-/*btn2 boutton close form*/
+/*---------------btn2 boutton close form----------------*/
 i#close {
   color: white;
   font-size: 35px;
@@ -341,7 +326,7 @@ i#close {
   text-decoration: none;
 }
 
-/*display compteur like */
+/*-----------------------display compteur like -----------------------*/
 #compteur_like {
   background-color: #d3573c;
   display: flex;

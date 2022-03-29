@@ -13,6 +13,7 @@ function mediaFactory(media) {
 
   function getUserGalleryDOM() {
     const cardGalleryMedia = document.createElement("figure");
+    cardGalleryMedia.className = "photographer-medium_card";
     const linkGalleryCard = document.createElement("a");
     let galleryCard;
     if (video) {
@@ -75,6 +76,6 @@ function mediaFactory(media) {
 
     return heartBtn;
   }
-return { date,price,linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
+return { date,price,linkGalleryPage,linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
 };
 export {mediaFactory};

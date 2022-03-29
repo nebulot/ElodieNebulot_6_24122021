@@ -1,6 +1,7 @@
-function dropdownSort(e, mediasArray) {
+/*function dropdownSort(e, mediasArray) {
+
     if (e.currentTarget.value === 'popularity') {
-      mediasArray.sort((a, b) => (a.likes - b.likes));
+      mediasArray.sort((a, b) => a.likes - b.likes);
       mediasArray.reverse();
     }
   
@@ -26,6 +27,25 @@ function dropdownSort(e, mediasArray) {
         }
         return 0;
       });
+    }
+  }*/
+
+  const dropdownSort = (mediaGallery, option) => {
+    switch (option) {
+      case "popularity":
+        return mediaGallery.sort((a, b) => {
+          return b.likes - a.likes;
+        });
+      case "date":
+        return mediaGallery.sort((a, b) => {
+          return new Date(b.date) - new Date(a.date);
+        });
+      case "title":
+        return mediaGallery.sort((a, b) => a.title.localeCompare(b.title));
+      default:
+        return mediaGallery.sort((a, b) => {
+          return b.likes - a.likes;
+        });
     }
   }
   
