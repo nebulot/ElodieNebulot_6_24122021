@@ -8,6 +8,7 @@ import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
+import {lightboxModal} from "../utils/lightbox.js";
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -88,9 +89,10 @@ const displayMediaContainer = document.getElementById(
       const userGalleryDOM = mediaGallery.getUserGalleryDOM();
       displayMediaContainer.appendChild(userGalleryDOM);
     });
+  
+   lightboxModal();
   }
-    /*lightboxModal();
-	});*/
+
 
 
 //container likes on footer photographers' page//
@@ -130,7 +132,7 @@ function getUpdateLikes() {
     });
   });
 
-  // Launch the lightbox with sorted medias
+  lightboxModal();
 }
 
 const init = async () => {
@@ -142,7 +144,10 @@ const init = async () => {
   const { photographers } = await getPhotographers();
   displayPhotographerDetail(photographers);
 
+  lightboxModal();
+
   getUpdateLikes();
+
 };
 
 init();
