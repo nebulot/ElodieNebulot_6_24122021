@@ -8,7 +8,8 @@ import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
-import { lightboxModal } from "../utils/lightbox.js";
+import { lightboxModal } from "../utils/lightboxForm.js";
+
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -101,7 +102,7 @@ function updateMedia(mediasArray) {
     displayMediaContainer.appendChild(userGalleryDOM);
   });
 
-  lightboxModal();
+ 
 }
 
 //container likes on footer photographers' page//
@@ -140,8 +141,10 @@ function getUpdateLikes() {
       }
     });
   });
-
-  lightboxModal();
+  /*const header = document.querySelector('.header');
+	const app = document.querySelector('.app');
+  header.innerHTML = cardHeaderContent;
+	app.innerHTML = page;*/
 }
 
 const init = async () => {

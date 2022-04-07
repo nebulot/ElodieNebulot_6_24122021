@@ -21,9 +21,10 @@
 <body class="photographer-card">
 
   <header class="photographer-card_header">
+    <a class = "header-link" href="/index.html"></a>
     <img src="../assets/images/logo.png" class="logo" alt="le logotype de la marque" />
   </header>
-  <main class="main">
+  <main class="main" id="main">
 
     <section id="photographer_section">
       <div class="photograph-section_header"></div>
@@ -46,21 +47,19 @@
       <div id="compteur_like" class="compteur_like"></div>
     </section>
 
+  <!-------modal lightbox
+  <div class="lightbox_background">
+    <section class = "modal">
+      <button class = "lightbox_close close" aria-label = "fermer la page rapprochée" href=""></button>
+      <div class = "lightbox_container">
+      <button class = "lightbox_prev" aria-label = "Média précédent" href=""></button>
+      <button class = "lightbox_next" aria-label = "Média suivant" href=""></button>
+      </div>
+    </section>
+  </div>--->
 
-  </main>
-
-  <!-------modal lightbox--->
-  <div class="lightbox_background" id="lightbox-bg">
-    <div class="lightbox">
-      <button class="lightbox_close" href="" aria-label="fermer la fenêtre"></button>
-      <a class="lightbox_prev" href="" aria-label="Image précédente"></a>
-      <a class="lightbox_next" href="" aria-label="Image suivante"></a>
-      <div class="lightbox_container" href=""></div>
-
-    </div>
-  </div>
-
-
+</main>
+  
   <!---------------------------------Contact - modal------------------------------------------->
   <div id="background_modal" class="back_modal" role="dialog" aria-modal="true">
     <aside class="modal">
@@ -103,7 +102,7 @@
   <script type="module" src="/Scripts/pages/photographer_page.js"></script>
   <script src="/Scripts/utils/contactForm.js"></script>
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
-
+  
 </body>
 
 </html>
