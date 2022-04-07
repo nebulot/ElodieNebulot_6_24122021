@@ -8,7 +8,7 @@ import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
-import {lightboxModal} from "../utils/lightbox.js";
+import { lightboxModal } from "../utils/lightbox.js";
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -49,6 +49,19 @@ async function displayPhotographerDetail(photographers) {
   displayLikeContainer.appendChild(userFooterDOM);
 }
 
+function getMediaByPhotographer(media) {
+  const photographerUrlById = urlSearchParams.get("id");
+  const name = urlSearchParams.get("name");
+  const mediasArray = [];
+
+  media.forEach((media) => {
+    if (media.photographerId == photographerUrlById) {
+      mediasArray.push(media);
+    }
+  });
+  return mediasArray;
+}
+
 //gallery photographers : container Media with card and photos/videos
 
 async function displayMediaData(media) {
@@ -63,37 +76,33 @@ async function displayMediaData(media) {
   media.reverse();
 
   media.forEach((media) => {
-    if (media.photographerId == photographerUrlById) {
-      const mediaGallery = mediaFactory(media, name);
-      const userGalleryDOM = mediaGallery.getUserGalleryDOM();
-      displayMediaContainer.appendChild(userGalleryDOM);
-      mediasArray.push(media);
-    }
+    const mediaGallery = mediaFactory(media, name);
+    const userGalleryDOM = mediaGallery.getUserGalleryDOM();
+    displayMediaContainer.appendChild(userGalleryDOM);
+    mediasArray.push(media);
   });
 
   //  display dropdown
-  
+
   const selectList = document.querySelector("#dropdown-list");
   selectList.addEventListener("change", function (e) {
     displayMediaContainer.innerHTML = "";
     const option = dropdownSort(media, e.target.value);
     updateMedia(option);
   });
- 
 }
 const displayMediaContainer = document.getElementById(
-  "photograph-section_media");
-  function updateMedia(mediasArray) {
-    mediasArray.forEach((media) => {
-      const mediaGallery = mediaFactory(media);
-      const userGalleryDOM = mediaGallery.getUserGalleryDOM();
-      displayMediaContainer.appendChild(userGalleryDOM);
-    });
-  
-   lightboxModal();
-  }
+  "photograph-section_media"
+);
+function updateMedia(mediasArray) {
+  mediasArray.forEach((media) => {
+    const mediaGallery = mediaFactory(media);
+    const userGalleryDOM = mediaGallery.getUserGalleryDOM();
+    displayMediaContainer.appendChild(userGalleryDOM);
+  });
 
-
+  lightboxModal();
+}
 
 //container likes on footer photographers' page//
 
@@ -137,8 +146,9 @@ function getUpdateLikes() {
 
 const init = async () => {
   // Récupère les datas des photographes
-  const { media } = await getMedias();
+  let { media } = await getMedias();
   console.log(media);
+  media = getMediaByPhotographer(media);
   displayMediaData(media);
 
   const { photographers } = await getPhotographers();
@@ -147,7 +157,6 @@ const init = async () => {
   lightboxModal();
 
   getUpdateLikes();
-
 };
 
 init();
