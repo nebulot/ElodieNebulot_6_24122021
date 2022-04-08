@@ -7,24 +7,12 @@
   z-index: 10;
   background-color : rgba(202, 202, 202, 0.6);
   animation : lightboxIn .5s;
+  overflow : hidden;
 }
 
-.lightbox {
-position: fixed;
-top: 50vh;
-left: 50vw;
-transform: translate(-50%, -50%);
-z-index: 11;
-margin: auto auto;
-border-radius: 3px;
-width: 50vw;
-min-width: 32rem;
-height: 70vh;
-overflow: hidden;
-}
 
-.lightbox_next,
-.lightbox_prev {
+button.lightbox_next,
+button.lightbox_prev {
   border: none;
   background: url(../assets/icons/chevron.svg) center center / 100% 100%;
   width: 30px;
@@ -67,17 +55,9 @@ overflow: hidden;
   opacity : .5;
 }
 
-.lightbox_container {
-  position : relative;
-  display : flex;
-  align-items : center;
-  justify-content : center;
-  width: 45vw;
-  min-height:100vh;
-}
-
 .lightbox-media_element {
   display: block;
+  z-index : 1240
   object-fit: cover;
   justify-self: center;
   max-width : 80%;
@@ -95,31 +75,23 @@ overflow: hidden;
   color : #901C1C;
 }
 
-/*.lightbox_loader {
+.lightbox_container {
   position : relative;
-  z-index : 1400;
-  left : 426px;
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  width: 45vw;
+  min-height:100vh;
+}
+
+
+
+
+.lightbox_loader {
   width : 60px;
   height: 60px;
   opacity : .5s;
-  background: url(../assets/icons/loader.svg) center center no-repeat;*/
-}
-
-@media screen and (max-width: 1100px) {
-  .lightbox__container {
-   
-    width: 75vw;
-    height: 100vh;
-    
-    grid-template-rows: 3vh 89vh 5vh 3vh;
-   
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .lightbox {
-    max-width: 500px;
-}
+  background: url(../assets/icons/loader.svg) center center no-repeat;
 }
 
 @keyframes lightboxIn {

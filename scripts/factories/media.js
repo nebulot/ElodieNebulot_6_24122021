@@ -18,20 +18,18 @@ function mediaFactory(media) {
     let galleryCard;
     if (video) {
       galleryCard = document.createElement("video");
+
       } else {
       galleryCard = document.createElement("img");
          
     }
     galleryCard.id = id;
-    linkGalleryCard.setAttribute("role", "link");
-    //linkGalleryCard.setAttribute("href", "#");
     linkGalleryCard.addEventListener("click", (e)=>{
       console.log(e.target.id);
     });
-    linkGalleryCard.setAttribute("button", "role");
     linkGalleryCard.className = "photographer-medium_link";
     linkGalleryCard.ariaLabel = title + "cliquer ici pour agrandir";
-    //linkGalleryCard.href = linkGalleryPage;
+    linkGalleryCard.href = linkGalleryPicture;
     galleryCard.src = linkGalleryPicture;
     galleryCard.alt = "";
     galleryCard.ariaLabel = "vue rapprochée"
