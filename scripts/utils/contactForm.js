@@ -26,6 +26,7 @@ function displayModal() {
   });
 
   function closeDisplayModal(e) {
+    e.preventDefault();
     let mainContent = document.getElementByClass("main");
     const modal = document.getElementById("background_modal");
     mainContent.setAttribute("aria-hidden", "true");

@@ -1,4 +1,9 @@
-function mediaFactory(media) {
+
+import {VideoTag} from "../models/mediaTag.js";
+import {ImageTag} from "../models/mediaTag.js";
+
+
+export function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
   const linkGalleryPage = "photographer.html?id=" + id;
@@ -76,4 +81,4 @@ function mediaFactory(media) {
   }
 return { date,price,linkGalleryPage,linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
 };
-export {mediaFactory};
+

@@ -1,12 +1,15 @@
+
+import {lightboxImageTag, lightboxVideoTag} from "../models/lightboxMediaTag.js";
+
+
 export function lightbox() {
   const buildLightbox = (url) => {
-    const body = document.querySelector("body");
-
+    const mainContent = document.querySelector("main");
     const lightboxBgd = document.createElement("div");
     lightboxBgd.className = "lightbox_background";
     lightboxBgd.innerHTML = "";
     lightboxBgd.ariaLabel = "Vue rapprochée du média";
-    body.appendChild(lightboxBgd)
+    mainContent.appendChild(lightboxBgd)
 
     const lightboxBox = document.createElement("section");
     lightboxBox.className = "lightbox";
@@ -37,16 +40,13 @@ export function lightbox() {
   return { buildLightbox };
 };
 
-
-
-
-export function lightboxFactory(type, titleMedia, url) {
+export function lightboxFactory(type, mediaName, url) {
     switch (type) {
       case 'image':
-        lightboxImage('img', titleMedia, url);
+        lightboxImageTag('img', mediaName, url);
         break;
       case 'video':
-        lightboxVideo('video', titleMedia, url);
+        lightboxVideoTag('video', mediaName, url);
         break;
       default:
         console.log('Sorry, media not found');

@@ -1,6 +1,6 @@
 import { lightbox, lightboxFactory } from "../factories/lightboxFactory.js";
 
-export function lightboxModal() {
+ function lightboxModal() {
   //check all medias' links and titles, keep url to manage all, inside lightboxModal
 
   const links = Array.from(
@@ -256,3 +256,9 @@ function onKeyUp(event) {
     }
   }
 }
+
+async function lightboxModalMedia() {
+  lightboxModal();
+}
+
+export {lightboxModalMedia};

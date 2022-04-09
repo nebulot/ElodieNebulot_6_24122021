@@ -8,7 +8,7 @@ import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
-import { lightboxModal } from "../utils/lightboxForm.js";
+import { lightboxModalMedia } from "../utils/lightboxModal.js";
 
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
@@ -102,6 +102,9 @@ function updateMedia(mediasArray) {
     displayMediaContainer.appendChild(userGalleryDOM);
   });
 
+   // Launch the lightbox with sorted medias
+   lightboxModalMedia();
+
  
 }
 
@@ -157,7 +160,7 @@ const init = async () => {
   const { photographers } = await getPhotographers();
   displayPhotographerDetail(photographers);
 
-  lightboxModal();
+  lightboxModalMedia();
 
   getUpdateLikes();
 };
