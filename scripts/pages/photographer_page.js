@@ -8,8 +8,7 @@ import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
-import { lightboxModalMedia } from "../utils/lightboxModal.js";
-
+import { lightboxModal } from "../utils/lightboxForm.js";
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -81,6 +80,8 @@ async function displayMediaData(media) {
     const userGalleryDOM = mediaGallery.getUserGalleryDOM();
     displayMediaContainer.appendChild(userGalleryDOM);
     mediasArray.push(media);
+    
+
   });
 
   //  display dropdown
@@ -103,8 +104,7 @@ function updateMedia(mediasArray) {
   });
 
    // Launch the lightbox with sorted medias
-   lightboxModalMedia();
-
+   lightboxModal();
  
 }
 
@@ -144,10 +144,6 @@ function getUpdateLikes() {
       }
     });
   });
-  /*const header = document.querySelector('.header');
-	const app = document.querySelector('.app');
-  header.innerHTML = cardHeaderContent;
-	app.innerHTML = page;*/
 }
 
 const init = async () => {
@@ -160,7 +156,7 @@ const init = async () => {
   const { photographers } = await getPhotographers();
   displayPhotographerDetail(photographers);
 
-  lightboxModalMedia();
+  lightboxModal();
 
   getUpdateLikes();
 };

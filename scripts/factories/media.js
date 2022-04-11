@@ -1,8 +1,3 @@
-
-import {VideoTag} from "../models/mediaTag.js";
-import {ImageTag} from "../models/mediaTag.js";
-
-
 export function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
@@ -30,7 +25,9 @@ export function mediaFactory(media) {
     }
     galleryCard.id = id;
     linkGalleryCard.addEventListener("click", (e)=>{
+      
       console.log(e.target.id);
+      
     });
     linkGalleryCard.className = "photographer-medium_link";
     linkGalleryCard.ariaLabel = title + "cliquer ici pour agrandir";
@@ -41,6 +38,7 @@ export function mediaFactory(media) {
     galleryCard.className = "photographer-medium_element";
     linkGalleryCard.appendChild(galleryCard);
     cardGalleryMedia.appendChild(linkGalleryCard);
+    console.log(linkGalleryCard);
 
     const cardsFooter = document.createElement("figcaption");
     cardsFooter.className = "cards-media-footer";

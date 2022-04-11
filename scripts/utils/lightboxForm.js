@@ -1,264 +1,179 @@
-import { lightbox, lightboxFactory } from "../factories/lightboxFactory.js";
+import { lightboxFactory } from "../factories/lightboxFactory.js";
 
- function lightboxModal() {
+//DOM element lightbox//
+const body = document.querySelector("body");
+const lightbox = document.querySelector(".lightbox");
+const lightboxBgd = document.querySelector(".lightbox_background");
+const view = document.querySelector(".lightbox_view");
+const lightboxMedia = document.querySelector(".lightbox_media");
+const lightboxTitle = document.querySelector(".lightbox_title");
+const prev = document.querySelector(".lightbox_prev");
+const next = document.querySelector(".lightbox_next");
+const mainContent = document.querySelector("main");
+const btnClose = document.querySelector(".lightbox_close");
+
+// Lightbox open // create carroussel
+const openLightbox = () => {
+  // desactive "main"
+  mainContent.setAttribute("arias-hidden", "true");
+  // active modal
+  lightboxBgd.setAttribute("aria-hidden", "false");
+  // stop scroll arriere plan
+  body.classList.add("no-scroll");
+  // affiche contenu modal
+  lightbox.style.display = "flex";
+  // ajoute "active" au block qui affiche les elements
+  view.classList.add("active");
+  btnClose.addEventListener("click", closeLightbox);
+};
+// CLOSE LIGHTBOX ("click" event)
+const closeLightbox = () => {
+  mainContent.setAttribute("arias-hidden", "false");
+  lightbox.setAttribute("aria-hidden", "true");
+  lightbox.style.display = "none";
+  view.classList.remove("active");
+  // focus sur dernier media choisi
+  const lastMedia = document.querySelector(
+    ".photographer-medium_element.selected"
+  );
+  lastMedia.focus();
+  lastMedia.classList.remove("selected");
+};
+
+//CLOSE LIGHTBOX ("escape" event)
+lightbox.addEventListener("keydown", (e) => {
+  if (e.keyCode === 27) closeLightbox();
+});
+
+console.log(closeLightbox);
+
+// open lightbox when the media selected
+
+export function lightboxModal() {
   //check all medias' links and titles, keep url to manage all, inside lightboxModal
-
+  /*const links = Array.from(
+    document.querySelectorAll(".photographer-medium_link")
+  );
+  let mediaLink = links.map((link) => link.getAttribute("href"));
+  links.forEach((link) => link.addEventListener("click", openLightbox));*/
   const links = Array.from(
     document.querySelectorAll(".photographer-medium_link")
   );
+  links.forEach((link) => link.addEventListener("click", openLightbox));
+  for (let i = 0; i < links.length; i++) {
+    let mediaLink = links[i];
 
-  const titleMedias = Array.from(
-    document.querySelectorAll(".cards-media_title")
-  );
-
-  const imagesUrls = links.map((link) => link.getAttribute("href"));
-
-  links.forEach((link) => link.addEventListener("click", getLightbox));
-
-  // same thinks with photographers and media display
-
-  function getLightbox(e) {
-    e.preventDefault();
-    const lightboxType = lightbox();
-    const url = e.currentTarget.getAttribute("href");
-    lightboxType.buildLightbox(url);
-    targetImage(e);
-    console.log(url);
-  }
-
-  // create function "target Image" target the media
-  //target figcaption > p title when photographers' photo closed
-
-  function targetImage(e) {
-    const url = e.currentTarget.getAttribute("href");
-    let titleMedia = "";
-    titleMedia = e.currentTarget
-      .closest(".photographer-medium_card")
-      .querySelector("figcaption > figure");
-    loadImage(titleMedia, url);
-  }
-  //title media n'hexiste pas ici
-
-  // last create load media to change the cards with next and previous or to close the window
-
-  function loadImage(titleMedia, url) {
-    const lightboxContainer = document.querySelector(".lightbox_container");
-    lightboxContainer.innerHTML = "";
-    const btnClose = document.querySelector(".lightbox_close");
-
-    getImage(titleMedia, url);
-    console.log(titleMedia);
-
-    document.querySelector(".lightbox_next").addEventListener("click", next);
-    document
-      .querySelector(".lightbox_prev")
-      .addEventListener("click", previous);
-    document
-      .querySelector(".lightbox_background")
-      .addEventListener("keyup", changeMedia);
-    document
-      .querySelector(".lightbox_background")
-      .addEventListener("keyup", onKeyUp);
-    document.querySelector(".lightbox_close").addEventListener("click", close);
-    document
-      .querySelector(".lightbox_close")
-      .addEventListener("keyup", onKeyUp);
-
-    setTimeout(() => {
-      function doFocus() {
-        btnClose.focus();
-      }
-      doFocus();
-    }, 300);
-  }
-function getImage(titleMedia, url) {
-  const lightboxContainer = document.querySelector(".lightbox_container");
-
-  //extension
-  let getExtension = url.substring(url.lastIndexOf(".") + 1);
-  console.log(getExtension);
-
-  if (getExtension[0] === "jpg") {
-    lightboxFactory("image", titleMedia, url);
-    const imageElement = document.createElement ("image")
-    imageElement.className = ".lightbox-media_element";
-    const titleMedia = document. createElement("h2")
-    titleMedia.className = "lightbox-media_title lightbox_imgTitle";
-    lightboxContainer.appendChild(imageElement);
-    lightboxContainer.appendChild(titleMedia);
-
-    // Add a loader into 'container'
-    const loader = document.createElement("div");
-    loader.className = ".lightbox_loader";
-    
-    // Remove the loader when the image has loaded
-    imageElement.onload = () => {
-      lightboxContainer.removeChild(loader);
-    };
-  }
-
-  if (getExtension[0] === "mp4") {
-    lightboxFactory("video", titleMedia, url);
-
-    const videoElement = document.createElement("video");
-    videoElement.className = ".lightbox-media_element";
-    const titleMedia = document. createElement("h2")
-    titleMedia.className = "lightbox-media_title lightbox_videoTitle";
-    lightboxContainer.appendChild(videoElement);
-    lightboxContainer.appendChild(titleMedia);
-    
-    // Add a loader into 'container'
-    const loader = document.createElement("div");
-    loader.className = ".lightbox_loader";
-    
-
-    // Remove the loader when the image has loaded
-    videoElement.onload = () => {
-       lightboxContainer.removeChild(loader);
-    };
-   }
-}
-
-//CLOSE LIGHTBOX//
-// close lightbox on keyboard
- 
-function onKeyUp(event) {
-  if (event.key === "Escape") {
-    close(event);
-  } else if (event.key === "Enter") {
-    close(event);
-  }
-}  
-
-//option close lightbox with mouse
-
-  function close(event) {
-    event.preventDefault();
-    let href = "";
-    if (event.currentTarget.querySelector(".lightbox_container")) {
-      href = event.currentTarget.querySelector(
-        ".lightbox_container .lightbox-media_element"
-      ).getAttribute("src");
-    } else if (event.currentTarget.closest(".lightbox")) {
-      href = event.currentTarget
-        .closest(".lightbox")
-        .querySelector(".lightbox_container .lightbox-media_element").getAttribute('src');
-    }
-
-    document
-      .querySelector(".lightbox_close")
-      .removeEventListener("keyup", onKeyUp);
-    document
-      .querySelector(".lightbox_close")
-      .removeEventListener("click", close);
-    document
-      .querySelector(".lightbox_background")
-      .removeEventListener("keyup", onKeyUp);
-  
-
-  function focusOnClose() {
-      const focusOnClose = document.querySelector(
-        '.photographer-medium_link[href="${href}"]'
+    mediaLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      // open lightbox
+      openLightbox();
+      let selectedMedia = links[i].querySelector(
+        ".photographer-medium_element"
       );
-      focusOnClose.focus();
-    }
+      selectedMedia.classList.add("selected");
+      console.log(mediaLink);
+      console.log(links);
 
-    focusOnClose();
-    document.querySelector(".lightbox_background").remove();
-  }
+      // arrow left and right for the navigation
+      lightboxNav();
+      // url media => url lightbox
+      viewMedia();
+      // previous media and next media
+      previousMedia();
+      nextMedia();
+    });
 
-//NEXT//
+    const lightboxNav = () => {
+      if (i == 0) {
+        prev.style.display = "none";
+      }
+      if (i > 0) {
+        prev.style.display = "block";
+      }
 
-  // function next and previous media
-  function next() {
-    let titleMedia = document.querySelector(
-      ".lightbox_container h2"
-    );
-    let url = document
-      .querySelector(".lightbox_container .lightbox-media_element")
-      .getAttribute('src');
-    const lightboxMedia = document.querySelector(".lightbox-media_element");
-    const lightboxTitle = document.querySelector(".lightbox-media_title");
+      if (i < mediaLink.length) {
+        next.style.display = "block";
+      }
+      if (i == mediaLink.length - 1) {
+        next.style.display = "none";
+      }
+    };
 
-    let currentIndex = imagesUrls.findIndex((mediaUrl) => mediaUrl === url);
-    let nextUrl = "";
-    let nextTitleMedia = "";
-    if (currentIndex === imagesUrls.length - 1) {
-      currentIndex = -1;
-    }
+    const viewMedia = () => {
+      const selectedMedia = links[i].querySelector(
+        ".photographer-medium_element"
+      );
+      const url = selectedMedia.src;
+      //extension
+      let getExtension = url.substring(url.lastIndexOf(".") + 1);
+      console.log(getExtension);
+      const video = document.createElement("video");
+      
+      if (getExtension === "mp4") {
+        // create element video "remove"
+        video.classList.add("lightbox_media");
+        video.id = "videoType";
+      }
 
-    nextUrl = imagesUrls[currentIndex + 1];
-    nextTitleMedia = titleMedias[currentIndex + 1].textContent;
-    lightboxMedia.remove();
-    lightboxTitle.remove();
+      window.location.hash = links[i].title + ", closeup view";
+      lightboxMedia.src = selectedMedia.src;
+      lightboxMedia.alt = selectedMedia.alt;
+      lightboxTitle.textContent = selectedMedia.alt;
+      if (typeof selectedMedia.alt === "undefined") {
+        lightboxMedia.replaceWith(video);
+        window.location.hash = links[i].title + ", closeup view";
+        video.src = selectedMedia.src;
+        video.alt = selectedMedia.alt;
+        lightboxTitle.textContent = "Titre du média";
+      } else {
+        video.replaceWith(lightboxMedia); 
+      }
 
-    url = nextUrl;
-    titleMedia = nextTitleMedia;
+      lightboxTitle.focus();
+    };
 
-    document.querySelector(".lightbox_next").removeEventListener("click", next);
-    document
-      .querySelector(".lightbox_prev")
-      .removeEventListener("click", previous);
-    document
-      .querySelector(".lightbox_background")
-      .removeEventListener("keyup", changeMedia);
+    // upload previous media
+    const previousMedia = () => {
+      let selectedMedia = links[i].querySelector(
+        ".photographer-medium_element"
+      );
+      prev.addEventListener("click", (e) => {
+        e.preventDefault();
+        selectedMedia.classList.remove("selected");
+        i--;
+        selectedMedia = links[i].querySelector(".photographer-medium_element");
+        // // add "selected to previous media"
+        selectedMedia.classList.add("selected");
+        lightboxNav();
+        viewMedia();
+      });
 
-    loadImage(titleMedia, url);
-  }
+      // use keyboard arrow to move between Media
+      window.addEventListener("keydown", (e) => {
+        if (e.keyCode === 37) prev.click();
+      });
+    };
 
-  // previous media
+    // upload next media
+    const nextMedia = () => {
+      let selectedMedia = links[i].querySelector(
+        ".photographer-medium_element"
+      );
+      next.addEventListener("click", (e) => {
+        e.preventDefault();
+        selectedMedia.classList.remove("selected");
+        i++;
+        selectedMedia = links[i].querySelector(".photographer-medium_element");
+        // add "selected to next media"
+        selectedMedia.classList.add("selected");
+        lightboxNav();
+        viewMedia();
+      });
 
-  function previous() {
-    let titleMedia = document.querySelector(
-      ".lightbox_container h2"
-    ).textContent;
-    let url = document
-      .querySelector(".lightbox_container .lightbox-media_element")
-      .getAttribute("src");
-    const lightboxMedia = document.querySelector(".lightbox-media_element");
-    const lightboxTitle = document.querySelector(".lightbox-media_title");
-
-    let currentIndex = imagesUrls.findIndex((mediaUrl) => mediaUrl === url);
-    console.log(mediaUrl);
-    let previousUrl = '';
-    let previousTitleMedia = '';
-    if (currentIndex === 0) {
-      currentIndex = imagesUrls.length;
-    }
-
-    previousUrl = imagesUrls[currentIndex - 1];
-    previousTitleMedia = titleMedias[currentIndex - 1].textContent;
-
-    // Remove the heading and media before creating the following
-    lightboxMedia.remove();
-    lightboxTitle.remove();
-
-    url = previousUrl;
-    titleMedia = previousTitleMedia;
-
-    document.querySelector(".lightbox_next").removeEventListener("click", next);
-    document
-      .querySelector(".lightbox_prev")
-      .removeEventListener("click", previous);
-    document
-      .querySelector(".lightbox_background")
-      .removeEventListener("keyup", changeMedia);
-
-    loadImage(titleMedia, url);
-  }
-
-  function changeMedia(e) {
-    if (e.key === "ArrowRight") {
-      next();
-    }
-    if (e.key === "ArrowLeft") {
-      previous();
-    }
+      // use keyboard arrow to move between Media
+      window.addEventListener("keydown", (e) => {
+        if (e.keyCode === 39) next.click();
+      });
+    };
   }
 }
-
-async function lightboxModalMedia() {
-  lightboxModal();
-}
-
-export {lightboxModalMedia};

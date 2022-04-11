@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="photographer-card">
+<body class="">
 
   <header class="photographer-card_header">
     <a class="header-link" href="/index.html"></a>
@@ -48,6 +48,22 @@
     </section>
 
     <!-------modal lightbox--->
+    <section class="lightbox">
+      <div aria-label="Vue rapprochée du média" id="openLightbox" class="lightbox_background">
+        <div class="lightbox_container">
+          <button title="fermer la fênetre des médias" role="button" class="lightbox_close">
+          </button>
+          <button title="Média précédent" role="link" class="lightbox_prev">
+          </button>
+          <div aria-label="image closeup view" class="lightbox_view">
+            <img src="" alt="" id="imageType" class="lightbox_media">
+            <p tabindex="0" class="lightbox_title"></p>
+          </div>
+          <button title="Média suivant" role="link" class="lightbox_next">
+          </button>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -89,8 +105,9 @@
   </div>
 
   <!----Pages--------------------------------------->
+
   <script type="module" src="/Scripts/pages/photographer_page.js"></script>
-  <script src="/Scripts/utils/contactForm.js"></script>
+  <script type="text/javascript" src="/Scripts/utils/contactForm.js"></script>
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
 
 </body>
