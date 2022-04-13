@@ -108,18 +108,15 @@ export function lightboxModal() {
       let getExtension = url.substring(url.lastIndexOf(".") + 1);
       console.log(getExtension);
       const video = document.createElement("video");
-      
-      if (getExtension === "mp4") {
-        // create element video "remove"
-        video.classList.add("lightbox_media");
-        video.id = "videoType";
-      }
-
+      video.classList.add("lightbox_media");
+      video.id = "videoType";
+      // create element video "remove"
       window.location.hash = links[i].title + ", closeup view";
       lightboxMedia.src = selectedMedia.src;
       lightboxMedia.alt = selectedMedia.alt;
-      lightboxTitle.textContent = selectedMedia.alt;
-      if (typeof selectedMedia.alt === "undefined") {
+      lightboxTitle.textContent = selectedMedia.alt;      
+      
+      if (getExtension === "mp4") {
         lightboxMedia.replaceWith(video);
         window.location.hash = links[i].title + ", closeup view";
         video.src = selectedMedia.src;

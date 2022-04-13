@@ -23,7 +23,8 @@ async function displayPhotographerDetail(photographers) {
   const photographSectionBtn = document.querySelector(
     ".photograph-section_button"
   );
-  const photographSectionPhoto = document.querySelector(
+  
+   const photographSectionPhoto = document.querySelector(
     ".photograph-section_picture"
   );
   const displayLikeContainer = document.getElementById("compteur_like");

@@ -5,7 +5,8 @@ function displayModal() {
   const submitForm = document.getElementById("form-submit_btn");
   const btn = document.getElementById("contact_button");
   
-  
+
+
 
   //open the form when click on the button "contact me"
 

@@ -18,7 +18,6 @@ export function mediaFactory(media) {
     let galleryCard;
     if (video) {
       galleryCard = document.createElement("video");
-
       } else {
       galleryCard = document.createElement("img");
          
@@ -30,10 +29,10 @@ export function mediaFactory(media) {
       
     });
     linkGalleryCard.className = "photographer-medium_link";
-    linkGalleryCard.ariaLabel = title + "cliquer ici pour agrandir";
+    linkGalleryCard.ariaLabel = "cliquer ici pour agrandir";
     linkGalleryCard.href = linkGalleryPicture;
     galleryCard.src = linkGalleryPicture;
-    galleryCard.alt = "";
+    galleryCard.alt = title ;
     galleryCard.ariaLabel = "vue rapprochée"
     galleryCard.className = "photographer-medium_element";
     linkGalleryCard.appendChild(galleryCard);

@@ -26,20 +26,20 @@
   </header>
   <main class="main" id="main">
 
-    <section id="photographer_section">
+    <section id="photographer_section" aria-label ="informations sur le photographe">
       <div class="photograph-section_header"></div>
       <div class="photograph-section_button"></div>
       <div class="photograph-section_picture"></div>
     </section>
 
 
-    <section id="photographer-gallery">
+    <section id="photographer-gallery" aria-label = "gallerie photos du photographe">
       <div class="orderBy">
         <label for="dropdown-listbox" class="dropdown-listbox">Trier par
           <select name="dropdown-list" id="dropdown-list" aria-labelledby="triez par dropdown-list">
-            <option value="popularity" selected>Popularité</option>
-            <option value="date">Date</option>
-            <option value="title"> Titre </option>
+            <option  value="popularity" selected>Popularité</option>
+            <option  value="date">Date</option>
+            <option  value="title"> Titre </option>
           </select>
         </label>
       </div>
@@ -68,17 +68,19 @@
   </main>
 
   <!---------------------------------Contact - modal------------------------------------------->
-  <div id="background_modal" class="back_modal" role="dialog" aria-modal="true">
+  <div id="background_modal" class="back_modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
     <aside class="modal">
       <section class="modal_container">
         <header class="modal_container-header">
-          <h2 id="modal-container_title">
-            <span class="title_contact">Contactez-moi <br> ${photograph.name} </span>
-          </h2>
+          <div id="modal-container_title">
+            <span class="title_contact ">Contactez-moi</span>
+            <h2 class ="contact_name"></h2>
+            
+            </div>
           <i id="close" class="fas fa-times" aria-label="fermer la fenêtre"></i>
         </header>
 
-        <form class="formulaire">
+        <form class="formulaire" name="contact">
           <div class="form">
             <label for="firstname" class="form-label">Prénom</label>
             <input class="form-input" type="text" name="firstname" id="firstname" required>

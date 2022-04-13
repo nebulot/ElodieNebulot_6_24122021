@@ -66,23 +66,25 @@ button.lightbox_prev {
 }
 
 .lightbox_media {
-  display: block;
-  z-index : 1240
-  object-fit: cover;
+  height : 500px;
+  object-fit : cover;
+  max-width: 80%;
   justify-self: center;
-  max-width : 80%;
-  height : auto;
-  box-shadow: 6px 5px 12px rgba(82, 82, 82, 0.2);
+  box-shadow: 6px 5px 12px rgba(82, 82, 82, 30%);
   animation : lightboxIn .5s;
+  margin-left : 70px;
+}
+
+.lightbox_media:hover  {
+  transform: none;
+  outline: none;
 }
 
 .lightbox_title {
-  font-weight: 200;
-  z-index: 1240;
-  position: fixed;
-  top: 524px;
-  right: 784px;
+  font-size : larger;
   color : #901C1C;
+  display : flex;
+  margin-left : 75px;
 }
 
 .lightbox_view {
@@ -93,8 +95,10 @@ position: relative;
 max-width: 85%;
 margin: auto;
 display: flex;
+flex-direction : column;
 flex-wrap: wrap;
 justify-content: center;
+margin-top: 50px;
 }
 
 @keyframes lightboxIn {

@@ -46,6 +46,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   margin-top: 60px;
+  margin-bottom: 20px;
   align-content: center;
   align-items: center;
   justify-items: center;
@@ -78,6 +79,7 @@ header .logo {
   width: 180px;
   border-radius: 0px;
   height: auto;
+  box-shadow:none;
 }
 
 .photograph-section_header {
@@ -124,24 +126,27 @@ header .logo {
 }
 
 // create dropdown toogle
+
 #dropdown-listbox_select {
-  position : absolute; 
-  cursor : pointer;
-  background : ;
+  position: absolute;
+  cursor: pointer;
+  background: ;
 }
 
 #dropdown-list {
-  position : relative;
+  position: relative;
   background-color: #911c1c;
   color: #fff;
   font-size: 16px;
   padding-left: 20px;
+  margin-left: 10px;
   font-weight: 500;
   border-radius: 5px;
   border: none;
   height: 50px;
   width: 150px;
   cursor: pointer;
+  
 }
 
 #dropdown-listbox_select {
@@ -150,10 +155,12 @@ header .logo {
 }
 
 #dropdown-list #dropdown-list_select:hover {
-  background-color : #651414;
+  background-color: #651414;
   cursor: pointer;
-  border : none;
+  border: none;
 }
+
+
 
 /* create photograph's mediaGallery by id */
 
@@ -163,6 +170,7 @@ header .logo {
   margin-top: 60px;
   gap: 40px;
 }
+
 #photographer-section_media a {
   justify-self: center;
   display: flex;
@@ -179,6 +187,7 @@ figure {
   margin: 2px;
   width: 100%;
   height: 350px;
+  transition: all 0.5s ease;
 }
 
 img,
@@ -189,6 +198,14 @@ video {
   border-radius: 10px;
   cursor: pointer;
   height: 300px;
+  box-shadow: 6px 5px 12px rgb(82 82 82 / 30%);
+}
+
+img:hover,
+video:hover {
+  transform: scale(1.1);
+  transform-origin: 50% 50%;
+  outline: none;
 }
 
 .cards-media-footer {
@@ -246,6 +263,7 @@ span {
   display: flex;
   flex-direction: column;
   margin-bottom: 0;
+  margin-top: 20px;
 }
 
 .title_contact,
@@ -254,6 +272,10 @@ span {
   font-weight: 600;
   margin: 0;
   color: black;
+}
+
+h2.contact_name {
+  margin-top: 0px;
 }
 
 .formulaire {
@@ -267,7 +289,7 @@ span {
   font-size: 20px;
   margin-top: 4px;
   margin-bottom: 2px;
-  position:static;
+  position: static;
 }
 
 .form {
@@ -353,4 +375,3 @@ i#close {
   margin-left: 40px;
   font-size: 20px;
 }
-

@@ -44,7 +44,12 @@ function photographersCard(photographer) {
     btn.className = "form-submit_btn ";
     btnContainer.appendChild(btn);
 
-    return btnContainer;
+    // create modal name ( link with the button "contact me");
+    const modal = document.getElementById("background_modal")
+    const formName = document.querySelector(".contact_name");
+    formName.textContent = name;
+    
+    return btnContainer
   }
 
   function userCompteurLikes() {
