@@ -6,8 +6,6 @@ function displayModal() {
   const btn = document.getElementById("contact_button");
   
 
-
-
   //open the form when click on the button "contact me"
 
   btn.onclick = () => {

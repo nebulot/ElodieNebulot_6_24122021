@@ -1,5 +1,7 @@
+/* css for photographer_page.html "page photographe"*/
 body {
   margin: 50px;
+  font-family:Arial, Trebuchet MS,"DM Sans", sans-serif;
 }
 
 .back_modal {
@@ -374,4 +376,9 @@ i#close {
 .compteur-section_price {
   margin-left: 40px;
   font-size: 20px;
+}
+
+.like_total {
+  color : black;
+  font-weight : 600;
 }

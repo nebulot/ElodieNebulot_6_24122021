@@ -1,3 +1,5 @@
+/*css for lightbox*/
+
 .no-scroll {
   overflow: hidden;
 }
@@ -82,6 +84,7 @@ button.lightbox_prev {
 
 .lightbox_title {
   font-size : larger;
+
   color : #901C1C;
   display : flex;
   margin-left : 75px;

@@ -12,6 +12,12 @@ const next = document.querySelector(".lightbox_next");
 const mainContent = document.querySelector("main");
 const btnClose = document.querySelector(".lightbox_close");
 
+// create element video to remove img on video ("mp4")
+const video = document.createElement("video");
+      video.classList.add("lightbox_media");
+      video.id = "videoType";
+      video.setAttribute("controls", "");
+
 // Lightbox open // create carroussel
 const openLightbox = () => {
   // desactive "main"
@@ -71,7 +77,6 @@ export function lightboxModal() {
         ".photographer-medium_element"
       );
       selectedMedia.classList.add("selected");
-      console.log(mediaLink);
       console.log(links);
 
       // arrow left and right for the navigation
@@ -99,6 +104,8 @@ export function lightboxModal() {
       }
     };
 
+
+    // const view Media click on next and previous arrow
     const viewMedia = () => {
       const selectedMedia = links[i].querySelector(
         ".photographer-medium_element"
@@ -107,9 +114,7 @@ export function lightboxModal() {
       //extension
       let getExtension = url.substring(url.lastIndexOf(".") + 1);
       console.log(getExtension);
-      const video = document.createElement("video");
-      video.classList.add("lightbox_media");
-      video.id = "videoType";
+      
       // create element video "remove"
       window.location.hash = links[i].title + ", closeup view";
       lightboxMedia.src = selectedMedia.src;

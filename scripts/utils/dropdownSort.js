@@ -1,4 +1,4 @@
-
+// create dropdownSort toogle sort the gallery by Popularity, Date and title//
 
   const dropdownSort = (mediaGallery, option) => {
     switch (option) {
