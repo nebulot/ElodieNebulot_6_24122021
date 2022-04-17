@@ -2,8 +2,8 @@
 
 ## Projet 6 : Créez un site accessible pour une plateforme de photographes
 
-FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. Ils ont récemment levé des fonds et aimeraient mettre à jour leur site web. 
-                    ______________________________________________________________
+FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. Ils ont récemment levé des fonds et aimeraient mettre à jour leur site web. <br/>
+                    ______________________________________________________________<br/>
 Leur site est obsolète et a besoin d'être remanié.
 "Notre site a été construit il y a plus de dix ans, et nous n'avons pas eu l'occasion de
 le mettre à jour jusqu'à présent. Nous venons de lever des fonds et nous aimerions
@@ -15,7 +15,7 @@ Livret de suivi des étapes fournit par OPENCLASSROOM
 
 ### Consignes générales 
 1️⃣ Utilisez des éléments HTML "sémantiques" qui décrivent leur intention autant
-que possible, au lieu de mettre des éléments <div> et <span> partout.
+que possible, au lieu de mettre des éléments "div" et "span" partout.
 2️⃣ Utilisation de VisualStudio Code<br/>
 Les fichiers HTML, CSS et JavaScript sont séparés et le code doit être commenté à chaque modification (décrire chaque fonction et chaque classe, et plus de détails sur certaines parties si nécessaire).<br/>
 3️⃣ Lorsque vous devez créer un élément personnalisé, ajoutez des attributs ARIA
@@ -31,14 +31,12 @@ KeyboardEvent.code.).<br/>
  
 
 ## Ressources et documentations :
-[Maquettes de l'application] 🔗https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1
-[Lien github à forker] 🔗https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json
+[Maquettes de l'application] (🔗https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)<br/>
+[Lien github à forker] (🔗https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)
 
 ## Accessibilité et contrôles 
 -W3C
-
--Achecker
-🔗https://achecker.achecks.ca
-WCAG 2.0 (Level AA))
+-Achecker (🔗https://achecker.achecks.ca)<br/>
+WCAG 2.0 (Level AA))<br/>
 -Utilisez un lecteur d'écran gratuit pour vous faire une idée de ce que
 représente l'utilisation du site pour une personne malvoyante.
