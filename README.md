@@ -9,13 +9,13 @@ Leur site est obsolète et a besoin d'être remanié.
 le mettre à jour jusqu'à présent. Nous venons de lever des fonds et nous aimerions
 que votre équipe le transforme d'un site statique à un site dynamique".
 
-Livret de suivi des étapes fournit par OPENCLASSROOM
-[Indication à suivre étape par étape]
+Livret de suivi des étapes fournit par OPENCLASSROOM <br/>
+[Indication à suivre étape par étape]<br/>
 🔗https://course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/P6+Front-End+-+Etapes+cles.pdf
 
 ### Consignes générales 
 1️⃣ Utilisez des éléments HTML "sémantiques" qui décrivent leur intention autant
-que possible, au lieu de mettre des éléments "div" et "span" partout.
+que possible, au lieu de mettre des éléments "div" et "span" partout.<br/>
 2️⃣ Utilisation de VisualStudio Code<br/>
 Les fichiers HTML, CSS et JavaScript sont séparés et le code doit être commenté à chaque modification (décrire chaque fonction et chaque classe, et plus de détails sur certaines parties si nécessaire).<br/>
 3️⃣ Lorsque vous devez créer un élément personnalisé, ajoutez des attributs ARIA
@@ -35,7 +35,7 @@ KeyboardEvent.code.).<br/>
 [Lien github à forker] (🔗https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)
 
 ## Accessibilité et contrôles 
--W3C
+-W3C<br/>
 -Achecker (🔗https://achecker.achecks.ca)<br/>
 WCAG 2.0 (Level AA))<br/>
 -Utilisez un lecteur d'écran gratuit pour vous faire une idée de ce que
