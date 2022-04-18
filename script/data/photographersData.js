@@ -5,7 +5,7 @@
 const getPhotographers = async () => {
     let photographers;
 
-  const res = await fetch("../Data/FishEyeData.json", { mode: "no-cors" });
+  const res = await fetch("../dataJson/FishEyeData.json", { mode: "no-cors" });
   if (!res.ok) {
     throw "Invalid Error : Fetch Invalid";
   }
