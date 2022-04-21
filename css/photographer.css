@@ -132,8 +132,7 @@ header .logo {
 #dropdown-listbox_select {
   position: absolute;
   cursor: pointer;
-  background: ;
-}
+  }
 
 #dropdown-listbox {
   position: relative;

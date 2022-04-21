@@ -4,7 +4,6 @@ body {
     margin: 0;
 }
 
-
 header {
     display: grid;
     grid-template-columns:30% 42% 30%;
@@ -80,13 +79,6 @@ font-weight:bolder;
 #floating-btn:hover, #floating-btn:hover {
     background-color : #901C1C;
     color: white;    
-    //transform: translate(0, 50%);
-}
-
-.hashtags {
-    grid-columns-start: 1;
-    grid-columns-end: 4;
-    margin: auto;
 }
 
 article {

@@ -1,5 +1,10 @@
 /*css for lightbox*/
 
+body {
+  margin: 50px;
+  font-family:Arial, Trebuchet MS,"DM Sans", sans-serif;
+}
+
 .no-scroll {
   overflow: hidden;
 }
