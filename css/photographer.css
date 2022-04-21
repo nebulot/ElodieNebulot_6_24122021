@@ -135,7 +135,7 @@ header .logo {
   background: ;
 }
 
-#dropdown-list {
+#dropdown-listbox {
   position: relative;
   background-color: #911c1c;
   color: #fff;
@@ -156,7 +156,7 @@ header .logo {
   display: inline-block;
 }
 
-#dropdown-list #dropdown-list_select:hover {
+#dropdown-listbox #dropdown-list_select:hover {
   background-color: #651414;
   cursor: pointer;
   border: none;

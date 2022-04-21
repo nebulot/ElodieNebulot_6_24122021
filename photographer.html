@@ -7,9 +7,9 @@
   <meta name="description" content="FishEye est un site web qui héberge les travaux de photographes indépendants" />
   <meta name="author" content="Elodie Nebulot" />
   <meta name="keywords" content="Photographer, Photographies, Freelance, Photos, Photographe" />
-  
-  
-  
+
+
+
   <title>Fisheye - photographe </title>
 
   <!--Styles-->
@@ -23,24 +23,25 @@
 
   <header class="photographer-card_header">
     <a class="header-link" href="index.html" title="retour à la page d'accueil">
-    <img src="assets/images/logo.png" class="logo" alt="le logotype de la marque"> </a>
+      <img src="assets/images/logo.png" class="logo" alt="le logotype de la marque">
+    </a>
   </header>
   <main class="main" id="main">
 
-    <section id="photographer_section" aria-label ="informations sur le photographe">
+    <section id="photographer_section" aria-label="informations sur le photographe">
       <div class="photograph-section_header"></div>
       <div class="photograph-section_button"></div>
       <div class="photograph-section_picture"></div>
     </section>
 
 
-    <section id="photographer-gallery" aria-label = "gallerie photos du photographe">
+    <section id="photographer-gallery" aria-label="gallerie photos du photographe">
       <div class="orderBy">
         <label for="dropdown-listbox" class="dropdown-listbox">Trier par
-          <select id="dropdown-listbox" name="dropdown-list"  aria-label="Order by">
-            <option  value="popularity" selected>Popularité</option>
-            <option  value="date">Date</option>
-            <option  value="title"> Titre </option>
+          <select id="dropdown-listbox" name="dropdown-list" aria-label="Order by">
+            <option value="popularity" selected>Popularité</option>
+            <option value="date">Date</option>
+            <option value="title"> Titre </option>
           </select>
         </label>
       </div>
@@ -56,7 +57,7 @@
           </button>
           <button title="Média précédent" role="link" class="lightbox_prev">
           </button>
-          <div  class="lightbox_view" aria-label="image closeup view">
+          <div class="lightbox_view" aria-label="image closeup view">
             <img src="" alt="" id="imageType" class="lightbox_media">
             <p tabindex="0" class="lightbox_title"></p>
           </div>
@@ -69,15 +70,15 @@
   </main>
 
   <!--Contact - modal-->
-  <div id="background_modal" class="back_modal" role="dialog" aria-modal="true" >
+  <div id="background_modal" class="back_modal" role="dialog" aria-modal="true">
     <aside class="modal">
       <section class="modal_container">
         <header class="modal_container-header">
           <div id="modal-container_title">
             <span class="title_contact ">Contactez-moi</span>
-            <p class ="contact_name"></p>
-            
-            </div>
+            <p class="contact_name"></p>
+
+          </div>
           <i id="close" class="fas fa-times" aria-label="fermer la fenêtre"></i>
         </header>
 
@@ -100,7 +101,8 @@
           </div>
         </form>
         <div class="form-submit">
-          <button type="submit" id="form-submit_btn" class="form-submit_btn" alt="envoyer le formulaire">Envoyer</button>
+          <button type="submit" id="form-submit_btn" class="form-submit_btn"
+            alt="envoyer le formulaire">Envoyer</button>
         </div>
       </section>
     </aside>
@@ -109,7 +111,7 @@
   <!--Pages-->
 
   <script type="module" src="script/pages/photographer_page.js"></script>
-  <script  src="script/utils/contactForm.js"></script>
+  <script src="script/utils/contactForm.js"></script>
   <script src="https://kit.fontawesome.com/b012d5ddf3.js" crossorigin="anonymous"></script>
 
 </body>

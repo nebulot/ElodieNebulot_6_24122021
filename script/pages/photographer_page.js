@@ -87,7 +87,7 @@ async function displayMediaData(media) {
 
   //  display dropdown
 
-  const selectList = document.querySelector("#dropdown-list");
+  const selectList = document.querySelector("#dropdown-listbox");
   selectList.addEventListener("change", function (e) {
     displayMediaContainer.innerHTML = "";
     const option = dropdownSort(media, e.target.value);
