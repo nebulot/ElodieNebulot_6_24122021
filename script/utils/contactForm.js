@@ -56,9 +56,7 @@ function displayModal() {
         ", Email: " + emailInput,
         ", Message: " + messageInput
       );
-
-      modal.classList.remove("back_modal");
-      modal.innerHTML = "";
+      modal.style.display = "none";
     });
   }
 }

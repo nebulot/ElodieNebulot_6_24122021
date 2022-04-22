@@ -68,6 +68,7 @@ export function lightboxModal() {
   links.forEach((link) => link.addEventListener("click", openLightbox));
   for (let i = 0; i < links.length; i++) {
     let mediaLink = links[i];
+    //console.log(links[i]);
 
     mediaLink.addEventListener("click", (e) => {
       e.preventDefault();
@@ -87,6 +88,7 @@ export function lightboxModal() {
       previousMedia();
       nextMedia();
     });
+    //console.log(links[i]);
 
     const lightboxNav = () => {
       if (i == 0) {
@@ -114,6 +116,8 @@ export function lightboxModal() {
       //extension
       let getExtension = url.substring(url.lastIndexOf(".") + 1);
       console.log(getExtension);
+      console.log(links[i]);
+
       
       // create element video "remove"
       window.location.hash = links[i].title + ", closeup view";

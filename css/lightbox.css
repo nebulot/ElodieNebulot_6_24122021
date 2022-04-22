@@ -5,9 +5,9 @@ body {
   font-family:Arial, Trebuchet MS,"DM Sans", sans-serif;
 }
 
-.no-scroll {
+/*.no-scroll {
   overflow: hidden;
-}
+}*/
 
 .lightbox {
   display : none;
