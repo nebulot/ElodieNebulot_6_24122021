@@ -7,9 +7,9 @@ import { photographersCard } from "../factories/photographersCard.js";
 import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
-
-import { lightboxModal } from "../utils/lightboxForm.js";
 import { dropdownSort } from "../utils/dropdownSort.js";
+import { lightboxModal } from "../utils/lightboxForm.js";
+
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -78,12 +78,12 @@ async function displayMediaData(media) {
   media.reverse();
 
   media.forEach((media) => {
+    if (media.photographerId == photographerUrlById) {
     const mediaGallery = mediaFactory(media, name);
     const userGalleryDOM = mediaGallery.getUserGalleryDOM();
     displayMediaContainer.appendChild(userGalleryDOM);
     mediasArray.push(media);
-    
-
+    }
   });
 
   //  display dropdown
@@ -94,6 +94,7 @@ async function displayMediaData(media) {
     const option = dropdownSort(media, e.target.value);
     updateMedia(option);
   });
+  selectList.addEventListener("change", getUpdateLikes);
 }
 const displayMediaContainer = document.getElementById(
   "photograph-section_media"
