@@ -3,8 +3,8 @@ import { getMedias } from "../data/mediaData.js";
 import { getPhotographers } from "../data/photographersData.js";
 
 //import photographerCard display, display media card
-import { photographersCard } from "../factories/photographersCard.js";
-import { mediaFactory } from "../factories/media.js";
+import { photographersCard } from "../templates/photographersCard.js";
+import { mediaFactory } from "../templates/media.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";

@@ -4,7 +4,7 @@ import {getPhotographers} from '../data/photographersData.js';
 
 //display photographer card on index.js
 
-import {photographerFactory} from '../factories/photographerIndex.js';
+import {photographerFactory} from '../templates/photographerIndex.js';
 
 
 async function displayData(photographers) {
