@@ -16,7 +16,10 @@
         return mediaGallery.sort((a, b) => {
           return b.likes - a.likes;
         });
+        
     }
+    
   }
+  console.log(likes);
   
   export { dropdownSort };

@@ -7,8 +7,9 @@ import { photographersCard } from "../factories/photographersCard.js";
 import { mediaFactory } from "../factories/media.js";
 
 //import dropdown select
-import { dropdownSort } from "../utils/dropdownSort.js";
+
 import { lightboxModal } from "../utils/lightboxForm.js";
+import { dropdownSort } from "../utils/dropdownSort.js";
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
