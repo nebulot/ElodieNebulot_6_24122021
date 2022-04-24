@@ -1,12 +1,23 @@
+import { photographersMediaFactory } from "../factories/photographersMediaFactory.js";
+
 export function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
   const linkGalleryPage = "photographer.html?id=" + id;
   let linkGalleryPicture = "./assets/images/" + photographerId + "/";
+  //choice video or image   
   if (video) {
     linkGalleryPicture = linkGalleryPicture + video;
-  } else {
+  } 
+  if (image) {
     linkGalleryPicture = linkGalleryPicture + image;
+  }
+  // now choice with the factory pattern 
+  if (image) {
+    photographersMediaFactory('image', image, linkGalleryPicture);
+  }
+  if (video) {
+    photographersMediaFactory('video', video, linkGalleryPicture);
   }
 
   //create gallery media by photographers' id 

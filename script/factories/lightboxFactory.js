@@ -1,10 +1,10 @@
 export function lightboxFactory(type, url) {
   switch (type) {
     case 'image':
-      lightboxImageTag('img',  url);
+      lightboxImage('img',  url);
       break;
     case 'video':
-      lightboxVideoTag('video', url);
+      lightboxVideo('video', url);
       break;
     default:
       console.log('Sorry, media not found');
