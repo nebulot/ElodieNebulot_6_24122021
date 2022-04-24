@@ -44,7 +44,6 @@ export function mediaFactory(media) {
     linkGalleryCard.href = linkGalleryPicture;
     galleryCard.src = linkGalleryPicture;
     galleryCard.alt = title ;
-    galleryCard.ariaLabel = "vue rapprochée"
     galleryCard.className = "photographer-medium_element";
     linkGalleryCard.appendChild(galleryCard);
     cardGalleryMedia.appendChild(linkGalleryCard);

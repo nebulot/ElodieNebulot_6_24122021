@@ -1,4 +1,5 @@
 import { ImageTag } from "../models/image";
+import { VideoTag } from "../models/video";
 
 export function photographersMediaFactory(type,url) {
     switch (type) {

@@ -1,28 +1,25 @@
-export function LightboxVideoTag(videoTag, videoName, url) {
+export function LightboxVideo(videoName, url) {
     const ext = getExtension(url);
   
     if (ext[0] === 'mp4') {
       const obj = {
-        elementName: `${videoTag}`,
         classIdAttr: {
-          className: 'media__cardImg lightbox-video lightbox-media',
+          className: "lightbox_media",
+          id : "videoType",
           src: url,
           alt: videoName,
           controls: 'controls',
         },
         textContent: undefined,
-        appendTo: 'div.lightbox__container',
+        appendTo: "div.lightbox_view",
       };
       const videoElement = createElement(
-        obj.elementName,
         obj.classIdAttr,
         obj.textContent,
         obj.appendTo,
       );
-  
-      return { videoElement };
-    }
+     }
     
-    console.log('Sorry, this is not a valid format of video');
+    console.log("Sorry, unknow format Type");
   }
   

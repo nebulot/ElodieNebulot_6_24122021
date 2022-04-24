@@ -1,21 +1,19 @@
-export function ImageTag(imgTag, imgName, altText, url) {
+export function ImageTag(imgName, url) {
     const ext = getExtension(imgName);
   
     if (ext[0] === 'jpg') {
       const obj = {
-        elementName: `${imgTag}`,
         classIdAttr: {
-          className: 'media__cardImg',
+          className: "photographer-medium_element",
           src: url,
-          alt: '',
+          alt: "",
         },
         textContent: undefined,
-        appendTo: 'div.media__card__wrapper',
+        appendTo: "figure.photographer-medium_card",
       };
-      return createElement(obj.elementName, obj.classIdAttr, obj.textContent, obj.appendTo);
+      return createElement(obj.classIdAttr, obj.textContent, obj.appendTo);
     }
-    // eslint-disable-next-line no-console
-    console.log('Sorry, this is not a valid format of image');
+    console.log("Sorry, unknow format Type");
   }
   
   

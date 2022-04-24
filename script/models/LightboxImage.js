@@ -1,18 +1,18 @@
-export function LightboxImage(imgTag, imgName, url) {
+export function LightboxImage(imgName, url) {
     const ext = getExtension(url);
     if (ext[0] === 'jpg') {
       const obj = {
-        elementName: `${imgTag}`,
         classIdAttr: {
-          className: 'lightbox__image lightbox-media',
+          className: "lightbox_media",
+          id:"imageType",
           src: url,
           alt: imgName,
         },
         textContent: undefined,
-        appendTo: 'div.lightbox__container',
+        appendTo: "div.lightbox_view",
       };
-      return createElement(obj.elementName, obj.classIdAttr, obj.textContent, obj.appendTo);
+      return createElement(obj.classIdAttr, obj.textContent, obj.appendTo);
     }
     
-    console.log('Sorry, this is not a valid format of image');
+    console.log("Sorry, unknow format Type");
 }

@@ -1,30 +1,24 @@
-export function VideoTag(tag, videoName, altText, url) {
+export function VideoTag(videoName, url) {
     const ext = getExtension(videoName);
   
     if (ext[0] === 'mp4') {
       const obj = {
-        elementName: `${tag}`,
         classIdAttr: {
-          className: 'media__cardImg photographer-video',
+          className: "photographer-medium_element element_video ",
           src: url,
-          ariaLabel: '',
-          controls: 'controls',
+          ariaLabel: "",
+          controls: "controls",
         },
         textContent: undefined,
-        appendTo: 'div.media__card__wrapper',
+        appendTo: "figure.photographer-medium_card",
       };
       const videoElement = createElement(
-        obj.elementName,
         obj.classIdAttr,
         obj.textContent,
         obj.appendTo,
       );
-  
-      addVideoControls();
-  
-      return { videoElement, addVideoControls };
     }
-    // eslint-disable-next-line no-console
-    console.log('Sorry, this is not a valid format of video');
+    
+    console.log("Sorry, unknow format Type");
   }
   
