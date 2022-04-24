@@ -1,14 +1,13 @@
 export function LightboxVideo(videoName, getExtension, url) {
-    const ext = getExtension(url);
+    
   
-    if (ext[0] === 'mp4') {
+    if (getExtension === 'mp4') {
       const obj = {
         classIdAttr: {
-          className: "lightbox_media",
-          id : "videoType",
+          className: "lightbox_media element_video",
           src: url,
           alt: videoName,
-          controls: 'controls',
+          controls: "controls",
         },
         textContent: undefined,
         appendTo: "div.lightbox_view",

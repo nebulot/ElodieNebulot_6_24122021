@@ -3,7 +3,7 @@ export function VideoTag(getExtension, url) {
     if (getExtension === 'mp4') {
       const obj = {
         classIdAttr: {
-          className: "photographer-medium_element element_video ",
+          className: "photographer-medium_element element_video",
           src: url,
           ariaLabel: "",
           controls: "controls",

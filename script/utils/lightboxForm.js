@@ -134,9 +134,10 @@ export function lightboxModal() {
         window.location.hash = links[i].title + ", closeup view";
         videoElement.src = selectedMedia.src;
         videoElement.alt = selectedMedia.alt;
+        videoElement.id = "videoType";
         lightboxTitle.textContent = "Titre du média";
-      //} else {
-        //videoElement.replaceWith(lightboxMedia); 
+      } else {
+        videoElement.replaceWith(lightboxMedia); 
               
         }    
       
