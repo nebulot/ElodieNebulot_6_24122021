@@ -1,4 +1,4 @@
-export function LightboxVideo(videoName, url) {
+export function LightboxVideo(videoName, getExtension, url) {
     const ext = getExtension(url);
   
     if (ext[0] === 'mp4') {
@@ -18,6 +18,7 @@ export function LightboxVideo(videoName, url) {
         obj.textContent,
         obj.appendTo,
       );
+      return videoElement
      }
     
     console.log("Sorry, unknow format Type");

@@ -1,18 +1,17 @@
-import { LightboxImage} from "../models/LightboxImage"
-import { LightboxVideo } from "../models/LigthboxVideo";
+import { LightboxImage} from "../models/LightboxImage.js"
+import { LightboxVideo } from "../models/LigthboxVideo.js";
 
-export function lightboxFactory(type, url) {
+export function lightboxFactory(type,getExtension, url) {
   switch (type) {
     case 'image':
-      LightboxImage('img',  url);
+      LightboxImage('img',getExtension,  url);
       break;
     case 'video':
-      LightboxVideo('video', url);
+      LightboxVideo('video',getExtension, url);
       break;
     default:
-      console.log('Sorry, media not found');
+      console.log('Sorry, media unknow');
   }
-  return lightboxFactory
 };
 
  

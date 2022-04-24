@@ -13,10 +13,10 @@ const mainContent = document.querySelector("main");
 const btnClose = document.querySelector(".lightbox_close");
 
 // create element video to remove img on video ("mp4")
-const video = document.createElement("video");
-      video.classList.add("lightbox_media");
-      video.id = "videoType";
-      video.setAttribute("controls", "");
+const videoElement = document.createElement("video");
+      videoElement.classList.add("lightbox_media");
+      videoElement.id = "videoType";
+      videoElement.setAttribute("controls", "");
 
 // Lightbox open // create carroussel
 const openLightbox = () => {
@@ -117,26 +117,39 @@ export function lightboxModal() {
       let getExtension = url.substring(url.lastIndexOf(".") + 1);
       console.log(getExtension);
       console.log(links[i]);
-
-      
-      // create element video "remove"
-      window.location.hash = links[i].title + ", closeup view";
-      lightboxMedia.src = selectedMedia.src;
-      lightboxMedia.alt = selectedMedia.alt;
-      lightboxTitle.textContent = selectedMedia.alt;      
-      
-      if (getExtension === "mp4") {
-        lightboxMedia.replaceWith(video);
-        window.location.hash = links[i].title + ", closeup view";
-        video.src = selectedMedia.src;
-        video.alt = selectedMedia.alt;
-        lightboxTitle.textContent = "Titre du média";
-      } else {
-        video.replaceWith(lightboxMedia); 
+       
+      if (getExtension === 'jpg') {
+       // lightboxFactory("image", url);
+       window.location.hash = links[i].title + ", closeup view";
+       lightboxMedia.src = selectedMedia.src;
+       lightboxMedia.alt = selectedMedia.alt;
+       lightboxTitle.textContent = selectedMedia.alt;  
+          
       }
+               
+      if (getExtension === 'mp4') {
+        //lightboxFactory('video', url);
+        const videoElement = document.querySelector('.lightbox_media');
+        lightboxMedia.replaceWith(videoElement);
+        window.location.hash = links[i].title + ", closeup view";
+        videoElement.src = selectedMedia.src;
+        videoElement.alt = selectedMedia.alt;
+        lightboxTitle.textContent = "Titre du média";
+      //} else {
+        //videoElement.replaceWith(lightboxMedia); 
+              
+        }    
+      
+         
+      // create element video "remove"
+      
+      
+        
+     // }
 
       lightboxTitle.focus();
     };
+  
 
     // upload previous media
     const previousMedia = () => {

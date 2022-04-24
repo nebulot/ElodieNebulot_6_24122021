@@ -1,7 +1,7 @@
-export function ImageTag(imgName, url) {
-    const ext = getExtension(imgName);
+export function ImageTag(getExtension, url) {
+    
   
-    if (ext[0] === 'jpg') {
+    if (getExtension === 'jpg') {
       const obj = {
         classIdAttr: {
           className: "photographer-medium_element",

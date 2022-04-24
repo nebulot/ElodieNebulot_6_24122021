@@ -1,4 +1,4 @@
-export function LightboxImage(imgName, url) {
+export function LightboxImage(imgName, getExtension, url) {
     const ext = getExtension(url);
     if (ext[0] === 'jpg') {
       const obj = {

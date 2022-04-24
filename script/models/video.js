@@ -1,7 +1,6 @@
-export function VideoTag(videoName, url) {
-    const ext = getExtension(videoName);
-  
-    if (ext[0] === 'mp4') {
+export function VideoTag(getExtension, url) {
+      
+    if (getExtension === 'mp4') {
       const obj = {
         classIdAttr: {
           className: "photographer-medium_element element_video ",
@@ -17,6 +16,7 @@ export function VideoTag(videoName, url) {
         obj.textContent,
         obj.appendTo,
       );
+      return videoElement;
     }
     
     console.log("Sorry, unknow format Type");

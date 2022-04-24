@@ -1,17 +1,16 @@
-import { ImageTag } from "../models/image";
-import { VideoTag } from "../models/video";
+import {ImageTag} from "../models/image.js";
+import {VideoTag} from "../models/video.js";
 
-export function photographersMediaFactory(type,url) {
+export function photographersMediaFactory(type,getExtension, url) {
     switch (type) {
       case 'image':
-        ImageTag('img',  url);
+        ImageTag('img', getExtension,  url);
         break;
       case 'video':
-        VideoTag('video', url);
+        VideoTag('video',getExtension, url);
         break;
       default:
-        console.log('Sorry, media not found');
+        console.log("Sorry, media unknow");
     }
-    return photographersMediaFactory
   };
  
