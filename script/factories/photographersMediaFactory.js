@@ -1,7 +1,7 @@
 import {ImageTag} from "../models/image.js";
 import {VideoTag} from "../models/video.js";
-
-export function photographersMediaFactory(type,getExtension, url) {
+// factory pattern 
+export function photographersMediaFactory(type, getExtension, url) {
     switch (type) {
       case 'image':
         ImageTag('img', getExtension,  url);

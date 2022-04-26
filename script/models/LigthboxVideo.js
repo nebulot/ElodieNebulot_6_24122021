@@ -1,7 +1,8 @@
 export function LightboxVideo(videoName, getExtension, url) {
-    
   
     if (getExtension === 'mp4') {
+      const source = document.createElement("source");
+      source.src = url;
       const obj = {
         classIdAttr: {
           className: "lightbox_media element_video",
@@ -17,6 +18,7 @@ export function LightboxVideo(videoName, getExtension, url) {
         obj.textContent,
         obj.appendTo,
       );
+      videoElement.appendChild(source);
       return videoElement
      }
     

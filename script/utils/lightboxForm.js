@@ -13,10 +13,10 @@ const mainContent = document.querySelector("main");
 const btnClose = document.querySelector(".lightbox_close");
 
 // create element video to remove img on video ("mp4")
-const videoElement = document.createElement("video");
+/*const videoElement = document.createElement("video");
       videoElement.classList.add("lightbox_media");
       videoElement.id = "videoType";
-      videoElement.setAttribute("controls", "");
+      videoElement.setAttribute("controls", "");*/
 
 // Lightbox open // create carroussel
 const openLightbox = () => {
@@ -65,7 +65,7 @@ export function lightboxModal() {
   const links = Array.from(
     document.querySelectorAll(".photographer-medium_link")
   );
-  links.forEach((link) => link.addEventListener("click", openLightbox));
+  //links.forEach((link) => link.addEventListener("click", openLightbox));
   for (let i = 0; i < links.length; i++) {
     let mediaLink = links[i];
     //console.log(links[i]);
@@ -112,23 +112,24 @@ export function lightboxModal() {
       const selectedMedia = links[i].querySelector(
         ".photographer-medium_element"
       );
+      console.log(selectedMedia);
       const url = selectedMedia.src;
       //extension
       let getExtension = url.substring(url.lastIndexOf(".") + 1);
       console.log(getExtension);
       console.log(links[i]);
        
-      if (getExtension === 'jpg') {
-       // lightboxFactory("image", url);
-       window.location.hash = links[i].title + ", closeup view";
-       lightboxMedia.src = selectedMedia.src;
-       lightboxMedia.alt = selectedMedia.alt;
+      //if (getExtension === 'jpg') {
+       lightboxFactory("image", url);
+       //window.location.hash = links[i].title + ", closeup view";
+       //lightboxMedia.src = selectedMedia.src;
+       //lightboxMedia.alt = selectedMedia.alt;
        lightboxTitle.textContent = selectedMedia.alt;  
           
-      }
+      //}
                
-      if (getExtension === 'mp4') {
-        //lightboxFactory('video', url);
+      //if (getExtension === 'mp4') {
+        lightboxFactory('video', url);
         const videoElement = document.querySelector('.lightbox_media');
         lightboxMedia.replaceWith(videoElement);
         window.location.hash = links[i].title + ", closeup view";
@@ -136,10 +137,10 @@ export function lightboxModal() {
         videoElement.alt = selectedMedia.alt;
         videoElement.id = "videoType";
         lightboxTitle.textContent = "Titre du média";
-      } else {
+      //} else {
         videoElement.replaceWith(lightboxMedia); 
               
-        }    
+       // }    
       
          
       // create element video "remove"

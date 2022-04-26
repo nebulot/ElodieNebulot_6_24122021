@@ -12,14 +12,7 @@ export function mediaFactory(media) {
   if (image) {
     linkGalleryPicture = linkGalleryPicture + image;
   }
-  // now choice with the factory pattern 
-  if (image) {
-    photographersMediaFactory('image', image, linkGalleryPicture);
-  }
-  if (video) {
-    photographersMediaFactory('video', video, linkGalleryPicture);
-  }
-
+  
   //create gallery media by photographers' id 
 
   function getUserGalleryDOM() {

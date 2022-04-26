@@ -1,5 +1,4 @@
 export function ImageTag(getExtension, url) {
-    
   
     if (getExtension === 'jpg') {
       const obj = {

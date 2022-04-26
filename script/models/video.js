@@ -1,6 +1,8 @@
 export function VideoTag(getExtension, url) {
-      
+
+  
     if (getExtension === 'mp4') {
+          
       const obj = {
         classIdAttr: {
           className: "photographer-medium_element element_video",
@@ -16,6 +18,7 @@ export function VideoTag(getExtension, url) {
         obj.textContent,
         obj.appendTo,
       );
+      
       return videoElement;
     }
     

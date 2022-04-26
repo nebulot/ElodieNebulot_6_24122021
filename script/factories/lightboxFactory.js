@@ -1,7 +1,7 @@
 import { LightboxImage} from "../models/LightboxImage.js"
 import { LightboxVideo } from "../models/LigthboxVideo.js";
 
-export function lightboxFactory(type,getExtension, url) {
+export function lightboxFactory(type, getExtension, url) {
   switch (type) {
     case 'image':
       LightboxImage('img',getExtension,  url);

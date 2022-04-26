@@ -1,6 +1,6 @@
 export function LightboxImage(imgName, getExtension, url) {
-    const ext = getExtension(url);
-    if (ext[0] === 'jpg') {
+    
+    if (getExtension === 'jpg') {
       const obj = {
         classIdAttr: {
           className: "lightbox_media",
