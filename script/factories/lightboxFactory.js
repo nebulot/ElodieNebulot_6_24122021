@@ -1,16 +1,14 @@
-import { LightboxImage} from "../models/LightboxImage.js"
-import { LightboxVideo } from "../models/LigthboxVideo.js";
+import { ImageTag} from "../models/image.js"
+import { VideoTag } from "../models/video.js";
 
 export function lightboxFactory(type, getExtension, url) {
-  switch (type) {
-    case 'image':
-      LightboxImage('img',getExtension,  url);
-      break;
-    case 'video':
-      LightboxVideo('video',getExtension, url);
-      break;
-    default:
-      console.log('Sorry, media unknow');
+  if (type === "image") {
+    return ImageTag('img',getExtension,  url);
+  }else if (type === "video") {
+    return VideoTag('video',getExtension, url);
+  } else {
+    throw 'Sorry, media unknow';
+      
   }
 };
 

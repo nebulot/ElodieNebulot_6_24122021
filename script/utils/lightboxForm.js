@@ -5,7 +5,6 @@ const body = document.querySelector("body");
 const lightbox = document.querySelector(".lightbox");
 const lightboxBgd = document.querySelector(".lightbox_background");
 const view = document.querySelector(".lightbox_view");
-const lightboxMedia = document.querySelector(".lightbox_media");
 const lightboxTitle = document.querySelector(".lightbox_title");
 const prev = document.querySelector(".lightbox_prev");
 const next = document.querySelector(".lightbox_next");
@@ -119,28 +118,29 @@ export function lightboxModal() {
       console.log(getExtension);
       console.log(links[i]);
        
-      //if (getExtension === 'jpg') {
+      if (getExtension === 'jpg') {
        lightboxFactory("image", url);
-       //window.location.hash = links[i].title + ", closeup view";
-       //lightboxMedia.src = selectedMedia.src;
+       console.log(lightboxFactory);
+       window.location.hash = links[i].title + ", closeup view";
+       //L.src = selectedMedia.src;
        //lightboxMedia.alt = selectedMedia.alt;
        lightboxTitle.textContent = selectedMedia.alt;  
           
-      //}
+      }
                
-      //if (getExtension === 'mp4') {
+      if (getExtension === 'mp4') {
         lightboxFactory('video', url);
-        const videoElement = document.querySelector('.lightbox_media');
-        lightboxMedia.replaceWith(videoElement);
+        //const videoElement = document.querySelector('.lightbox_media');
+        //lightboxMedia.replaceWith(videoElement);
         window.location.hash = links[i].title + ", closeup view";
         videoElement.src = selectedMedia.src;
         videoElement.alt = selectedMedia.alt;
         videoElement.id = "videoType";
         lightboxTitle.textContent = "Titre du média";
       //} else {
-        videoElement.replaceWith(lightboxMedia); 
+        //videoElement.replaceWith(lightboxMedia); 
               
-       // }    
+      }    
       
          
       // create element video "remove"

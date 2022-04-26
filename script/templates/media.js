@@ -1,5 +1,3 @@
-import { photographersMediaFactory } from "../factories/photographersMediaFactory.js";
-
 export function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
