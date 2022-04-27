@@ -2,15 +2,18 @@ export function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
   const linkGalleryPage = "photographer.html?id=" + id;
-  let linkGalleryPicture = "./assets/images/" + photographerId + "/";
+  /*let linkGalleryPicture = "./assets/images/" + photographerId + "/";
   //choice video or image   
   if (video) {
     linkGalleryPicture = linkGalleryPicture + video;
   } 
   if (image) {
     linkGalleryPicture = linkGalleryPicture + image;
-  }
-  
+  }*/
+  const picture = "./assets/images/"+ photographerId + "/";
+  const film = "assets/videos/" + photographerId + "/";
+ 
+
   //create gallery media by photographers' id 
 
   function getUserGalleryDOM() {
@@ -19,9 +22,18 @@ export function mediaFactory(media) {
     const linkGalleryCard = document.createElement("a");
     let galleryCard;
     if (video) {
-      galleryCard = document.createElement("video");
+      galleryCard.href = film;
+      galleryCard.textContent = undefined;
+      galleryCard.className = "photographer-medium_element";
+      galleryCard.alt = title;
+      galleryCard.setAttribute = "controls";
+      //galleryCard = document.createElement("video");
       } else {
-      galleryCard = document.createElement("img");
+      //galleryCard = document.createElement("img");
+      galleryCard.href = picture;
+      galleryCard.textContent = undefined;
+      galleryCard.className = "photographer-medium_element";
+      galleryCard.alt = title;
          
     }
     galleryCard.id = id;
@@ -33,9 +45,9 @@ export function mediaFactory(media) {
     linkGalleryCard.className = "photographer-medium_link";
     linkGalleryCard.ariaLabel = "cliquer ici pour agrandir";
     linkGalleryCard.href = linkGalleryPicture;
-    galleryCard.src = linkGalleryPicture;
-    galleryCard.alt = title ;
-    galleryCard.className = "photographer-medium_element";
+    //galleryCard.src = linkGalleryPicture;
+    //galleryCard.alt = title ;
+    //galleryCard.className = "photographer-medium_element";
     linkGalleryCard.appendChild(galleryCard);
     cardGalleryMedia.appendChild(linkGalleryCard);
     console.log(linkGalleryCard);

@@ -1,5 +1,6 @@
 import { lightboxFactory } from "../factories/lightboxFactory.js";
 
+
 //DOM element lightbox//
 const body = document.querySelector("body");
 const lightbox = document.querySelector(".lightbox");
@@ -10,12 +11,8 @@ const prev = document.querySelector(".lightbox_prev");
 const next = document.querySelector(".lightbox_next");
 const mainContent = document.querySelector("main");
 const btnClose = document.querySelector(".lightbox_close");
+const lightboxMedia = document.querySelector(".lightbox_media")
 
-// create element video to remove img on video ("mp4")
-/*const videoElement = document.createElement("video");
-      videoElement.classList.add("lightbox_media");
-      videoElement.id = "videoType";
-      videoElement.setAttribute("controls", "");*/
 
 // Lightbox open // create carroussel
 const openLightbox = () => {
@@ -56,11 +53,7 @@ console.log(closeLightbox);
 
 export function lightboxModal() {
   //check all medias' links and titles, keep url to manage all, inside lightboxModal
-  /*const links = Array.from(
-    document.querySelectorAll(".photographer-medium_link")
-  );
-  let mediaLink = links.map((link) => link.getAttribute("href"));
-  links.forEach((link) => link.addEventListener("click", openLightbox));*/
+ 
   const links = Array.from(
     document.querySelectorAll(".photographer-medium_link")
   );
@@ -68,7 +61,7 @@ export function lightboxModal() {
   for (let i = 0; i < links.length; i++) {
     let mediaLink = links[i];
     //console.log(links[i]);
-
+    
     mediaLink.addEventListener("click", (e) => {
       e.preventDefault();
       // open lightbox
@@ -87,7 +80,7 @@ export function lightboxModal() {
       previousMedia();
       nextMedia();
     });
-    //console.log(links[i]);
+    
 
     const lightboxNav = () => {
       if (i == 0) {
@@ -107,49 +100,32 @@ export function lightboxModal() {
 
 
     // const view Media click on next and previous arrow
+       
+    
     const viewMedia = () => {
       const selectedMedia = links[i].querySelector(
         ".photographer-medium_element"
       );
-      console.log(selectedMedia);
       const url = selectedMedia.src;
       //extension
       let getExtension = url.substring(url.lastIndexOf(".") + 1);
-      console.log(getExtension);
+      console.log(selectedMedia);
       console.log(links[i]);
-       
-      if (getExtension === 'jpg') {
-       lightboxFactory("image", url);
-       console.log(lightboxFactory);
-       window.location.hash = links[i].title + ", closeup view";
-       //L.src = selectedMedia.src;
-       //lightboxMedia.alt = selectedMedia.alt;
-       lightboxTitle.textContent = selectedMedia.alt;  
-          
-      }
-               
-      if (getExtension === 'mp4') {
-        lightboxFactory('video', url);
-        //const videoElement = document.querySelector('.lightbox_media');
-        //lightboxMedia.replaceWith(videoElement);
-        window.location.hash = links[i].title + ", closeup view";
-        videoElement.src = selectedMedia.src;
-        videoElement.alt = selectedMedia.alt;
-        videoElement.id = "videoType";
-        lightboxTitle.textContent = "Titre du média";
-      //} else {
-        //videoElement.replaceWith(lightboxMedia); 
-              
-      }    
-      
-         
-      // create element video "remove"
-      
-      
-        
-     // }
 
-      lightboxTitle.focus();
+      if (getExtension === 'jpg') {
+        lightboxFactory("image", url);
+        lightboxMedia.src = url;
+        window.location.hash = links[i].title + ", closeup view";
+        lightboxTitle.textContent = selectedMedia.alt;  
+ 
+       } if (getExtension === 'mp4') {
+         lightboxFactory('video', url);
+         lightboxMedia.src=url;
+         window.location.hash = links[i].title + ", closeup view";
+         lightboxTitle.textContent = selectedMedia.alt;
+       }
+         lightboxTitle.focus();
+         
     };
   
 
@@ -185,6 +161,7 @@ export function lightboxModal() {
         selectedMedia.classList.remove("selected");
         i++;
         selectedMedia = links[i].querySelector(".photographer-medium_element");
+        
         // add "selected to next media"
         selectedMedia.classList.add("selected");
         lightboxNav();
