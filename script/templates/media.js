@@ -6,7 +6,7 @@ export function mediaFactory(media) {
   const linkGalleryPage = "photographer.html?id=" + id;
   const picture = "./assets/images/" + photographerId + "/" + image;
   const film = "./assets/images/" + photographerId + "/" + video;
-
+  
   //create gallery media by photographers' id
 
   function getUserGalleryDOM() {
@@ -16,17 +16,17 @@ export function mediaFactory(media) {
     galleryCard.className = "photographer-medium_element";
     cardGalleryMedia.appendChild(galleryCard);
     
-
     if (image) {
       const objElement = document.createElement("a");
       objElement.className = "photographer-medium_link";
       objElement.href = picture;
       objElement.ariaLabel = "cliquer ici pour agrandir";
-      galleryCard.id = id;
-      objElement.addEventListener("click", (e) => {
-        console.log(e.target.id);
-      });
+      //objElement.id = id;
+      //objElement.addEventListener("click", (e) => {
+      //  console.log(e.target.id);
+      //});
       galleryCard.appendChild(objElement);
+      console.log(objElement);
     }
 
     if (video) {
@@ -34,11 +34,8 @@ export function mediaFactory(media) {
       objElement.className = "photographer-medium_link";
       objElement.href = film;
       objElement.alt = title;
+      objElement.id = id;
       objElement.ariaLabel = "cliquer ici pour agrandir";
-      galleryCard.id = id;
-      objElement.addEventListener("click", (e) => {
-        console.log(e.target.id);
-      });
       galleryCard.appendChild(objElement);
     }
     if (image) {

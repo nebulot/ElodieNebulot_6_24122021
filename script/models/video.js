@@ -4,7 +4,7 @@ export function VideoName(videoName, url) {
 
   if (getExtension === "mp4") {
     const obj = document.createElement("video");
-    obj.className = "photographer-medium_video";
+    obj.className = "photographer-medium video_element";
     obj.ariaLabel = "";
     obj.controls = "controls";
     obj.textContent = "undefined";

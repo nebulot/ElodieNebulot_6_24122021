@@ -36,10 +36,11 @@ const closeLightbox = () => {
   view.classList.remove("active");
   // focus sur dernier media choisi
   const lastMedia = document.querySelector(
-    ".photographer-medium_element.selected"
+    ".photographer-medium_type"
   );
   lastMedia.focus();
   lastMedia.classList.remove("selected");
+  console.log(lastMedia);
 };
 
 //CLOSE LIGHTBOX ("escape" event)
@@ -53,26 +54,26 @@ console.log(closeLightbox);
 
 export function lightboxModal() {
   //check all medias' links and titles, keep url to manage all, inside lightboxModal
- 
+  
   const links = Array.from(
     document.querySelectorAll(".photographer-medium_link")
   );
-  console.log(links);
+  
   //links.forEach((link) => link.addEventListener("click", openLightbox));
   for (let i = 0; i < links.length; i++) {
     let mediaLink = links[i];
-    //console.log(links[i]);
+    console.log(mediaLink);
     
     mediaLink.addEventListener("click", (e) => {
       e.preventDefault();
       // open lightbox
       openLightbox();
-      let selectedMedia = links[i].querySelector(
-        "photographer-medium_element"
+      const selectedMedia = links[i].querySelector(
+        "photographer-medium_type"
       );
       selectedMedia.classList.add("selected");
-      console.log(links);
-
+      console.log(selectedMedia);
+      
       // arrow left and right for the navigation
       lightboxNav();
       // url media => url lightbox
@@ -107,9 +108,9 @@ export function lightboxModal() {
     
     const viewMedia = () => {
       const selectedMedia = links[i].querySelector(
-        ".photographer-medium_element"
+        ".photographer-medium_type"
       );
-      const url = selectedMedia.src;
+      const url = selectedMedia.url;
       //extension
       let getExtension = url.substring(url.lastIndexOf(".") + 1);
       console.log(selectedMedia);
@@ -164,7 +165,7 @@ export function lightboxModal() {
         selectedMedia.classList.remove("selected");
         i++;
         selectedMedia = links[i].querySelector(".photographer-medium_element");
-        console.log(selectedMedia);
+        
 
         
         // add "selected to next media"
