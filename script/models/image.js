@@ -8,11 +8,7 @@ export function ImageName(imgName, url) {
     obj.src = url;
     obj.alt = "";
     obj.textContent = undefined;
-    
-    
-    
-    
-  
+ 
   return  { obj } ;
   }
   console.log("Sorry, this is not a valid format");

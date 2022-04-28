@@ -7,12 +7,7 @@ export function mediaFactory(media) {
   const picture = "./assets/images/" + photographerId + "/" + image;
   const film = "./assets/images/" + photographerId + "/" + video;
  
-  //choice video or image   
-  
-  
- 
- 
-  //create gallery media by photographers' id
+ //create gallery media by photographers' id
 
   function getUserGalleryDOM() {
     const cardGalleryMedia = document.createElement("figure");
@@ -39,11 +34,17 @@ export function mediaFactory(media) {
     }
     if (image) {
       photographerFactory("image", image, picture);
+      const imageElement = document.createElement("img");
+      imageElement.src = picture;
+      galleryCard.appendChild(imageElement);
     }
   
     if (video) {
       photographerFactory("video", video, film);
-      
+      const videoElement = document.createElement("video");
+      videoElement.src = film;
+      galleryCard.appendChild(videoElement);
+    
     }
    
 
