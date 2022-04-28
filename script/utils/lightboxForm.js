@@ -57,6 +57,7 @@ export function lightboxModal() {
   const links = Array.from(
     document.querySelectorAll(".photographer-medium_link")
   );
+  console.log(links);
   //links.forEach((link) => link.addEventListener("click", openLightbox));
   for (let i = 0; i < links.length; i++) {
     let mediaLink = links[i];
@@ -67,7 +68,7 @@ export function lightboxModal() {
       // open lightbox
       openLightbox();
       let selectedMedia = links[i].querySelector(
-        ".photographer-medium_element"
+        "photographer-medium_element"
       );
       selectedMedia.classList.add("selected");
       console.log(links);
@@ -79,7 +80,9 @@ export function lightboxModal() {
       // previous media and next media
       previousMedia();
       nextMedia();
+      
     });
+    
     
 
     const lightboxNav = () => {
@@ -161,6 +164,8 @@ export function lightboxModal() {
         selectedMedia.classList.remove("selected");
         i++;
         selectedMedia = links[i].querySelector(".photographer-medium_element");
+        console.log(selectedMedia);
+
         
         // add "selected to next media"
         selectedMedia.classList.add("selected");

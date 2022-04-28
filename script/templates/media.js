@@ -6,8 +6,8 @@ export function mediaFactory(media) {
   const linkGalleryPage = "photographer.html?id=" + id;
   const picture = "./assets/images/" + photographerId + "/" + image;
   const film = "./assets/images/" + photographerId + "/" + video;
- 
- //create gallery media by photographers' id
+
+  //create gallery media by photographers' id
 
   function getUserGalleryDOM() {
     const cardGalleryMedia = document.createElement("figure");
@@ -15,38 +15,50 @@ export function mediaFactory(media) {
     const galleryCard = document.createElement("div");
     galleryCard.className = "photographer-medium_element";
     cardGalleryMedia.appendChild(galleryCard);
+    
 
     if (image) {
       const objElement = document.createElement("a");
       objElement.className = "photographer-medium_link";
-      objElement.src = picture;
+      objElement.href = picture;
       objElement.ariaLabel = "cliquer ici pour agrandir";
+      galleryCard.id = id;
+      objElement.addEventListener("click", (e) => {
+        console.log(e.target.id);
+      });
       galleryCard.appendChild(objElement);
     }
 
     if (video) {
       const objElement = document.createElement("a");
       objElement.className = "photographer-medium_link";
-      objElement.src = film;
+      objElement.href = film;
       objElement.alt = title;
       objElement.ariaLabel = "cliquer ici pour agrandir";
+      galleryCard.id = id;
+      objElement.addEventListener("click", (e) => {
+        console.log(e.target.id);
+      });
       galleryCard.appendChild(objElement);
     }
     if (image) {
       photographerFactory("image", image, picture);
       const imageElement = document.createElement("img");
       imageElement.src = picture;
+      imageElement.className = "photographer-medium_type img_Type";      
+      imageElement.alt = title;
       galleryCard.appendChild(imageElement);
+      
     }
-  
+
     if (video) {
       photographerFactory("video", video, film);
       const videoElement = document.createElement("video");
       videoElement.src = film;
+      videoElement.className = "photographer-medium_type video_Type ";      
+      videoElement.alt = title;
       galleryCard.appendChild(videoElement);
-    
     }
-   
 
     const cardsFooter = document.createElement("figcaption");
     cardsFooter.className = "cards-media-footer";
