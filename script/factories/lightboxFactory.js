@@ -1,5 +1,5 @@
-import { imageload } from "../models/image.js"
-import { videoload } from "../models/video.js";
+import { imageload } from "../models/imageLightbox.js"
+import { videoload } from "../models/videoLightbox.js";
 
 export function lightboxFactory(type, getExtension, url) {
   switch (type) {

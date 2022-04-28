@@ -1,21 +1,17 @@
-export function imageload(imgName,url) {
-  let getExtension = url.substring(url.lastIndexOf(".") + 1);
-  const view = document.querySelector(".lightbox_view");
-  
-    
-  if (getExtension === 'jpg') {
-    const lightboxMedia = document.querySelector(".lightbox_media");
-    lightboxMedia.className = "lightbox_media";
-    lightboxMedia.src = url;
-    lightboxMedia.alt = imgName,
-    lightboxMedia.textContent = undefined;
-    view.appendChild(lightboxMedia);
+export function ImageTag(imgTag, getExtension, url) {
+    let getExtension = url.substring(url.lastIndexOf(".") + 1);
+    const linkGalleryCard = querySelector(".photographer-medium_link");
+          
+    if (ext[0] === 'jpg') {
+      const galleryCard = document.querySelector(".photographer-medium_element");
+        galleryCard.className = "photographer-medium_element";
+        galleryCard.src =  url;
+        galleryCard.alt = "";
+        galleryCard.textContent = undefined,
+        linkGalleryCard.appendChild(galleryCard);
        
-      return {lightboxMedia};
+      return galleryCard;
     }
-    
-    console.log('Sorry, this type is unknow');
-  }
   
-  
-  
+    console.log('Sorry, this is not a valid format of image');
+  } 

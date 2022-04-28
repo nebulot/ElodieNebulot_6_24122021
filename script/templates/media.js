@@ -11,40 +11,54 @@ export function mediaFactory(media) {
     linkGalleryPicture = linkGalleryPicture + image;
   }*/
   const picture = "./assets/images/"+ photographerId + "/";
-  const film = "assets/videos/" + photographerId + "/";
+  const film = "./assets/videos/" + photographerId + "/";
+  console.log(film);
  
 
   //create gallery media by photographers' id 
 
   function getUserGalleryDOM() {
+    
     const cardGalleryMedia = document.createElement("figure");
     cardGalleryMedia.className = "photographer-medium_card";
     const linkGalleryCard = document.createElement("a");
+    linkGalleryCard.className = "photographer-medium_link";
+    linkGalleryCard.ariaLabel = "cliquer ici pour agrandir";
+    
+    
     let galleryCard;
     if (video) {
-      galleryCard.href = film;
-      galleryCard.textContent = undefined;
+      galleryCard.type = film;
       galleryCard.className = "photographer-medium_element";
       galleryCard.alt = title;
       galleryCard.setAttribute = "controls";
       //galleryCard = document.createElement("video");
-      } else {
+      } 
+      if (image) {
       //galleryCard = document.createElement("img");
       galleryCard.href = picture;
       galleryCard.textContent = undefined;
       galleryCard.className = "photographer-medium_element";
-      galleryCard.alt = title;
-         
+      galleryCard.alt = title;         
     }
-    galleryCard.id = id;
+
+    if (image) {
+      photographerFactory('image',image, picture);
+    }
+
+    if (video) {
+      photographerFactory('video', video,  film);
+      const videoElement = document.querySelectorAll('.video');
+    }
+
+      galleryCard.id = id;
     linkGalleryCard.addEventListener("click", (e)=>{
       
-      console.log(e.target.id);
+     console.log(e.target.id);
       
     });
-    linkGalleryCard.className = "photographer-medium_link";
-    linkGalleryCard.ariaLabel = "cliquer ici pour agrandir";
-    linkGalleryCard.href = linkGalleryPicture;
+    linkGalleryCard.href = galleryCard;
+    
     //galleryCard.src = linkGalleryPicture;
     //galleryCard.alt = title ;
     //galleryCard.className = "photographer-medium_element";
@@ -89,6 +103,6 @@ export function mediaFactory(media) {
 
     return heartBtn;
   }
-return { date,price,linkGalleryPage,linkGalleryPicture, getUserGalleryDOM, getHeartBtn};
+return { date,price,linkGalleryPage, getUserGalleryDOM, getHeartBtn};
 };
 
