@@ -1,31 +1,19 @@
-function VideoTag(tag, videoName, altText, url) {
-    const ext = getExtension(videoName);
+export function VideoName(videoName, url) {
   
-    if (ext[0] === 'mp4') {
-      const obj = {
-        elementName: `${tag}`,
-        classIdAttr: {
-          className: 'media__cardImg photographer-video',
-          src: url,
-          ariaLabel: '',
-          controls: 'controls',
-        },
-        textContent: undefined,
-        appendTo: 'div.media__card__wrapper',
-      };
-      const videoElement = createElement(
-        obj.elementName,
-        obj.classIdAttr,
-        obj.textContent,
-        obj.appendTo,
-      );
-  
-      addVideoControls();
-  
-      return { videoElement, addVideoControls };
-    }
-    // eslint-disable-next-line no-console
-    console.log('Sorry, this is not a valid format of video');
+  let getExtension = url.substring(url.lastIndexOf(".") + 1);
+
+  if (getExtension === "mp4") {
+    const obj = document.createElement("video");
+    obj.className = "photographer-medium_video";
+    obj.src = url;
+    obj.ariaLabel = "";
+    obj.controls = "controls";
+    obj.textContent = "undefined";
+    
+    
+
+    return { obj };
   }
-  
-  export { VideoTag };
+
+  console.log("Sorry, this is not a valid format of image");
+}

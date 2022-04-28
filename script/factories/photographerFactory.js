@@ -1,3 +1,7 @@
+import { ImageName } from "../models/image.js";
+import { VideoName } from "../models/video.js";
+
+
 export function photographerFactory(type, mediaName, url) {
     switch (type) {
       case 'image':
@@ -12,4 +16,4 @@ export function photographerFactory(type, mediaName, url) {
     }
   }
   
-  export { photographerFactory };
+  
