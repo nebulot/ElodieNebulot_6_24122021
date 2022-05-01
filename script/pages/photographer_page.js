@@ -2,9 +2,10 @@
 import { getMedias } from "../data/mediaData.js";
 import { getPhotographers } from "../data/photographersData.js";
 
+
 //import photographerCard display, display media card
 import { photographersCard } from "../templates/photographersCard.js";
-import { mediaFactory } from "../templates/media.js";
+import { MediaFactory } from "../templates/MediaFactory.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
@@ -66,25 +67,40 @@ function getMediaByPhotographer(media) {
 
 //gallery photographers : container Media with card and photos/videos
 
+
+
+
 async function displayMediaData(media) {
   const displayMediaContainer = document.getElementById(
     "photograph-section_media"
   );
+  
 
   const photographerUrlById = urlSearchParams.get("id");
   const name = urlSearchParams.get("name");
+  let mediaFactory = new MediaFactory();
   const mediasArray = [];
   media.sort((a, b) => a.likes - b.likes);
   media.reverse();
 
   media.forEach((media) => {
     if (media.photographerId == photographerUrlById) {
-    const mediaGallery = mediaFactory(media, name);
+      const cardGalleryMedia = mediaFactory.getUserGalleryDOM();
+      const heartBtn = mediaFactory.getHeartBtn();
+      displayMediaContainer.appendChild(cardGalleryMedia);
+      displayMediaContainer.appendChild(heartBtn);
+    /* const mediaGallery = new mediaFactory.render
+    y();
     const userGalleryDOM = mediaGallery.getUserGalleryDOM();
+    const heartBtn = mediaGallery.getHeartBtn();
     displayMediaContainer.appendChild(userGalleryDOM);
+    displayMediaContainer.appendChild(heartBtn);*/
     mediasArray.push(media);
     }
+    //selectedMedia = mediasArray;
   });
+
+  
 
   //  display dropdown
 

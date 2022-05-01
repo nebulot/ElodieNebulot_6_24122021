@@ -1,4 +1,4 @@
-function photographersCard(photographer) {
+ export function photographersCard(photographer) {
   const { name, id, portrait, city, country, tagline, price } = photographer;
 
   const linkPicture = "./assets/photographers/" + portrait;
@@ -92,4 +92,4 @@ function photographersCard(photographer) {
   return {id,price, getUserPicDOM, getUserBannerDOM, getUserContactDOM, getUserFooter}
 };
 
-export { photographersCard };
+
