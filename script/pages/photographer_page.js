@@ -5,12 +5,12 @@ import { getPhotographers } from "../data/photographersData.js";
 
 //import photographerCard display, display media card
 import { photographersCard } from "../templates/photographersCard.js";
-import { MediaFactory } from "../templates/MediaFactory.js";
+import { mediaFactory } from "../templates/MediaFactory.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
 import { lightboxModal } from "../utils/lightboxForm.js";
-
+mediaFactory();
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -59,6 +59,7 @@ function getMediaByPhotographer(media) {
 
   media.forEach((media) => {
     if (media.photographerId == photographerUrlById) {
+      
       mediasArray.push(media);
     }
   });
@@ -78,23 +79,19 @@ async function displayMediaData(media) {
 
   const photographerUrlById = urlSearchParams.get("id");
   const name = urlSearchParams.get("name");
-  let mediaFactory = new MediaFactory();
   const mediasArray = [];
   media.sort((a, b) => a.likes - b.likes);
   media.reverse();
 
   media.forEach((media) => {
     if (media.photographerId == photographerUrlById) {
-      const cardGalleryMedia = mediaFactory.getUserGalleryDOM();
-      const heartBtn = mediaFactory.getHeartBtn();
-      displayMediaContainer.appendChild(cardGalleryMedia);
-      displayMediaContainer.appendChild(heartBtn);
-    /* const mediaGallery = new mediaFactory.render
-    y();
-    const userGalleryDOM = mediaGallery.getUserGalleryDOM();
-    const heartBtn = mediaGallery.getHeartBtn();
-    displayMediaContainer.appendChild(userGalleryDOM);
-    displayMediaContainer.appendChild(heartBtn);*/
+      
+      //const userGalleryDOM = mediaFactory.getUserGalleryDOM();
+      //const heartBtn = mediaFactory.getHeartBtn();
+      //displayMediaContainer.appendChild(userGalleryDOM);
+      //displayMediaContainer.appendChild(heartBtn);
+     //const mediaGallery = new mediaFactory.render
+       
     mediasArray.push(media);
     }
     //selectedMedia = mediasArray;
@@ -117,7 +114,7 @@ const displayMediaContainer = document.getElementById(
 );
 function updateMedia(mediasArray) {
   mediasArray.forEach((media) => {
-    const mediaGallery = mediaFactory(media);
+    //const mediaGallery = mediaFactory(media);
     const userGalleryDOM = mediaGallery.getUserGalleryDOM();
     displayMediaContainer.appendChild(userGalleryDOM);
   });

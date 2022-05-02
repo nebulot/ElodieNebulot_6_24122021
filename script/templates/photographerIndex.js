@@ -1,5 +1,5 @@
-function photographerFactory(photographer) {
-  const { name, id, portrait, city, country, tagline, price } = photographer;
+export function photographerFactory(photographer) {
+  const { name,id, portrait, city, country, tagline, price } = photographer;
 
   const linkPage = "photographer.html?id=" + photographer.id;
   const linkPicture = "./assets/photographers/" + portrait;
@@ -51,4 +51,4 @@ function photographerFactory(photographer) {
   };
 }
 
-export {photographerFactory};
+

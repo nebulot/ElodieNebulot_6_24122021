@@ -8,7 +8,7 @@ export const mediaName = {
    static getMediumSrc(medium) {
     let source = medium.image;
     if (source == null) {
-      source = medium.video;
+      source = medium.video
     }
     return source;
   }

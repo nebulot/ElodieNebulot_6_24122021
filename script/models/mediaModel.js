@@ -10,7 +10,7 @@ export class MediaModel {
     }
     
 
-    getSrc() {
+    getMediumSrc() {
         return GalleryUtils.getMediumSrc(medium)
     }
 
