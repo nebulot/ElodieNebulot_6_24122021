@@ -1,4 +1,4 @@
-import { mediaName } from "../utils/mediaUtils.js";
+
 import { GalleryUtils } from "../utils/mediaUtils.js";
 
 export function mediaFactory(media) {
@@ -11,32 +11,32 @@ export function mediaFactory(media) {
     function getUserGalleryDOM() {
       let cardGalleryMedia = document.createElement("article");
       cardGalleryMedia.className = className;
-
-      const mediumType = GalleryUtils.getMediumType(medium);
-      let mediumSrc = String(getMediumSrc());
       
+      let mediumSrc = String(getMediumSrc(media));
+      const mediumType = GalleryUtils.getMediumType(mediumSrc);
+            
       switch (mediumType) {
-        case mediaName.PICTURE: {
-          media = new Picture(className, medium, photographerId, mediumSrc);
-          render();
+        case "image": {
+          let media = new Picture(className, medium, photographerId, mediumSrc);
+          media.render();
           break;
         }
-        case mediaName.FILM: {
-          media = new Video(
+        case "video": {
+          let media = new Video(
             className,
             medium,
             photographerId,
             mediumSrc,
             controls
           );
-          render();
+          media.render();
           break;
         }
         default:
           mediumSrc = String("");
-      }
-      console.log(getUserGalleryDOM);
+      }        
     }
+    
 
     function getUserFooterDOM() {
       let cardsFooter = document.createElement("div");
@@ -55,7 +55,6 @@ export function mediaFactory(media) {
       cardsFooter.appendChild(cardsTitle);
       cardsFooter.appendChild(cardsLikes);
       cardGalleryMedia.appendChild(cardsFooter);
-      
     }
 
     function getHeartBtn() {
@@ -70,8 +69,9 @@ export function mediaFactory(media) {
       heart.ariaLabel = "likes";
       heartBtn.appendChild(heart);
 
-      return {image, video,getHeartBtn} ;
+      return heartBtn ;
   }
+
 
   class Media {
     constructor(type, className, media) {
@@ -119,4 +119,6 @@ export function mediaFactory(media) {
     }
   }
 }
+  
+
 

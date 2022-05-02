@@ -1,7 +1,7 @@
-export const mediaName = {
+/*export const mediaName = {
     PICTURE: "image",
     FILM: "video",
-  }
+  }*/
 
   export class GalleryUtils {
     
@@ -13,13 +13,13 @@ export const mediaName = {
     return source;
   }
 // media extension 
-   static getMediumType(medium) {
-    let extension = getMediumSrc(medium).split(".").pop();
+   static getMediumType(src) {
+    let extension = getMediumSrc(src).split(".").pop();
     if (/(jpg)$/gi.test(extension)) {
-      return mediaName.PICTURE;
+      return "image";
     }
     if (/(mp4)$/gi.test(extension)) {
-      return mediaName.FILM;
+      return "video";
     }
   }
 }

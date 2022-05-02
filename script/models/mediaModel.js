@@ -6,15 +6,15 @@ export class MediaModel {
     }
 
     getMediumType() {
-        return GalleryUtils.getMediumType(medium)
+        return GalleryUtils.getMediumType(this.medium)
     }
     
 
     getMediumSrc() {
-        return GalleryUtils.getMediumSrc(medium)
+        return GalleryUtils.getMediumSrc(this.medium)
     }
 
-    getTitle() {
+    /*getTitle() {
         return medium.title
     }
 
@@ -40,7 +40,6 @@ export class MediaModel {
     
     getDate() {
         return medium.date
-   }
+   }*/
    
 };
-

@@ -2,7 +2,6 @@
 import { getMedias } from "../data/mediaData.js";
 import { getPhotographers } from "../data/photographersData.js";
 
-
 //import photographerCard display, display media card
 import { photographersCard } from "../templates/photographersCard.js";
 import { mediaFactory } from "../templates/MediaFactory.js";
@@ -10,7 +9,6 @@ import { mediaFactory } from "../templates/MediaFactory.js";
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
 import { lightboxModal } from "../utils/lightboxForm.js";
-mediaFactory();
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -25,8 +23,8 @@ async function displayPhotographerDetail(photographers) {
   const photographSectionBtn = document.querySelector(
     ".photograph-section_button"
   );
-  
-   const photographSectionPhoto = document.querySelector(
+
+  const photographSectionPhoto = document.querySelector(
     ".photograph-section_picture"
   );
   const displayLikeContainer = document.getElementById("compteur_like");
@@ -59,7 +57,6 @@ function getMediaByPhotographer(media) {
 
   media.forEach((media) => {
     if (media.photographerId == photographerUrlById) {
-      
       mediasArray.push(media);
     }
   });
@@ -68,15 +65,10 @@ function getMediaByPhotographer(media) {
 
 //gallery photographers : container Media with card and photos/videos
 
-
-
-
 async function displayMediaData(media) {
   const displayMediaContainer = document.getElementById(
     "photograph-section_media"
   );
-  
-
   const photographerUrlById = urlSearchParams.get("id");
   const name = urlSearchParams.get("name");
   const mediasArray = [];
@@ -85,19 +77,15 @@ async function displayMediaData(media) {
 
   media.forEach((media) => {
     if (media.photographerId == photographerUrlById) {
-      
-      //const userGalleryDOM = mediaFactory.getUserGalleryDOM();
-      //const heartBtn = mediaFactory.getHeartBtn();
-      //displayMediaContainer.appendChild(userGalleryDOM);
-      //displayMediaContainer.appendChild(heartBtn);
-     //const mediaGallery = new mediaFactory.render
-       
-    mediasArray.push(media);
+      mediasArray.push(media);
     }
     //selectedMedia = mediasArray;
   });
 
-  
+
+  //const userGalleryDOM = mediaFactory.getUserGalleryDOM();
+  //displayMediaContainer.appendChild(userGalleryDOM);
+  //const mediaGallery = new mediaFactory.render
 
   //  display dropdown
 
@@ -109,19 +97,19 @@ async function displayMediaData(media) {
   });
   selectList.addEventListener("change", getUpdateLikes);
 }
+
 const displayMediaContainer = document.getElementById(
   "photograph-section_media"
 );
 function updateMedia(mediasArray) {
   mediasArray.forEach((media) => {
     //const mediaGallery = mediaFactory(media);
-    const userGalleryDOM = mediaGallery.getUserGalleryDOM();
-    displayMediaContainer.appendChild(userGalleryDOM);
+   // const userGalleryDOM = mediaGallery.getUserGalleryDOM();
+   // displayMediaContainer.appendChild(userGalleryDOM);
   });
 
-   // Launch the lightbox with sorted medias
-   lightboxModal();
- 
+  // Launch the lightbox with sorted medias
+  lightboxModal();
 }
 
 //container likes on footer photographers' page//
