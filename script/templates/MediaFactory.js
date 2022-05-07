@@ -1,23 +1,25 @@
-
+import {MediaModel} from "../models/mediaModel.js";
 import { GalleryUtils } from "../utils/mediaUtils.js";
 
 export function mediaFactory(media) {
   const { id, photographerId, image, video, title, likes, price, date } = media;
 
-    //const linkGalleryPage = "photographer.html?id=" + id;
+  const currentPhotographer = "photographer.html?id=" + id;
     //create gallery media by photographers' id
-    
-
-    function getUserGalleryDOM() {
-      let cardGalleryMedia = document.createElement("article");
-      cardGalleryMedia.className = className;
       
-      let mediumSrc = String(getMediumSrc(media));
-      const mediumType = GalleryUtils.getMediumType(mediumSrc);
-            
+    function getUserGalleryDOM(medium, currentPhotographer, className, controls = false) {
+      
+      let cardGalleryMedia = document.createElement("article");
+      cardGalleryMedia.className = ".photographer-medium_element";
+      cardGalleryMedia.ariaLabel = title;
+      
+      const mediumType = GalleryUtils.getMediumType(); 
+      let mediumSrc = String(medium.getMediumSrc());
+      
+                       
       switch (mediumType) {
         case "image": {
-          let media = new Picture(className, medium, photographerId, mediumSrc);
+          let media = new Picture(className, medium, currentPhotographer, mediumSrc);
           media.render();
           break;
         }
@@ -25,7 +27,7 @@ export function mediaFactory(media) {
           let media = new Video(
             className,
             medium,
-            photographerId,
+            currentPhotographer,
             mediumSrc,
             controls
           );
@@ -34,11 +36,13 @@ export function mediaFactory(media) {
         }
         default:
           mediumSrc = String("");
-      }        
+      }  
+      cardGalleryMedia.appendChild(media.htmlElement);
+      return cardGalleryMedia;
     }
-    
 
-    function getUserFooterDOM() {
+    
+    function getUserFooterDOM(medium, cardGalleryMedia) {
       let cardsFooter = document.createElement("div");
       cardsFooter.className = "cards-media-footer";
       const cardsTitle = document.createElement("p");
@@ -54,7 +58,9 @@ export function mediaFactory(media) {
       cardsLikes.appendChild(getHeartBtn());
       cardsFooter.appendChild(cardsTitle);
       cardsFooter.appendChild(cardsLikes);
+
       cardGalleryMedia.appendChild(cardsFooter);
+      
     }
 
     function getHeartBtn() {
@@ -68,8 +74,7 @@ export function mediaFactory(media) {
       heart.classList.add(`fa-heart`);
       heart.ariaLabel = "likes";
       heartBtn.appendChild(heart);
-
-      return heartBtn ;
+       return heartBtn ;
   }
 
 
@@ -81,43 +86,46 @@ export function mediaFactory(media) {
     }
 
     render() {
-      this.cardGalleryMedia = document.createElement(type);
-      this.cardGalleryMedia.ClassName = `${this.className}_Element`;
-      this.cardGalleryMedia.tabIndex = "0";
+      this.htmlElement = document.createElement(type);
+      this.htmlElement.ClassName = `${this.className}_Element`;
+      this.htmlElement.tabIndex = "0";
     }
   }
 
   class Picture extends Media {
-    constructor(className, medium, photographerId, mediaSrc) {
+    constructor(className, medium, currentPhotographer, mediumSrc) {
       super("img", className, medium);
-      photographerId = photographerId;
-      mediaSrc = mediaSrc;
+      this.currentPhotographer = currentPhotographer;
+      this.mediumSrc = mediumSrc;
     }
     render() {
       super.render();
-      cardGalleryMedia.src = "./assets/images/" + photographerId + "/";
+      this.htmlElement.src = `/static/${this.currentPhotographer.name.split(' ')[0]}/${this.mediumSrc}`
+      //"./assets/images/" + photographerId + "/";
     }
   }
 
   class Video extends Media {
-    constructor(className, medium, photographerId, mediaSrc, controls) {
+    constructor(className, medium, currentPhotographer, mediaSrc, controls) {
       super("video", className, medium);
-      photographerId = photographerId;
-      mediaSrc = mediaSrc;
-      controls = controls;
+      this.currentPhotographer = currentPhotographer;
+      this.mediaSrc = mediaSrc;
+      this.controls = controls;
     }
     render() {
       super.render();
       let source = document.createElement("source");
-      source.src = "./assets/images/" + photographerId + "/";
+      source.src = `/static/${this.currentPhotographer.name.split(' ')[0]}/${this.mediumSrc}`
+      //"./assets/images/" + photographerId + "/";
       source.type = "video/mp4";
-      cardGalleryMedia.controls = controls;
-      if (controls) {
-        cardGalleryMedia.autoplay = true;
+      this.htmlElement.controls = this.controls;
+      if (this.controls) {
+        this.htmlElement.autoplay = true;
       }
-      cardGalleryMedia.appendChild(source);
+      this.htmlElement.appendChild(source);
     }
   }
+  return {id, photographerId, image, video, price, date,getUserGalleryDOM, getUserFooterDOM}
 }
   
 
