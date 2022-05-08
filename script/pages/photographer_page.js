@@ -60,7 +60,9 @@ function getMediaByPhotographer(media) {
     "#photograph-section_media"
   );
   const photographerUrlById = urlSearchParams.get("id");
-  const mediasGallery = media.filter((media) => media.photographerId == photographerUrlById);
+  const mediasGallery = media.filter(
+    (media) => media.photographerId == photographerUrlById
+  );
   displayMediaData(mediasGallery);
   console.log(mediasGallery);
 
@@ -72,47 +74,39 @@ function getMediaByPhotographer(media) {
     lightboxModal();
   });
   selectList.addEventListener("change", getUpdateLikes);
-  
-  /*const userGalleryDOM = mediaFactory.getUserGalleryDOM();
-  const userFooter = mediaFactory.getUserFooterDOM();
-  displayMediaContainer.appendChild(userGalleryDOM);
-  displayMediaContainer.appendChild(userFooter);*/
 }
 
-async function displayMediaData(media) {
-  const displayMediaContainer = document.getElementById(
-    "#photograph-section_media"
-  );
-  
+async function displayMediaData(gallery) {
   const photographerUrlById = urlSearchParams.get("id");
-  //const mediasArray = [];
-  /*media.forEach((media) => {
-      let medias = new mediaFactory(media);
-      displayMediaContainer.innerHTML += medias.getUserFooterDOM();
+  gallery.forEach((media) => {
+    let medias = new mediaFactory(media);
+    if (medias.photographerId == photographerUrlById) {
+      const displayMediaContainer = document.getElementById(
+        "#photograph-section_media"
+      );
       console.log(medias);
-    });*/
-    
-  
-  //media.sort((a, b) => a.likes - b.likes);
-  //media.reverse();
-
-  /*media.forEach((media) => {
-    if (media.photographerId == photographerUrlById) {
-      mediasArray.push(media);
+      const userGalleryDOM = medias.getUserGalleryDOM();
+      const userFooter = medias.getUserFooterDOM();
+      displayMediaContainer.appendChild(userGalleryDOM);
+      displayMediaContainer.appendChild(userFooter);
     }
+  });
+  
+}
+
+
+
+//media.sort((a, b) => a.likes - b.likes);
+//media.reverse();
+
+/*media.forEach((media) => {
+    
     console.log(mediasArray);
     
   });*/
 
-  //  display dropdown
-
-  
-    
-  
-}
-
+//  display dropdown
 // Launch the lightbox with sorted medias
-
 
 //container likes on footer photographers' page//
 
@@ -158,7 +152,6 @@ const init = async () => {
   console.log(media);
   media = getMediaByPhotographer(media);
   displayMediaData(media);
-  
 
   const { photographers } = await getPhotographers();
   displayPhotographerDetail(photographers);
