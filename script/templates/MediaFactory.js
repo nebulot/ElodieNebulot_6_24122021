@@ -4,7 +4,7 @@ import { GalleryUtils } from "../utils/mediaUtils.js";
 export function mediaFactory(media) {
   const { id, photographerId, image, video, title, likes, price, date } = media;
 
-  const currentPhotographer = "photographer.html?id=" + id;
+  //const currentPhotographer = "photographer.html?id=" + id;
     //create gallery media by photographers' id
       
     function getUserGalleryDOM(medium, currentPhotographer, className, controls = false) {
@@ -59,7 +59,7 @@ export function mediaFactory(media) {
       cardsFooter.appendChild(cardsTitle);
       cardsFooter.appendChild(cardsLikes);
 
-      cardGalleryMedia.appendChild(cardsFooter);
+     // cardGalleryMedia.appendChild(cardsFooter);
       
     }
 
@@ -125,7 +125,7 @@ export function mediaFactory(media) {
       this.htmlElement.appendChild(source);
     }
   }
-  return {id, photographerId, image, video, price, date,getUserGalleryDOM, getUserFooterDOM}
+  return {id, photographerId, image, video, price, date, getUserGalleryDOM, getUserFooterDOM}
 }
   
 
