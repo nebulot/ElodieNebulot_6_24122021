@@ -7,7 +7,7 @@
   export class GalleryUtils {
     
    static getMediumSrc(medium) {
-    const source = medium.image;
+    let source = medium.image;
     if (source == null) {
       source = medium.video
       }
@@ -18,7 +18,7 @@
    
 // media extension 
    static getMediumType(medium) {
-    let extension = getMediumSrc(medium).split(".").pop();
+    let extension = this.getMediumSrc(medium).split(".").pop();
    if (extension = "jpg") {
       return "image";
     }
