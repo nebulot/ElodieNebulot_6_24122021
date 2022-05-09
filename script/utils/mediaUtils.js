@@ -1,17 +1,16 @@
+
 /*export const mediaName = {
     PICTURE: "image",
     FILM: "video",
   }*/
-
+  
   export class GalleryUtils {
     
    static getMediumSrc(medium) {
-    let source = medium.image;
+    const source = medium.image;
     if (source == null) {
       source = medium.video
-      //console.log(getMediumSrc());
-      console.log(source);
-    }
+      }
     return source;
     
   }
