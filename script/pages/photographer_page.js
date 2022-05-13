@@ -4,7 +4,8 @@ import { getPhotographers } from "../data/photographersData.js";
 
 //import photographerCard display, display media card
 import { photographersCard } from "../templates/photographersCard.js";
-import { mediaFactory } from "../templates/MediaFactory.js";
+//import { mediaFactory } from "../templates/MediaFactory.js";
+import { Media } from "../templates/MediaFactory.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
@@ -76,13 +77,13 @@ function getMediaByPhotographer(media) {
   selectList.addEventListener("change", getUpdateLikes);
 }
 
-async function displayMediaData(gallery) {
+async function displayMediaData(media) {
   const photographerUrlById = urlSearchParams.get("id");
-  gallery.forEach((media) => {
-    let medias = new mediaFactory(media);
+  //gallery.forEach((media) => {
+    let medias = new Media(media);
     if (medias.photographerId == photographerUrlById) {
       const displayMediaContainer = document.getElementById(
-        "#photograph-section_media"
+        "photograph-section_media"
       );
       console.log(medias);
       const userGalleryDOM = medias.getUserGalleryDOM();
@@ -90,9 +91,11 @@ async function displayMediaData(gallery) {
       displayMediaContainer.appendChild(userGalleryDOM);
       displayMediaContainer.appendChild(userFooter);
     }
-  });
+  };
+
+ 
   
-}
+//}
 
 
 

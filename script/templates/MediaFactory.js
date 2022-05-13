@@ -1,6 +1,6 @@
 import { GalleryUtils } from "../utils/mediaUtils.js";
 
-export function mediaFactory(media) {
+/*export function mediaFactory(media) {
   const { id, photographerId, image, video, title, likes, price, date } = media;
 
   //const mediaPhotographers = "photographer.html?id=" + id;
@@ -8,33 +8,15 @@ export function mediaFactory(media) {
 
   function getUserGalleryDOM() {
     const cardGalleryMedia = document.createElement("article");
-    cardGalleryMedia.className = ".photographer-medium_element";
+    cardGalleryMedia.className = "photographer-medium_element";
     cardGalleryMedia.ariaLabel = title;
 
-    
     let mediaHtml = new Media(media);
-    
-    
-    // renvoie des données brut à l'intérieur de media 
-    /*switch (mediumType) {
-      case "image": {
-        let media = new Picture(media);
-        media.render();
-        break;
-      }
-      case "video": {
-        let media = new Video(media);
-        media.render();
-        break;
-      }
-      default:
-        mediumSrc = String("");
-    }*/
     cardGalleryMedia.appendChild(mediaHtml);
     return cardGalleryMedia;
   }
 
-  function getUserFooterDOM() {
+  /*function getUserFooterDOM() {
     const cardsFooter = document.createElement("div");
     cardsFooter.className = "cards-media-footer";
     const cardsTitle = document.createElement("p");
@@ -51,7 +33,7 @@ export function mediaFactory(media) {
     cardsFooter.appendChild(cardsTitle);
     cardsFooter.appendChild(cardsLikes);
 
-    // cardGalleryMedia.appendChild(cardsFooter);
+    cardGalleryMedia.appendChild(cardsFooter);
   }
 
   function getHeartBtn() {
@@ -75,55 +57,85 @@ export function mediaFactory(media) {
     price,
     date,
     getUserGalleryDOM,
-    getUserFooterDOM,
+    //getUserFooterDOM,
   };
-}
+}*/
 
-class Media {
+export class Media {
   constructor(data) {
     //data stocker donc pas besoin de le remettre en ()
     console.log(data);
     const mediumType = GalleryUtils.getMediumType(data);
-    data.source = String(GalleryUtils.getMediumSrc(data));
+    //data.source = String(GalleryUtils.getMediumSrc(data));
     this.data = data;
-    
+
     if (mediumType === "image") {
       return new Picture(data);
     } else if (mediumType === "video") {
       return new Video(data);
     } else {
-      throw "Unknown Media Type";
+      throw "Media Type Unknow";
     }
   }
 }
 
-class Picture extends Media {
+class Picture {
   constructor(data) {
-    super(data);
+    this.data.image = data.image;
+		this.data.alt = data.description;
+		this.data.title = data.title;
+		this.data.PhotographerId = data.photographerId;
+		this.data.Likes = data.likes;
+    //super(data);
     return this.createHtml();
   }
-
   createHtml() {
-    let article = document.createElement("article");
-    article.innerHtml = `
-    <div><img src= "./assets/images/${this.data.photographerId}/${this.data.source}"></div>
-    `
-    return article;
-  }
+    return ` 
+    <div class="photographer-medium_card">
+    <img class="photographer-medium_gallery" src= "./assets/images/${this.data.photographerId}/${this.data.source}">
+    <footer class="cards-media-footer">
+    <p class="cards-media_title" text-content="${this.data.title}"</p>
+    <div class="cards-media_likes">
+    <span class="cards-media_total_likes" title="J'aime" innerHtml= "${this.data.likes}">
+    <bouton class="cards-media_total_likes_btn" role="button" aria-label="ajouter un j'aime">
+    <i class="fas fa-heart" aria-hidden="true" aria-label="likes"></i>
+    <i class="far fa-heart" aria-hidden="false"></i>
+      </button>
+    </span>
+        </div>
+    </footer>
+    </div> `;
+    }
 }
 
-class Video extends Media {
+class Video {
   constructor(data) {
-    super(data);
-    return this.createHtml();
+    //super(data);
+    this.controls = data.controls;
+    //return this.createHtml();
   }
 
   createHtml() {
-    let article = document.createElement("article");
-    article.innerHtml = `
-    <div><img src= "./assets/images/${this.data.photographerId}/${this.data.source}"></div>
-    `
-    return article;
+    super.createHtml();
+    let source = document.createElement("source");
+    source.src = `./assets/images/${this.data.photographerId}/${this.data.source}`;
+    source.type = "video/mp4";
+    this.htmlElement.controls = this.data.controls;
+    this.htmlElement.appendChild(source);
+    /*let articleContent = document.createElement("article");
+    articleContent.className = "photographer-medium_element_card";
+    articleContent.innerHtml = ` 
+    <div class="photographer-medium_card">
+    <video controls class="photographer-medium_gallery" src= "./assets/images/${this.data.photographerId}/${this.data.source}" alt="${this._imgAlt}" />
+    <footer class="cards-media-footer">
+    <p class="cards-media_title" text-content= "${this.data.title}"</p>
+    <div class="cards-media_likes">
+    <span class="cards-media_total_likes" title="J'aime" innerHtml= "${this.data.likes}" aria-label="Ajouter un j'aime"><i class="far fa-heart" aria-hidden="true"></i></button>
+        </div>
+    </footer>
+    </div> `;
+
+    return articleContent;*/
   }
 }
 
