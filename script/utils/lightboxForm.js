@@ -36,7 +36,7 @@ const closeLightbox = () => {
   view.classList.remove("active");
   // focus sur dernier media choisi
   const lastMedia = document.querySelector(
-    ".photographer-medium_type"
+    ".photographer-medium_gallery"
   );
   lastMedia.focus();
   lastMedia.classList.remove("selected");
@@ -53,13 +53,11 @@ console.log(closeLightbox);
 // open lightbox when the media selected
 
 export function lightboxModal() {
-  //check all medias' links and titles, keep url to manage all, inside lightboxModal
-  
-  const links = Array.from(
-    document.querySelectorAll(".photographer-medium_link")
-  );
-  
-  //links.forEach((link) => link.addEventListener("click", openLightbox));
+  //check all medias links (all img all mp4)
+  const sectionMedia = document.querySelector(".photographer-gallery");
+  const links = Array.from(sectionMedia.querySelectorAll('img[src$=".jpg"],source[src$=".mp4"]'));
+     
+  links.forEach((link) => link.addEventListener("click", openLightbox));
   for (let i = 0; i < links.length; i++) {
     let mediaLink = links[i];
     console.log(mediaLink);
@@ -69,7 +67,7 @@ export function lightboxModal() {
       // open lightbox
       openLightbox();
       const selectedMedia = links[i].querySelector(
-        "photographer-medium_type"
+        ".photographer-medium_gallery"
       );
       selectedMedia.classList.add("selected");
       console.log(selectedMedia);
@@ -108,7 +106,7 @@ export function lightboxModal() {
     
     const viewMedia = () => {
       const selectedMedia = links[i].querySelector(
-        ".photographer-medium_type"
+        ".photographer-medium_gallery"
       );
       const url = selectedMedia.url;
       //extension
@@ -136,13 +134,13 @@ export function lightboxModal() {
     // upload previous media
     const previousMedia = () => {
       let selectedMedia = links[i].querySelector(
-        ".photographer-medium_element"
+        ".photographer-medium_gallery"
       );
       prev.addEventListener("click", (e) => {
         e.preventDefault();
         selectedMedia.classList.remove("selected");
         i--;
-        selectedMedia = links[i].querySelector(".photographer-medium_element");
+        selectedMedia = links[i].querySelector(".photographer-medium_gallery");
         // // add "selected to previous media"
         selectedMedia.classList.add("selected");
         lightboxNav();
@@ -158,13 +156,13 @@ export function lightboxModal() {
     // upload next media
     const nextMedia = () => {
       let selectedMedia = links[i].querySelector(
-        ".photographer-medium_element"
+        ".photographer-medium_gallery"
       );
       next.addEventListener("click", (e) => {
         e.preventDefault();
         selectedMedia.classList.remove("selected");
         i++;
-        selectedMedia = links[i].querySelector(".photographer-medium_element");
+        selectedMedia = links[i].querySelector(".photographer-medium_gallery");
         
 
         
