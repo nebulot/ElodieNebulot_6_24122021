@@ -1,5 +1,5 @@
  export function photographersCard(photographer) {
-  const { name, id, portrait, city, country, tagline, price } = photographer;
+  const { name, id, portrait, city, country, tagline, price} = photographer;
 
   const linkPicture = "./assets/photographers/" + portrait;
 

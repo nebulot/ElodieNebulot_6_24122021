@@ -4,13 +4,16 @@ import { getPhotographers } from "../data/photographersData.js";
 
 //import photographerCard display, display media card
 import { photographersCard } from "../templates/photographersCard.js";
-//import { mediaFactory } from "../templates/MediaFactory.js";
 import { Media } from "../templates/MediaFactory.js";
 
 //import dropdown select
 import { dropdownSort } from "../utils/dropdownSort.js";
 
 import { lightboxModal } from "../utils/lightboxForm.js";
+
+const displayMediaContainer = document.querySelector(
+  "#photograph-section_media"
+);
 
 // recupération de la chaine de requete "queryString" dans l'url (!id)
 // web api _ window _ DOM _ windowlocation _search?
@@ -56,94 +59,71 @@ async function displayPhotographerDetail(photographers) {
   displayLikeContainer.appendChild(userFooterDOM);
 }
 
-function getMediaByPhotographer(media) {
-  const displayMediaContainer = document.querySelector(
-    "#photograph-section_media"
-  );
+async function getMediaByPhotographer(media) {
   const photographerUrlById = urlSearchParams.get("id");
   const mediasGallery = media.filter(
     (media) => media.photographerId == photographerUrlById
   );
+  //  display dropdown
+  
   displayMediaData(mediasGallery);
   console.log(mediasGallery);
-
   const selectList = document.querySelector("#dropdown-listbox");
   selectList.addEventListener("change", function (e) {
     displayMediaContainer.innerHTML = "";
     const option = dropdownSort(media, e.target.value);
-    displayMediaData(option);
+  displayMediaData(option);
+    //lightboxModal
     lightboxModal();
   });
-  selectList.addEventListener("change", getUpdateLikes);
+  //selectList.addEventListener("change", getUpdateLikes);
 }
 
-async function displayMediaData(media) {
-  const photographerUrlById = urlSearchParams.get("id");
-  //gallery.forEach((media) => {
+function displayMediaData(gallery) {
+  //const photographerUrlById = urlSearchParams.get("id");
+  gallery.forEach((media) => {
     let medias = new Media(media);
-    if (medias.photographerId == photographerUrlById) {
-      const displayMediaContainer = document.getElementById(
-        "photograph-section_media"
-      );
-      console.log(medias);
-      const userGalleryDOM = medias.getUserGalleryDOM();
-      const userFooter = medias.getUserFooterDOM();
-      displayMediaContainer.appendChild(userGalleryDOM);
-      displayMediaContainer.appendChild(userFooter);
-    }
-  };
-
- 
-  
-//}
-
-
-
-//media.sort((a, b) => a.likes - b.likes);
-//media.reverse();
-
-/*media.forEach((media) => {
-    
-    console.log(mediasArray);
-    
-  });*/
-
-//  display dropdown
-// Launch the lightbox with sorted medias
+    displayMediaContainer.innerHTML += medias.createHtml();
+  });
+}
 
 //container likes on footer photographers' page//
 
 function getUpdateLikes() {
-  const sectionLikes = Array.from(
-    document.querySelectorAll(".cards-media_likes")
-  );
-
+  const sectionLikes = document.querySelectorAll(".cards-media_likes");
+  
   function reloadLikes() {
     let compteurTotalLike = document.querySelector(".like_total");
     let htmlLikes = document.querySelectorAll(".cards-media_total_likes");
 
     let totalSom = 0;
     htmlLikes.forEach(function (like) {
-      let ajoutLike = Number(like.innerHTML);
+      let ajoutLike = Number(like.textContent);
       totalSom += ajoutLike;
     });
     compteurTotalLike.innerHTML = totalSom;
     return totalSom;
   }
+
   sectionLikes.forEach(function (i) {
     i.addEventListener("click", function () {
       let elementCounter = i.querySelector(".cards-media_total_likes");
-      let heart = i.querySelector(".fa-heart");
+      let btnSelector = i.querySelector(".cards-media_total_likes_btn");
+      let heartBtn = i.querySelector(".fa-heart");
       let totalSom = Number(elementCounter.textContent);
       const liked = i.dataset.liked === "true";
       i.dataset.liked = !liked;
       elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
       if (liked) {
         reloadLikes();
-        heart.classList.add("fas");
+        heartBtn.classList.add("far");
+        heartBtn.classList.remove("fas")
+        btnSelector.ariaLabel = " je n'aime pas ";
       } else if (!liked) {
         reloadLikes();
-        heart.classList.add("fas");
+        heartBtn.classList.add("far");
+        heartBtn.classList.remove("fas")
+        btnSelector.ariaLabel = " j'aime ";
       }
     });
   });
@@ -151,17 +131,14 @@ function getUpdateLikes() {
 
 const init = async () => {
   // Récupère les datas des photographes
-  let { media } = await getMedias();
-  console.log(media);
-  media = getMediaByPhotographer(media);
-  displayMediaData(media);
-
   const { photographers } = await getPhotographers();
   displayPhotographerDetail(photographers);
 
-  lightboxModal();
-
+  let { media } = await getMedias();
+  console.log(media);
+  getMediaByPhotographer(media);
   getUpdateLikes();
+  lightboxModal();
 };
 
 init();
