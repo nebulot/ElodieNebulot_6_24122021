@@ -23,8 +23,6 @@ class Picture {
     this.title = data.title;
     this.photographerId = data.photographerId;
     this.likes = data.likes;
-    //super(data);
-    //return this.createHtml();
   }
   createHtml() {
     return ` 
@@ -60,7 +58,7 @@ class Video {
     articleContent.className = "photographer-medium_element_card";*/
     return ` 
     <div class="photographer-medium_card">
-    <video controls class="photographer-medium_gallery" src= "./assets/images/${this.videoPhotographerId}/${this.video}"/>
+    <video class="photographer-medium_gallery" src= "./assets/images/${this.videoPhotographerId}/${this.video}"/>
     <footer class="cards-media-footer">
     <p class="cards-media_title">${this.videoTitle}</p>
     <aside class="cards-media_likes">

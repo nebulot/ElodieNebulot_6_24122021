@@ -71,7 +71,7 @@ async function getMediaByPhotographer(media) {
   const selectList = document.querySelector("#dropdown-listbox");
   selectList.addEventListener("change", function (e) {
     displayMediaContainer.innerHTML = "";
-    const option = dropdownSort(media, e.target.value);
+    const option = dropdownSort(mediasGallery, e.target.value);
   displayMediaData(option);
     //lightboxModal
     lightboxModal();
@@ -85,6 +85,7 @@ function displayMediaData(gallery) {
     let medias = new Media(media);
     displayMediaContainer.innerHTML += medias.createHtml();
   });
+  getUpdateLikes();
 }
 
 //container likes on footer photographers' page//
@@ -116,17 +117,18 @@ function getUpdateLikes() {
       elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
       if (liked) {
         reloadLikes();
-        heartBtn.classList.add("far");
-        heartBtn.classList.remove("fas")
+        heartBtn.classList.add("fas");
+        heartBtn.classList.remove("far")
         btnSelector.ariaLabel = " je n'aime pas ";
       } else if (!liked) {
         reloadLikes();
-        heartBtn.classList.add("far");
-        heartBtn.classList.remove("fas")
+        heartBtn.classList.add("fas");
+        heartBtn.classList.remove("far")
         btnSelector.ariaLabel = " j'aime ";
       }
     });
   });
+  reloadLikes();
 }
 
 const init = async () => {
@@ -136,8 +138,8 @@ const init = async () => {
 
   let { media } = await getMedias();
   console.log(media);
-  getMediaByPhotographer(media);
-  getUpdateLikes();
+  await getMediaByPhotographer(media);
+  
   lightboxModal();
 };
 

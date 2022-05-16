@@ -66,10 +66,11 @@ export function lightboxModal() {
       e.preventDefault();
       // open lightbox
       openLightbox();
-      const selectedMedia = links[i].querySelector(
+      const selectedMedia = e.currentTarget;
+      /*const selectedMedia = links[i].querySelector(
         ".photographer-medium_gallery"
       );
-      selectedMedia.classList.add("selected");
+      selectedMedia.classList.add("selected");*/
       console.log(selectedMedia);
       
       // arrow left and right for the navigation
