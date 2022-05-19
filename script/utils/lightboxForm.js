@@ -1,18 +1,21 @@
-import { lightboxFactory } from "../factories/lightboxFactory.js";
-
-
 //DOM element lightbox//
 const body = document.querySelector("body");
+const mainContent = document.querySelector("main");
+
 const lightbox = document.querySelector(".lightbox");
 const lightboxBgd = document.querySelector(".lightbox_background");
 const view = document.querySelector(".lightbox_view");
 const lightboxTitle = document.querySelector(".lightbox_title");
 const prev = document.querySelector(".lightbox_prev");
 const next = document.querySelector(".lightbox_next");
-const mainContent = document.querySelector("main");
 const btnClose = document.querySelector(".lightbox_close");
-const lightboxMedia = document.querySelector(".lightbox_media")
+const lightboxMedia = document.querySelector(".lightbox_media");
 
+// create lightbox Video 
+const video = document.createElement("video");
+video.classList.add("lightbox_media");
+video.setAttribute("controls", "");
+video.id = "videoType";
 
 // Lightbox open // create carroussel
 const openLightbox = () => {
@@ -28,51 +31,26 @@ const openLightbox = () => {
   view.classList.add("active");
   btnClose.addEventListener("click", closeLightbox);
 };
-// CLOSE LIGHTBOX ("click" event)
-const closeLightbox = () => {
-  mainContent.setAttribute("arias-hidden", "false");
-  lightbox.setAttribute("aria-hidden", "true");
-  lightbox.style.display = "none";
-  view.classList.remove("active");
-  // focus sur dernier media choisi
-  const lastMedia = document.querySelector(
-    ".photographer-medium_gallery"
-  );
-  lastMedia.focus();
-  lastMedia.classList.remove("selected");
-  console.log(lastMedia);
-};
-
-//CLOSE LIGHTBOX ("escape" event)
-lightbox.addEventListener("keydown", (e) => {
-  if (e.keyCode === 27) closeLightbox();
-});
-
-console.log(closeLightbox);
 
 // open lightbox when the media selected
 
 export function lightboxModal() {
   //check all medias links (all img all mp4)
-  const sectionMedia = document.querySelector(".photographer-gallery");
-  const links = Array.from(sectionMedia.querySelectorAll('img[src$=".jpg"],source[src$=".mp4"]'));
-     
-  links.forEach((link) => link.addEventListener("click", openLightbox));
+  const links = document.querySelectorAll(".gallery_link");
   for (let i = 0; i < links.length; i++) {
     let mediaLink = links[i];
-    console.log(mediaLink);
-    
+ 
+    //img[src$=".jpg"],[src$=".mp4"]
+    console.log(links);
+   
     mediaLink.addEventListener("click", (e) => {
       e.preventDefault();
       // open lightbox
       openLightbox();
-      const selectedMedia = e.currentTarget;
-      /*const selectedMedia = links[i].querySelector(
-        ".photographer-medium_gallery"
+      let selectedMedia = e.currentTarget;
+      /*
       );
       selectedMedia.classList.add("selected");*/
-      console.log(selectedMedia);
-      
       // arrow left and right for the navigation
       lightboxNav();
       // url media => url lightbox
@@ -80,10 +58,7 @@ export function lightboxModal() {
       // previous media and next media
       previousMedia();
       nextMedia();
-      
     });
-    
-    
 
     const lightboxNav = () => {
       if (i == 0) {
@@ -93,56 +68,55 @@ export function lightboxModal() {
         prev.style.display = "block";
       }
 
-      if (i < mediaLink.length) {
+      if (i < links.length) {
         next.style.display = "block";
       }
-      if (i == mediaLink.length - 1) {
+      if (i == links.length - 1) {
         next.style.display = "none";
       }
     };
 
-
     // const view Media click on next and previous arrow
-       
-    
-    const viewMedia = () => {
-      const selectedMedia = links[i].querySelector(
-        ".photographer-medium_gallery"
-      );
-      const url = selectedMedia.url;
-      //extension
-      let getExtension = url.substring(url.lastIndexOf(".") + 1);
-      console.log(selectedMedia);
-      console.log(links[i]);
 
-      if (getExtension === 'jpg') {
-        lightboxFactory("image", url);
-        lightboxMedia.src = url;
+    const viewMedia = () => {
+      window.location.hash = links[i].title + ", closeup view";
+      let selectedMedia = links[i].querySelector(
+        ".photographer-medium_gallery");
+      lightboxMedia.src = selectedMedia.src;
+      lightboxMedia.alt = selectedMedia.alt;
+      lightboxTitle.textContent = selectedMedia.alt;
+      
+
+      // si media type img undefined, affiche media type video
+      if (typeof selectedMedia.alt === "undefined") {
+        // remplace img elmt par video elmt
+        lightboxMedia.replaceWith(video);
+        // affiche titre media dans url
         window.location.hash = links[i].title + ", closeup view";
-        lightboxTitle.textContent = selectedMedia.alt;  
- 
-       } if (getExtension === 'mp4') {
-         lightboxFactory('video', url);
-         lightboxMedia.src=url;
-         window.location.hash = links[i].title + ", closeup view";
-         lightboxTitle.textContent = selectedMedia.alt;
-       }
-         lightboxTitle.focus();
-         
+        // affiche media + titre dans lightbox
+        video.src = selectedMedia.src;
+        video.alt = selectedMedia.alt
+        lightboxTitle.textContent = "Video issue de l'image";
+      } else {
+        // remplace video elmt par img elemt
+        video.replaceWith(lightboxMedia);
+      }
+      lightboxTitle.focus();
     };
-  
 
     // upload previous media
     const previousMedia = () => {
       let selectedMedia = links[i].querySelector(
-        ".photographer-medium_gallery"
-      );
+        ".photographer-medium_gallery");
       prev.addEventListener("click", (e) => {
         e.preventDefault();
         selectedMedia.classList.remove("selected");
         i--;
-        selectedMedia = links[i].querySelector(".photographer-medium_gallery");
-        // // add "selected to previous media"
+        selectedMedia = links[i].querySelector(
+          ".photographer-medium_gallery"
+        );
+
+        // add "selected to previous media"
         selectedMedia.classList.add("selected");
         lightboxNav();
         viewMedia();
@@ -150,23 +124,22 @@ export function lightboxModal() {
 
       // use keyboard arrow to move between Media
       window.addEventListener("keydown", (e) => {
-        if (e.keyCode === 37) prev.click();
+        if (e.key === 37) prev.click();
       });
     };
 
     // upload next media
     const nextMedia = () => {
       let selectedMedia = links[i].querySelector(
-        ".photographer-medium_gallery"
-      );
+        ".photographer-medium_gallery");
       next.addEventListener("click", (e) => {
         e.preventDefault();
         selectedMedia.classList.remove("selected");
         i++;
-        selectedMedia = links[i].querySelector(".photographer-medium_gallery");
-        
+        selectedMedia = links[i].querySelector(
+          ".photographer-medium_gallery"
+        );
 
-        
         // add "selected to next media"
         selectedMedia.classList.add("selected");
         lightboxNav();
@@ -175,8 +148,20 @@ export function lightboxModal() {
 
       // use keyboard arrow to move between Media
       window.addEventListener("keydown", (e) => {
-        if (e.keyCode === 39) next.click();
+        if (e.key === 39) next.click();
       });
     };
   }
 }
+// CLOSE LIGHTBOX ("click" event)
+const closeLightbox = () => {
+  mainContent.setAttribute("arias-hidden", "false");
+  lightbox.setAttribute("aria-hidden", "true");
+  lightbox.style.display = "none";
+  view.classList.remove("active");
+};
+
+//CLOSE LIGHTBOX ("escape" event)
+lightbox.addEventListener("keydown", (e) => {
+  if (e.keyCode === 27) closeLightbox();
+});

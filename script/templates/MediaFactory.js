@@ -27,7 +27,8 @@ class Picture {
   createHtml() {
     return ` 
     <div class="photographer-medium_card" aria-label="${this.title}">
-    <img class="photographer-medium_gallery" src= "./assets/images/${this.photographerId}/${this.image}"/>
+    <a class = "gallery_link" href="#" title="close up view">
+    <img class="photographer-medium_gallery" alt="${this.title}" src= "./assets/images/${this.photographerId}/${this.image}"/></a>
     <footer class="cards-media-footer">
     <p class="cards-media_title">${this.title}</p>
     <div class="cards-media_likes">
@@ -55,7 +56,8 @@ class Video {
     
     return ` 
     <div class="photographer-medium_card">
-    <video class="photographer-medium_gallery" src= "./assets/images/${this.videoPhotographerId}/${this.video}"/></video>
+    <a class = "gallery_link" href="#" title="close up view">
+    <video class="photographer-medium_gallery" alt="${this.videoTitle}" src= "./assets/images/${this.videoPhotographerId}/${this.video}"/></video></a>
     <footer class="cards-media-footer">
     <p class="cards-media_title">${this.videoTitle}</p>
     <aside class="cards-media_likes">
