@@ -124,7 +124,7 @@ export function lightboxModal() {
 
       // use keyboard arrow to move between Media
       window.addEventListener("keydown", (e) => {
-        if (e.key === 37) prev.click();
+        if (e.keyCode === 37) prev.click();
       });
     };
 
@@ -148,7 +148,7 @@ export function lightboxModal() {
 
       // use keyboard arrow to move between Media
       window.addEventListener("keydown", (e) => {
-        if (e.key === 39) next.click();
+        if (e.keyCode === 39) next.click();
       });
     };
   }
