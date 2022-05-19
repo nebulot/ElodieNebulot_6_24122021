@@ -117,8 +117,8 @@ function getUpdateLikes() {
       elementCounter.innerHTML = totalSom + (!liked ? 1 : -1);
       if (liked) {
         reloadLikes();
-        heartBtn.classList.add("fas");
-        heartBtn.classList.remove("far")
+        heartBtn.classList.add("far");
+        heartBtn.classList.remove("fas")
         btnSelector.ariaLabel = " je n'aime pas ";
       } else if (!liked) {
         reloadLikes();

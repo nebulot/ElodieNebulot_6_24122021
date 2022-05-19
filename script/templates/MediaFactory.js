@@ -26,14 +26,14 @@ class Picture {
   }
   createHtml() {
     return ` 
-    <div class="photographer-medium_card">
+    <div class="photographer-medium_card" aria-label="${this.title}">
     <img class="photographer-medium_gallery" src= "./assets/images/${this.photographerId}/${this.image}"/>
     <footer class="cards-media-footer">
     <p class="cards-media_title">${this.title}</p>
     <div class="cards-media_likes">
     <span class="cards-media_total_likes" title="J'aime">${this.likes}</span>
     <bouton class="cards-media_total_likes_btn" role="button" aria-label="ajouter un j'aime">
-    <i class="fas fa-heart" aria-hidden="true" aria-label="likes"></i>
+    <i class="far fa-heart" aria-hidden="true" aria-label="likes"></i>
     </button>
     </div>
     </footer>
@@ -43,28 +43,25 @@ class Picture {
 
 class Video {
   constructor(data) {
-    //super(data);
     this.video = data.video;
     this.videoTitle = data.title;
     this.videoPhotographerId = data.photographerId;
     this.videoLikes = data.likes;
-    //return this.createHtml();
+    
+   
   }
 
   createHtml() {
-    //super.createHtml();
-
-    /*let articleContent = document.createElement("article");
-    articleContent.className = "photographer-medium_element_card";*/
+    
     return ` 
     <div class="photographer-medium_card">
-    <video class="photographer-medium_gallery" src= "./assets/images/${this.videoPhotographerId}/${this.video}"/>
+    <video class="photographer-medium_gallery" src= "./assets/images/${this.videoPhotographerId}/${this.video}"/></video>
     <footer class="cards-media-footer">
     <p class="cards-media_title">${this.videoTitle}</p>
     <aside class="cards-media_likes">
     <span class="cards-media_total_likes" title="J'aime">${this.videoLikes}</span>
     <bouton class="cards-media_total_likes_btn" role="button" aria-label="ajouter un j'aime">
-    <i class="fas fa-heart" aria-hidden="true" aria-label="likes"></i>
+    <i class="far fa-heart" aria-hidden="true" aria-label="likes"></i>
     </button>
     </aside>
     </footer>

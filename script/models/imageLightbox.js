@@ -1,4 +1,4 @@
-export function imageload(imgName,url) {
+ export function imageload(imgName,url) {
   let getExtension = url.substring(url.lastIndexOf(".") + 1);
   const view = document.querySelector(".lightbox_view");
   
