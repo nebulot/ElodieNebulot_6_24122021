@@ -79,7 +79,6 @@ export function lightboxModal() {
     // const view Media click on next and previous arrow
 
     const viewMedia = () => {
-      window.location.hash = links[i].title + ", closeup view";
       let selectedMedia = links[i].querySelector(
         ".photographer-medium_gallery");
       lightboxMedia.src = selectedMedia.src;
@@ -136,10 +135,7 @@ export function lightboxModal() {
         e.preventDefault();
         selectedMedia.classList.remove("selected");
         i++;
-        selectedMedia = links[i].querySelector(
-          ".photographer-medium_gallery"
-        );
-
+        
         // add "selected to next media"
         selectedMedia.classList.add("selected");
         lightboxNav();
@@ -159,9 +155,13 @@ const closeLightbox = () => {
   lightbox.setAttribute("aria-hidden", "true");
   lightbox.style.display = "none";
   view.classList.remove("active");
+  //stop string on medialightbox when you arrived on the lastMedia
+  const lastMedia = document.querySelector(".photographer-medium_gallery.selected");
+  lastMedia.focus();
+  lastMedia.classList.remove("selected");
 };
 
 //CLOSE LIGHTBOX ("escape" event)
 lightbox.addEventListener("keydown", (e) => {
-  if (e.keyCode === 27) closeLightbox();
+  if (e.key === "Escape") closeLightbox();
 });

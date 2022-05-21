@@ -1,11 +1,6 @@
 export class Media {
   constructor(data) {
-    //data stocker donc pas besoin de le remettre en ()
-
-    //const mediumType = GalleryUtils.getMediumType(data);
-    //data.source = String(GalleryUtils.getMediumSrc(data));
-    //this.data = data;
-
+   
     console.log(data);
     if (data.type === "image") {
       return new Picture(data);
