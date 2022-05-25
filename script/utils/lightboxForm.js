@@ -79,8 +79,7 @@ export function lightboxModal() {
     // const view Media click on next and previous arrow
 
     const viewMedia = () => {
-      let selectedMedia = links[i].querySelector(
-        ".photographer-medium_gallery");
+      let selectedMedia = links[i].querySelector(".photographer-medium_gallery");
       lightboxMedia.src = selectedMedia.src;
       lightboxMedia.alt = selectedMedia.alt;
       lightboxTitle.textContent = selectedMedia.alt;
@@ -111,11 +110,7 @@ export function lightboxModal() {
         e.preventDefault();
         selectedMedia.classList.remove("selected");
         i--;
-        selectedMedia = links[i].querySelector(
-          ".photographer-medium_gallery"
-        );
-
-        // add "selected to previous media"
+      // add "selected to previous media"
         selectedMedia.classList.add("selected");
         lightboxNav();
         viewMedia();
@@ -135,7 +130,6 @@ export function lightboxModal() {
         e.preventDefault();
         selectedMedia.classList.remove("selected");
         i++;
-        
         // add "selected to next media"
         selectedMedia.classList.add("selected");
         lightboxNav();
@@ -157,11 +151,11 @@ const closeLightbox = () => {
   view.classList.remove("active");
   //stop string on medialightbox when you arrived on the lastMedia
   const lastMedia = document.querySelector(".photographer-medium_gallery.selected");
-  lastMedia.focus();
-  lastMedia.classList.remove("selected");
+ // lastMedia.focus();
+  lastMedia.classList.remove(".selected");
 };
 
 //CLOSE LIGHTBOX ("escape" event)
-lightbox.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeLightbox();
+window.addEventListener("keydown", (e) => {
+  if (e.keycode === "27") closeLightbox();
 });
