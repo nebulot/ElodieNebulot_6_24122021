@@ -1,42 +1,55 @@
-# FishEye - Photographers accessible plateform
+# FishEye - Photographers accessible plateform "Fisheye"
 
-## Projet 6 : Créez un site accessible pour une plateforme de photographes
+## 🎯 Objectif :
 
-FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. Ils ont récemment levé des fonds et aimeraient mettre à jour leur site web. <br/>
-                    ______________________________________________________________<br/>
-Leur site est obsolète et a besoin d'être remanié.
-"Notre site a été construit il y a plus de dix ans, et nous n'avons pas eu l'occasion de
-le mettre à jour jusqu'à présent. Nous venons de lever des fonds et nous aimerions
-que votre équipe le transforme d'un site statique à un site dynamique".
+Le projet consiste à refondre le site FishEye, une plateforme dédiée aux photographes indépendants, afin de le rendre accessible et dynamique. 
+Le site actuel est obsolète, datant de plus de dix ans, et nécessite une mise à jour pour offrir une meilleure expérience aux utilisateurs <br/>
+tout en respectant les normes d'accessibilité. <br/> 
+FishEye a récemment levé des fonds et souhaite transformer leur site d'un format statique à un format dynamique. <br/>
+Mon rôle consiste à intégrer les éléments nécessaires pour que le site soit accessible et conforme aux normes WCAG 2.0 (niveau AA),<br/> 
+tout en y apportant les fonctionnalités modernes et dynamiques attendues.<br/>
 
-Livret de suivi des étapes fournit par OPENCLASSROOM <br/>
-[Indication à suivre étape par étape]<br/>
-🔗https://course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/P6+Front-End+-+Etapes+cles.pdf
+## 🗂️ Éléments transmis :
 
-### Consignes générales 
-1️⃣ Utilisez des éléments HTML "sémantiques" qui décrivent leur intention autant
-que possible, au lieu de mettre des éléments "div" et "span" partout.<br/>
-2️⃣ Utilisation de VisualStudio Code<br/>
-Les fichiers HTML, CSS et JavaScript sont séparés et le code doit être commenté à chaque modification (décrire chaque fonction et chaque classe, et plus de détails sur certaines parties si nécessaire).<br/>
-3️⃣ Lorsque vous devez créer un élément personnalisé, ajoutez des attributs ARIA
-pour décrire ce qu'il fait.<br/>
-4️⃣Les images doivent présenter un attribut “alt”. Utilisez le titre des photos pour
-remplir cet attribut, et le nom du photographe dans le cas d’une photo de
-profil de photographe.<br/>
-5️⃣Le code devrait passer les tests AChecker sans “known issue” (afin qu'il soit
-conforme aux WCAG).<br/>
-Toute la gestion des événements (par exemple, les clics et les pressions au
-clavier) doit être configurée (utilisez KeyboardEvent.key ou
-KeyboardEvent.code.).<br/>
- 
+    🔗 Maquettes Figma :
+    [Maquettes de l'application] (🔗https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)<br/>
 
-## Ressources et documentations :
-[Maquettes de l'application] (🔗https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)<br/>
-[Lien github à forker] (🔗https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)
+    Repository GitHub à forker pour travailler sur le projet :<br/>
+    🔗 [Repository GitHub](https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)<br/>
+
+    Livret de suivi des étapes fournies par OpenClassrooms pour suivre les étapes du projet :<br/>
+    🔗 [Brief](https://course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/P6+Front-End+-+Etapes+cles.pdf)<br/>
+
+## 📋 Cahier des charges :
+
+    - Utilisez des éléments HTML sémantiques qui décrivent leur intention autant que possible, au lieu de recourir aux éléments génériques comme div et span.
+    - Utilisation de Visual Studio Code pour le développement. Les fichiers HTML, CSS, et JavaScript sont séparés, <br/>
+    et le code doit être commenté à chaque modification. Chaque fonction, classe, et modification importante doit être clairement décrite.<br/>
+    - Lors de la création d'éléments personnalisés, vous devez ajouter des attributs ARIA pour décrire leur fonctionnalité. <br/>
+    - Les images doivent comporter un attribut "alt" qui décrit le contenu de l'image. <br/>
+    Pour les photos de profil de photographes, utilisez le nom du photographe. <br/>
+    - Le code doit passer les tests AChecker sans "known issue" afin qu'il soit conforme aux WCAG 2.0 (Level AA). <br/>
+    - La gestion des événements (comme les clics ou les pressions de touches) doit être configurée. <br/>
+    Utilisez KeyboardEvent.key ou KeyboardEvent.code pour assurer l'accessibilité clavier.<br/>
+
+## 🔧 Les étapes imposées :
+
+1️⃣ Forker le repository en utilisant le lien ci-dessus. <br/>
+2️⃣ Utilisez Visual Studio Code et travaillez sur les fichiers HTML, CSS, et JavaScript séparés.<br/>
+ Assurez-vous de bien commenter le code pour chaque modification.<br/>
+3️⃣ Rendre le site accessible en utilisant des éléments HTML sémantiques, <br/>
+des attributs ARIA et en ajoutant un attribut alt aux images. <br/>
+4️⃣ Tester l'accessibilité du site en le faisant passer par les tests AChecker <br/>
+et en vous assurant qu'il respecte les normes WCAG 2.0 (niveau AA). <br/>
+5️⃣ Effectuez des tests manuels pour vérifier que le site est fonctionnel et accessible,<br/>
+ notamment avec un lecteur d'écran gratuit.<br/>
+
 
 ## Accessibilité et contrôles 
--W3C<br/>
--Achecker (🔗https://achecker.achecks.ca)<br/>
+🔗Vérification code W3C<br/>
+[Vérification code ] (https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)<br/>
+🔗Achecker
+[Test Achecker](https://achecker.achecks.ca)<br/>
 WCAG 2.0 (Level AA))<br/>
--Utilisez un lecteur d'écran gratuit pour vous faire une idée de ce que
+- Utilisez un lecteur d'écran gratuit pour vous faire une idée de ce que
 représente l'utilisation du site pour une personne malvoyante.
