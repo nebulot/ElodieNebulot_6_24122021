@@ -12,13 +12,13 @@ tout en y apportant les fonctionnalités modernes et dynamiques attendues.<br/>
 ## 🗂️ Éléments transmis :
 
     🔗 Maquettes Figma :
-    [Maquettes de l'application] (🔗https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)<br/>
+    [Maquettes de l'application] (https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)
 
-    Repository GitHub à forker pour travailler sur le projet :<br/>
-    🔗 [Repository GitHub](https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)<br/>
+    Repository GitHub à forker pour travailler sur le projet :
+    🔗 [Repository GitHub](https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)
 
-    Livret de suivi des étapes fournies par OpenClassrooms pour suivre les étapes du projet :<br/>
-    🔗 [Brief](https://course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/P6+Front-End+-+Etapes+cles.pdf)<br/>
+    Livret de suivi des étapes fournies par OpenClassrooms pour suivre les étapes du projet :
+    🔗 [Brief](https://course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/P6+Front-End+-+Etapes+cles.pdf)
 
 ## 📋 Cahier des charges :
 
@@ -47,7 +47,7 @@ et en vous assurant qu'il respecte les normes WCAG 2.0 (niveau AA). <br/>
 
 ## Accessibilité et contrôles 
 🔗Vérification code W3C<br/>
-[Vérification code ] (https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)<br/>
+[Vérification code ] (https://validator.w3.org/nu/?doc=https%3A%2F%2Fnebulot.github.io%2FElodieNebulot_Fisheye%2F)<br/>
 🔗Achecker
 [Test Achecker](https://achecker.achecks.ca)<br/>
 WCAG 2.0 (Level AA))<br/>
