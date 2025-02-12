@@ -11,26 +11,26 @@ tout en y apportant les fonctionnalités modernes et dynamiques attendues.<br/>
 
 ## 🗂️ Éléments transmis :
 
-    🔗 Maquettes Figma :
-    [Maquettes de l'application] (https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)
+🔗 Maquettes Figma :  
+[Maquettes de l'application](https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0%3A1)
 
-    Repository GitHub à forker pour travailler sur le projet :
-    🔗 [Repository GitHub](https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)
+Repository GitHub à forker pour travailler sur le projet :  
+🔗 [Repository GitHub](https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye/blob/main/data/photographers.json)
 
-    Livret de suivi des étapes fournies par OpenClassrooms pour suivre les étapes du projet :
-    🔗 [Brief](https://course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/P6+Front-End+-+Etapes+cles.pdf)
+Livret de suivi des étapes fournies par OpenClassrooms pour suivre les étapes du projet :  
+🔗 [Brief](https://course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/P6+Front-End+-+Etapes+cles.pdf)
 
 ## 📋 Cahier des charges :
 
-    - Utilisez des éléments HTML sémantiques qui décrivent leur intention autant que possible, au lieu de recourir aux éléments génériques comme div et span.
-    - Utilisation de Visual Studio Code pour le développement. Les fichiers HTML, CSS, et JavaScript sont séparés, <br/>
+- Utilisez des éléments HTML sémantiques qui décrivent leur intention autant que possible, au lieu de recourir aux éléments génériques comme div et span.
+- Utilisation de Visual Studio Code pour le développement. Les fichiers HTML, CSS, et JavaScript sont séparés, <br/>
     et le code doit être commenté à chaque modification. Chaque fonction, classe, et modification importante doit être clairement décrite.<br/>
-    - Lors de la création d'éléments personnalisés, vous devez ajouter des attributs ARIA pour décrire leur fonctionnalité. <br/>
-    - Les images doivent comporter un attribut "alt" qui décrit le contenu de l'image. <br/>
-    Pour les photos de profil de photographes, utilisez le nom du photographe. <br/>
-    - Le code doit passer les tests AChecker sans "known issue" afin qu'il soit conforme aux WCAG 2.0 (Level AA). <br/>
-    - La gestion des événements (comme les clics ou les pressions de touches) doit être configurée. <br/>
-    Utilisez KeyboardEvent.key ou KeyboardEvent.code pour assurer l'accessibilité clavier.<br/>
+- Lors de la création d'éléments personnalisés, vous devez ajouter des attributs ARIA pour décrire leur fonctionnalité. <br/>
+- Les images doivent comporter un attribut "alt" qui décrit le contenu de l'image. <br/>
+  Pour les photos de profil de photographes, utilisez le nom du photographe. <br/>
+- Le code doit passer les tests AChecker sans "known issue" afin qu'il soit conforme aux WCAG 2.0 (Level AA). <br/>
+- La gestion des événements (comme les clics ou les pressions de touches) doit être configurée. <br/>
+Utilisez KeyboardEvent.key ou KeyboardEvent.code pour assurer l'accessibilité clavier.<br/>
 
 ## 🔧 Les étapes imposées :
 
